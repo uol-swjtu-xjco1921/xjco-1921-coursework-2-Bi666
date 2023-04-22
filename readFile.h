@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include <data.h>
+#include "map.h"
+#include "createMap.h"
 
-node_t read_node(char* line);
-link_t read_link(char* line);
-adjacency_list_t* build_adjacency_list(char* filename);
+void readMap(char *filename, map_t *map);
