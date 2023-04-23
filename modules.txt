@@ -1,0 +1,43 @@
+1, Firstly, I designed a header file named "map.h" that defines data structures for working with maps. 
+It defines three new data structures: "edge_t," "node_t," and "map_t.", which can form a linked list structure.
+
+2, Then, a file named “creatMap.c” is defined to accomplish some required operations on the map adjacency list.
+
+The init_map function initializes a new map by setting the number of nodes and edges to 0 and setting the pointer to the first node to NULL. 
+
+The add_node function adds a new node to the map. It first checks if the maximum number of nodes has been exceeded. 
+Otherwise, it allocates memory for a new node, sets its edges pointer to NULL, sets its number of edges to 0 
+and adds the new node to the beginning of the linked list of nodes in the map and increments the number of nodes. 
+
+The add_edge function adds a new edge to the map.
+It iterates over all nodes in the map and for each node that matches node1 or node2, it allocates memory and copies the data from the new edge, 
+adds the node edge to the beginning of the linked list of edges for that node, and increments the node's number of edges. 
+Finally, it increments the number of edges in the map. 
+
+The get_distance function calculates the distance between two nodes using the Haversine formula. 
+It takes two pointers to node_t structs with longitude and latitude and returns a double representing the distance between them in kilometers. 
+
+The free_map function frees the memory used by the map. 
+It first frees the memory used by their linked list of edges. 
+It then frees the memory used by each node, and finally frees the memory used by the map itself.
+
+3, Define a file named readFile.c to read the data from the map file and store it in a linked list structure.
+
+This file includes a readMap function. 
+First, the function opens the file using fopen and checks if it was opened successfully. 
+Next, the function reads the file line by line using fgets and stores each line in a buffer. 
+It then uses strtok to parse each line into its constituent fields based on a delimiter.
+
+4, Finally, there is a file named “routePlan”, which includes the main function. 
+The main function implements the route planning function by calling the previously defined function.
+
+The main function calculates the shortest path between two nodes on a map using Dijkstra's algorithm. 
+Prompt the user to enter the start and end node IDs, then search for the corresponding nodes in the map using a for loop. 
+Initialize arrays for storing distances, previous nodes, and visited nodes. 
+Set the distance of the starting node to 0 and the distance of all other nodes to infinity. 
+Loop through all nodes in the map, finding the unvisited node with the smallest distance and marking it as visited.
+Update the distances to its adjacent nodes if it provides a shorter path. 
+If the distance to the end node is still infinity after the loop, there is no path between the two nodes. 
+
+5, Then use SDL tools to draw maps and routes to visualize data. 
+The code provided is an implementation, which initializes a window, renderer, and texture using the SDL library to draw the graph on the screen.
