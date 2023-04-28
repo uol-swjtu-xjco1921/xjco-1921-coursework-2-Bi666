@@ -6,128 +6,143 @@
 #include "map.h"
 #include "readFile.h"
 #include "createMap.h"
+#include "plotSDL.h"
 
 int main(int argc, char **argv)
 {
-    map_t* map = malloc(sizeof(map_t));
+    map_t *map = (map_t *)malloc(sizeof(map_t));
     init_map(map);
+    range *bound = (range *)malloc(sizeof(range));
 
     // Load map from file
     char *filename = argv[1];
-    readMap(filename, map);
-
-    // Find best path between two locations
-    int start_node_id, end_node_id;
-    printf("Enter start node ID: ");
-    scanf("%d", &start_node_id);
-    printf("Enter end node ID: ");
-    scanf("%d", &end_node_id);
-
-    node_t* start_node = NULL;
-    node_t* end_node = NULL;
-
-    for (int i = 0; i < map->num_nodes; i++)
+    int readresult = readMap(filename, map, bound);
+    if (readresult != EXIT_NO_ERRORS)
     {
-        if (map->nodes[i].id == start_node_id)
-        {
-            start_node = &map->nodes[i];;
-        }
-        if (map->nodes[i].id == end_node_id)
-        {
-            end_node = &map->nodes[i];;
-        }
+        return readresult;
     }
 
-    if (start_node == NULL || end_node == NULL)
-    {
-        printf("Error: Invalid node ID\n");
-        free_map(map);
-        return 1;
-    }
+    sdl(map, bound);
 
-    double distances[MAX_NODES];
-    int previous_nodes[MAX_NODES];
-    bool visited[MAX_NODES];
+    // // Find best path between two locations
+    // int start_node_id, end_node_id;
+    // printf("Enter start node ID: ");
+    // scanf("%d", &start_node_id);
+    // printf("Enter end node ID: ");
+    // scanf("%d", &end_node_id);
 
-    for (int i = 0; i < map->num_nodes; i++)
-    {
-        distances[i] = INFINITY;
-        visited[i] = false;
-    }
+    // node_t *start_node = NULL;
+    // node_t *end_node = NULL;
 
-    distances[start_node->id] = 0;
+    // node_t *current_node = map->nodes;
+    // while (current_node != NULL)
+    // {
+    //     if (current_node->id == start_node_id)
+    //     {
+    //         start_node = current_node;
+    //     }
+    //     if (current_node->id == end_node_id)
+    //     {
+    //         end_node = current_node;
+    //     }
+    //     current_node = current_node->next;
+    // }
 
-    for (int i = 0; i < map->num_nodes; i++)
-    {
-        // Find unvisited node with smallest distance
-        int current_node_id = -1;
-        double current_distance = INFINITY;
-        for (int j = 0; j < map->num_nodes; j++)
-        {
-            if (!visited[j] && distances[j] < current_distance)
-            {
-                current_node_id = j;
-                current_distance = distances[j];
-            }
-        }
+    // if (start_node == NULL || end_node == NULL)
+    // {
+    //     printf("Error: Invalid node ID\n");
+    //     free_map(map);
+    //     free(bound);
+    //     return EXIT_BAD_DATA;
+    // }
 
-        if (current_node_id == -1)
-        {
-            break;
-        }
+    // double distances[MAX_NODES];
+    // int previous_nodes[MAX_NODES];
+    // bool visited[MAX_NODES];
 
-        visited[current_node_id] = true;
+    // for (int i = 0; i < map->num_nodes; i++)
+    // {
+    //     distances[i] = INFINITY;
+    //     visited[i] = false;
+    // }
 
-        // Update distances to adjacent nodes
-        for (int j = 0; j < map->nodes[current_node_id].num_edges; j++)
-        {
-            edge_t edge = map->nodes[current_node_id].edges[j];
-            int adjacent_node_id = edge.node1 == current_node_id ? edge.node2 : edge.node1;
-            double distance;
-            if (distances[current_node_id] + edge.length < distances[adjacent_node_id])
-            {
-                distances[adjacent_node_id] = distances[current_node_id] + edge.length;
-                previous_nodes[adjacent_node_id] = current_node_id;
-            }
-        }
-    }
+    // distances[start_node->id] = 0;
 
-    if (distances[end_node->id] == INFINITY)
-    {
-        printf("No path found between start and end nodes\n");
-        free_map(map);
-        return 1;
-    }
+    // for (int i = 0; i < map->num_nodes; i++)
+    // {
+    //     // Find unvisited node with smallest distance
+    //     int current_node_id = -1;
+    //     double current_distance = INFINITY;
+    //     for (int j = 0; j < map->num_nodes; j++)
+    //     {
+    //         if (!visited[j] && distances[j] < current_distance)
+    //         {
+    //             current_node_id = j;
+    //             current_distance = distances[j];
+    //         }
+    //     }
 
-    // Traverse path and print output
-    int current_node_id = end_node->id;
-    int path[MAX_NODES];
-    int path_length = 0;
+    //     if (current_node_id == -1)
+    //     {
+    //         break;
+    //     }
 
-    while (current_node_id != start_node->id)
-    {
-        path[path_length] = current_node_id;
-        path_length++;
-        current_node_id = previous_nodes[current_node_id];
-    }
+    //     visited[current_node_id] = true;
 
-    path[path_length] = start_node->id;
-    path_length++;
+    //     // Update distances to adjacent nodes
+    //     edge_t *edge = current_node->edges;
+    //     while (edge != NULL)
+    //     {
+    //         int adjacent_node_id = edge->node1 == current_node_id ? edge->node2 : edge->node1;
+    //         double distance;
+    //         if (distances[current_node_id] + edge->length < distances[adjacent_node_id])
+    //         {
+    //             distances[adjacent_node_id] = distances[current_node_id] + edge->length;
+    //             previous_nodes[adjacent_node_id] = current_node_id;
+    //         }
+    //         edge = edge->next;
+    //     }
+    // }
 
-    printf("Shortest path from node %d to node %d:\n", start_node->id, end_node->id);
-    printf("Length: %.2f\n", distances[end_node->id]);
+    // if (distances[end_node->id] == INFINITY)
+    // {
+    //     printf("No path found between start and end nodes\n");
+    //     free_map(map);
+    //     free(bound);
+    //     return EXIT_NO_ERRORS;
+    // }
 
-    for (int i = path_length - 1; i >= 0; i--)
-    {
-        printf("%d ", path[i]);
-        if (i > 0)
-        {
-            printf("-> ");
-        }
-    }
-    printf("\n");
-    // Free all allocated memory
+    // // Traverse path and print output
+    // int current_node_id = end_node->id;
+    // int path[MAX_NODES];
+    // int path_length = 0;
+
+    // while (current_node_id != start_node->id)
+    // {
+    //     path[path_length] = current_node_id;
+    //     path_length++;
+    //     current_node_id = previous_nodes[current_node_id];
+    // }
+
+    // path[path_length] = start_node->id;
+    // path_length++;
+
+    // printf("Shortest path from node %d to node %d:\n", start_node->id, end_node->id);
+    // printf("Length: %.2f\n", distances[end_node->id]);
+
+    // for (int i = path_length - 1; i >= 0; i--)
+    // {
+    //     printf("%d ", path[i]);
+    //     if (i > 0)
+    //     {
+    //         printf("-> ");
+    //     }
+    // }
+
+    // printf("\n");
+    // // Free all allocated memory
     free_map(map);
+    free(bound);
 
-    return 0;
+    return EXIT_NO_ERRORS;
 }
