@@ -1,0 +1,82 @@
+Part 1 Test plan:
+
+Map File Reading Test:
+a. Provide a correct file path to ensure that the program can successfully read map data.
+b. Provide a non-existent file path to ensure that the program can catch exceptions and return error messages.
+c. Provide a file with an incorrect format to ensure that the program can catch exceptions and return error messages.
+
+Map Data Storage Test:
+a. Given a correct map data file, ensure that the program can successfully store map data.
+b. Given a map data file with an incorrect number of nodes, ensure that the program can handle it correctly.
+c. Given an empty map data file, ensure that the program can exit abnormally and return an error message.
+
+Best Path Finding Test:
+a. Given a starting point and an ending point, ensure that the program can correctly calculate the shortest path.
+b. Given a starting point and an ending point, ensure that the program can correctly calculate the fastest path.
+c. Given a starting point, an ending point, and waypoints, ensure that the program can correctly calculate the shortest path and meet the requirements of the waypoints.
+
+Map Data Visualization Test:
+a. Ensure that the program can visualize map data and draw routes and edges in SDL.
+b. Ensure that the program can display map data in real-time, and users can change map information.
+
+Map Data Editing Test:
+a. Ensure that the program can add new routes and change the speed limit of existing roads.
+b. Ensure that the program can save map editing and can be reloaded.
+
+Exception Test:
+a. Given incorrect starting and ending points, ensure that the program can catch and return error messages.
+b. Given a disconnected graph, ensure that the program can catch and return error messages.
+
+Performance Test:
+a. Ensure that the program can calculate the shortest path and the fastest path within a reasonable time.
+b. Ensure that the program can maintain reasonable memory usage when processing large map data.
+
+Boundary Test:
+a. Given two points, one on the map and one outside the map, ensure that the program can handle it correctly.
+b. Ensure that the program can handle invalid or incomplete map data.
+c. Ensure that the program can handle invalid or incomplete input starting and ending point data.
+
+Compatibility Test:
+a. Ensure that the program can run properly in different operating systems and environments.
+b. Ensure that the program can handle different types and versions of map data files.
+
+Security Test:
+a. Ensure that the program can effectively handle potential security vulnerabilities, such as buffer overflow and code injection.
+b. Ensure that the program can protect the privacy of map data and user input data.
+
+Other Tests:
+a. Ensure that the program can handle different types of map data, such as transportation networks, terrain, and buildings.
+b. Ensure that the program can handle multi-language characters and symbols.
+
+Part 2 Test Case：
+
+Test Case 1: 
+File Input Description: Verify that the program can correctly read the input file and generate an appropriate data structure to represent the map. 
+Input: Example map data file. Expected 
+Output: A data structure representing the map should be generated without any errors. 
+
+Test Case 2: 
+Shortest Path Algorithm Description: Verify that the program can correctly calculate the shortest path between two points on the map. 
+Input: Example map data file and two points. Expected 
+Output: The program should output the shortest path between the two points and its length. 
+
+Test Case 3: 
+Quickest Path Algorithm Description: Verify that the program can correctly calculate the quickest path between two points on the map based on road speed limits. 
+Input: Example map data file, two points, and road speed limits. Expected 
+Output: The program should output the quickest path between the two points based on the speed limits and its length. 
+
+Test Case 4: Shortest Path with Constraints Algorithm Description: Verify that the program can correctly calculate the shortest path between two points on the map while meeting a given constraint. 
+Input: Example map data file, two points, and a point of interest. Expected 
+Output: The program should output the shortest path between the two points that passes through the point of interest and its length. 
+
+Test Case 5: Map Visualization Description: Verify that the program can correctly visualize the map and the calculated path. 
+Input: Example map data file and a calculated path. Expected 
+Output: The program should output a graphical representation of the map with the calculated path highlighted. 
+
+Test Case 6: Map Editing Description: Verify that the program can correctly edit the map attributes by adding new routes and changing road speed limits. 
+Input: Example map data file and edits to be made. Expected 
+Output: The program should successfully apply the edits to the map and save the updated map to a file. 
+
+Test Case 7: Error Handling Description: Verify that the program can handle input errors and other exceptional cases without crashing. 
+Input: Invalid input files, invalid input points, etc. Expected 
+Output: The program should gracefully handle any errors and provide appropriate error messages to the user.
