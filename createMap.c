@@ -11,37 +11,27 @@ void init_map(map_t *map)
     map->num_edges = 0;
 }
 
-void free_map(map_t *map)
-{
-    // Free the edges in each node
-    node_t *node = map->nodes;
-    while (node != NULL)
-    {
-        edge_t *edge = node->edges;
-        while (edge != NULL)
-        {
-            edge_t *temp = edge;
-            edge = edge->next;
-            free(temp);
-        }
-        node->edges = NULL;
-        node = node->next;
-    }
-
+void free_map(map_t* map) {
     // Free the nodes in the map
-    node = map->nodes;
-    while (node != NULL)
-    {
-        node_t *temp = node;
+    node_t* node = map->nodes;
+    while (node != NULL) {
+        // Free the edges in each node
+        edge_t* edge = node->edges;
+        while (edge != NULL) {
+            free(edge);
+            edge = NULL;
+            edge = edge->next;
+        }
+        free(node);
+        node = NULL;
         node = node->next;
-        free(temp);
     }
-
     // Free the map
     free(map);
     map = NULL;
     // set to NULL to avoid dangling pointer
 }
+
 
 // Add node to map
 int add_node(map_t *map, int id, double lat, double lon)

@@ -1,148 +1,146 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <string.h>
-#include <math.h>
+#include <SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include "map.h"
-#include "readFile.h"
-#include "createMap.h"
-#include "plotSDL.h"
 
-int main(int argc, char **argv)
+node_t *get_node_by_id(map_t *map, int id)
 {
-    map_t *map = (map_t *)malloc(sizeof(map_t));
-    init_map(map);
-    range *bound = (range *)malloc(sizeof(range));
-
-    // Load map from file
-    char *filename = argv[1];
-    int readresult = readMap(filename, map, bound);
-    if (readresult != EXIT_NO_ERRORS)
+    node_t *node = map->nodes;
+    while (node != NULL)
     {
-        return readresult;
+        if (node->id == id)
+        {
+            return node;
+        }
+        node = node->next;
+    }
+    return NULL; // 如果找不到节点，返回空指针
+}
+
+void sdl(map_t *map, range *bound)
+{
+    // 初始化 SDL
+    SDL_Init(SDL_INIT_VIDEO);
+
+    // 创建窗口和渲染器
+    SDL_Window *window = SDL_CreateWindow("Map", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1080, 960, SDL_WINDOW_SHOWN);
+    SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+    // 计算绘图缩放比例和平移量
+    double latRange = 53.812 - 53.801;
+    double lonRange = 1.565 - 1.540;
+    double xRatio = 850.0 / lonRange;
+    double yRatio = 761.0 / latRange;
+    double xOffset = 150.0;
+    double yOffset = 120.0;
+    int NODE_SIZE = 5;
+    // 绘制地图
+
+    node_t *node = map->nodes;
+    while (node != NULL)
+    {
+        if (node->num_edges == 0)
+        {
+            node = node->next;
+            continue;
+        }
+        SDL_Rect node_rect = {
+            (int)((node->lon + 1.565) * xRatio + xOffset),
+            (int)((53.812 - node->lat) * yRatio + yOffset - 50),
+            NODE_SIZE, NODE_SIZE};
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        SDL_RenderFillRect(renderer, &node_rect);
+
+        edge_t *edge = node->edges;
+        while (edge != NULL)
+        {
+            node_t *node1 = get_node_by_id(map, edge->node1);
+            node_t *node2 = get_node_by_id(map, edge->node2);
+
+            // 计算绘制的起始和终止坐标
+            int x1 = (int)((node1->lon + 1.565) * xRatio + xOffset);
+            int y1 = (int)((53.812 - node1->lat) * yRatio + yOffset - 50);
+            int x2 = (int)((node2->lon + 1.565) * xRatio + xOffset);
+            int y2 = (int)((53.812 - node2->lat) * yRatio + yOffset - 50);
+            SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
+            SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+            edge = edge->next;
+        }
+        node = node->next;
     }
 
-    sdl(map, bound);
+    // 初始化TTF库
+    if (TTF_Init() < 0)
+    {
+        printf("Error initializing TTF library: %s\n", TTF_GetError());
+        return;
+    }
 
-    // // Find best path between two locations
-    // int start_node_id, end_node_id;
-    // printf("Enter start node ID: ");
-    // scanf("%d", &start_node_id);
-    // printf("Enter end node ID: ");
-    // scanf("%d", &end_node_id);
+    // 加载字体
+    TTF_Font *font = TTF_OpenFont("/usr/share/fonts/truetype/tlwg/TlwgTypo-Bold.ttf", 24); // 24为字体大小
+    if (font == NULL)
+    {
+        printf("Error loading font: %s\n", TTF_GetError());
+        TTF_Quit();
+        return;
+    }
 
-    // node_t *start_node = NULL;
-    // node_t *end_node = NULL;
+    // 绘制X和Y轴
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_RenderDrawLine(renderer, xOffset, 960 - yOffset, 1080 - xOffset + 60, 960 - yOffset);
+    SDL_RenderDrawLine(renderer, 1080 - xOffset + 60, 960 - yOffset, 1080 - xOffset + 60, yOffset - 50);
+    SDL_RenderDrawLine(renderer, xOffset, yOffset - 50, 1080 - xOffset + 60, yOffset - 50);
+    SDL_RenderDrawLine(renderer, xOffset, 960 - yOffset, xOffset, yOffset - 50);
 
-    // node_t *current_node = map->nodes;
-    // while (current_node != NULL)
-    // {
-    //     if (current_node->id == start_node_id)
-    //     {
-    //         start_node = current_node;
-    //     }
-    //     if (current_node->id == end_node_id)
-    //     {
-    //         end_node = current_node;
-    //     }
-    //     current_node = current_node->next;
-    // }
+    // 绘制X轴标尺和文本
+    for (int i = 0; i <= 5; i++)
+    {
+        int x = (int)(i * 168) + xOffset;
+        int y = 711 + yOffset;
+        SDL_RenderDrawLine(renderer, x, y - 10, x, y);
+        char text[16];
+        sprintf(text, "%.3f", (-1.565) + i * (lonRange / 5.0));
+        SDL_Surface *surface = TTF_RenderUTF8_Solid(font, text, (SDL_Color){255, 255, 255});
+        SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+        SDL_Rect rect = {x - 20, y + 10, surface->w, surface->h};
+        SDL_RenderCopy(renderer, texture, NULL, &rect);
+        SDL_FreeSurface(surface);
+        SDL_DestroyTexture(texture);
+    }
 
-    // if (start_node == NULL || end_node == NULL)
-    // {
-    //     printf("Error: Invalid node ID\n");
-    //     free_map(map);
-    //     free(bound);
-    //     return EXIT_BAD_DATA;
-    // }
+    // 绘制Y轴标尺和文本
+    for (int i = 1; i <= 12; i++)
+    {
+        int x = xOffset;
+        int y = 790- (int)(i * 70) + yOffset;
+        SDL_RenderDrawLine(renderer, x, y, x + 10, y);
+        char text[16];
+        sprintf(text, "%.3f", 53.80 + i * (latRange / 12.0));
+        SDL_Surface *surface = TTF_RenderUTF8_Solid(font, text, (SDL_Color){255, 255, 255});
+        SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+        SDL_Rect rect = {x - 30 - surface->w, y - surface->h / 2, surface->w, surface->h};
+        SDL_RenderCopy(renderer, texture, NULL, &rect);
+        SDL_FreeSurface(surface);
+        SDL_DestroyTexture(texture);
+    }
 
-    // double distances[MAX_NODES];
-    // int previous_nodes[MAX_NODES];
-    // bool visited[MAX_NODES];
+    // 显示地图
+    SDL_RenderPresent(renderer);
 
-    // for (int i = 0; i < map->num_nodes; i++)
-    // {
-    //     distances[i] = INFINITY;
-    //     visited[i] = false;
-    // }
+    // 等待用户关闭窗口
+    SDL_Event event;
+    while (true)
+    {
+        if (SDL_PollEvent(&event) && event.type == SDL_QUIT)
+        {
+            break;
+        }
+    }
 
-    // distances[start_node->id] = 0;
-
-    // for (int i = 0; i < map->num_nodes; i++)
-    // {
-    //     // Find unvisited node with smallest distance
-    //     int current_node_id = -1;
-    //     double current_distance = INFINITY;
-    //     for (int j = 0; j < map->num_nodes; j++)
-    //     {
-    //         if (!visited[j] && distances[j] < current_distance)
-    //         {
-    //             current_node_id = j;
-    //             current_distance = distances[j];
-    //         }
-    //     }
-
-    //     if (current_node_id == -1)
-    //     {
-    //         break;
-    //     }
-
-    //     visited[current_node_id] = true;
-
-    //     // Update distances to adjacent nodes
-    //     edge_t *edge = current_node->edges;
-    //     while (edge != NULL)
-    //     {
-    //         int adjacent_node_id = edge->node1 == current_node_id ? edge->node2 : edge->node1;
-    //         double distance;
-    //         if (distances[current_node_id] + edge->length < distances[adjacent_node_id])
-    //         {
-    //             distances[adjacent_node_id] = distances[current_node_id] + edge->length;
-    //             previous_nodes[adjacent_node_id] = current_node_id;
-    //         }
-    //         edge = edge->next;
-    //     }
-    // }
-
-    // if (distances[end_node->id] == INFINITY)
-    // {
-    //     printf("No path found between start and end nodes\n");
-    //     free_map(map);
-    //     free(bound);
-    //     return EXIT_NO_ERRORS;
-    // }
-
-    // // Traverse path and print output
-    // int current_node_id = end_node->id;
-    // int path[MAX_NODES];
-    // int path_length = 0;
-
-    // while (current_node_id != start_node->id)
-    // {
-    //     path[path_length] = current_node_id;
-    //     path_length++;
-    //     current_node_id = previous_nodes[current_node_id];
-    // }
-
-    // path[path_length] = start_node->id;
-    // path_length++;
-
-    // printf("Shortest path from node %d to node %d:\n", start_node->id, end_node->id);
-    // printf("Length: %.2f\n", distances[end_node->id]);
-
-    // for (int i = path_length - 1; i >= 0; i--)
-    // {
-    //     printf("%d ", path[i]);
-    //     if (i > 0)
-    //     {
-    //         printf("-> ");
-    //     }
-    // }
-
-    // printf("\n");
-    // // Free all allocated memory
-    free_map(map);
-    free(bound);
-
-    return EXIT_NO_ERRORS;
+    // 释放资源
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
 }

@@ -29,11 +29,11 @@ void sdl(map_t *map, range *bound)
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
     // 计算绘图缩放比例和平移量
-    double latRange = bound->maxLat - bound->minLat;
-    double lonRange = bound->maxLon - bound->minLon;
-    double xRatio = 800.0 / lonRange;
-    double yRatio = 711.0 / latRange;
-    double xOffset = 160.0;
+    double latRange = 53.812 - 53.801;
+    double lonRange = 1.565 - 1.540;
+    double xRatio = 850.0 / lonRange;
+    double yRatio = 761.0 / latRange;
+    double xOffset = 150.0;
     double yOffset = 120.0;
     int NODE_SIZE = 5;
     // 绘制地图
@@ -47,10 +47,10 @@ void sdl(map_t *map, range *bound)
             continue;
         }
         SDL_Rect node_rect = {
-            (int)((node->lon - bound->minLon) * xRatio + xOffset),
-            (int)((bound->maxLat - node->lat) * yRatio + yOffset),
+            (int)((node->lon + 1.565) * xRatio + xOffset),
+            (int)((53.812 - node->lat) * yRatio + yOffset - 50),
             NODE_SIZE, NODE_SIZE};
-        SDL_SetRenderDrawColor(renderer, 255, 0, 255, 255);
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderFillRect(renderer, &node_rect);
 
         edge_t *edge = node->edges;
@@ -60,10 +60,10 @@ void sdl(map_t *map, range *bound)
             node_t *node2 = get_node_by_id(map, edge->node2);
 
             // 计算绘制的起始和终止坐标
-            int x1 = (int)((node1->lon - bound->minLon) * xRatio + xOffset);
-            int y1 = (int)((bound->maxLat - node1->lat) * yRatio + yOffset);
-            int x2 = (int)((node2->lon - bound->minLon) * xRatio + xOffset);
-            int y2 = (int)((bound->maxLat - node2->lat) * yRatio + yOffset);
+            int x1 = (int)((node1->lon + 1.565) * xRatio + xOffset);
+            int y1 = (int)((53.812 - node1->lat) * yRatio + yOffset - 50);
+            int x2 = (int)((node2->lon + 1.565) * xRatio + xOffset);
+            int y2 = (int)((53.812 - node2->lat) * yRatio + yOffset - 50);
             SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
             SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
             edge = edge->next;
@@ -97,11 +97,11 @@ void sdl(map_t *map, range *bound)
     // 绘制X轴标尺和文本
     for (int i = 0; i <= 5; i++)
     {
-        int x = (int)(i * 142.2) + xOffset;
+        int x = (int)(i * 168) + xOffset;
         int y = 711 + yOffset;
         SDL_RenderDrawLine(renderer, x, y - 10, x, y);
         char text[16];
-        sprintf(text, "%.3f", bound->minLon + i * (lonRange / 6.0));
+        sprintf(text, "%.3f", (-1.565) + i * (lonRange / 5.0));
         SDL_Surface *surface = TTF_RenderUTF8_Solid(font, text, (SDL_Color){255, 255, 255});
         SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
         SDL_Rect rect = {x - 20, y + 10, surface->w, surface->h};
@@ -114,10 +114,10 @@ void sdl(map_t *map, range *bound)
     for (int i = 1; i <= 12; i++)
     {
         int x = xOffset;
-        int y = 800- (int)(i * 66.67) + yOffset;
+        int y = 790- (int)(i * 70) + yOffset;
         SDL_RenderDrawLine(renderer, x, y, x + 10, y);
         char text[16];
-        sprintf(text, "%.3f", bound->minLat + i * (latRange / 13.0));
+        sprintf(text, "%.3f", 53.80 + i * (latRange / 12.0));
         SDL_Surface *surface = TTF_RenderUTF8_Solid(font, text, (SDL_Color){255, 255, 255});
         SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
         SDL_Rect rect = {x - 30 - surface->w, y - surface->h / 2, surface->w, surface->h};
