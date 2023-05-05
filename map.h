@@ -48,4 +48,9 @@ typedef struct map_t {
     int num_edges;
 } map_t;
 
+typedef struct hashtable_t {
+    int size;
+    node_t** table;
+} hashtable_t;
+
 #endif

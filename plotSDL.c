@@ -135,10 +135,11 @@ void sdl(map_t *map, range *bound)
     {
         if (SDL_PollEvent(&event) && event.type == SDL_QUIT)
         {
+            SDL_PollEvent(&event);
             break;
         }
     }
-
+    
     // 释放资源
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);

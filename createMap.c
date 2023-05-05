@@ -18,19 +18,20 @@ void free_map(map_t* map) {
         // Free the edges in each node
         edge_t* edge = node->edges;
         while (edge != NULL) {
+            edge_t* temp = edge->next; // save the next edge pointer before freeing the current one
             free(edge);
-            edge = NULL;
-            edge = edge->next;
+            edge = temp; // move to the next edge
         }
+        node_t* temp = node->next; // save the next node pointer before freeing the current one
         free(node);
-        node = NULL;
-        node = node->next;
+        node = temp; // move to the next node
     }
     // Free the map
     free(map);
     map = NULL;
     // set to NULL to avoid dangling pointer
 }
+
 
 
 // Add node to map
