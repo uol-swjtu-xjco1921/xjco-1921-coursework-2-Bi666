@@ -29,7 +29,7 @@ void sdl(map_t *map, range *bound)
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
     // 计算绘图缩放比例和平移量
-    double latRange = 53.812 - 53.801;
+    double latRange = 53.812 - 53.800;
     double lonRange = 1.565 - 1.540;
     double xRatio = 850.0 / lonRange;
     double yRatio = 761.0 / latRange;

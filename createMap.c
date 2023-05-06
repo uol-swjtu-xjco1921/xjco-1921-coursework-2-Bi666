@@ -32,8 +32,6 @@ void free_map(map_t* map) {
     // set to NULL to avoid dangling pointer
 }
 
-
-
 // Add node to map
 int add_node(map_t *map, int id, double lat, double lon)
 {
@@ -56,6 +54,7 @@ int add_node(map_t *map, int id, double lat, double lon)
     new_node->edges = NULL;
     new_node->num_edges = 0;
     new_node->next = NULL;
+     new_node->count = map->num_nodes;
     // 将新节点添加到节点列表的末尾
     if (map->nodes == NULL)
     {
