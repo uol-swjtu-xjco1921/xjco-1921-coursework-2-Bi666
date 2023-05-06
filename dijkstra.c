@@ -4,6 +4,17 @@
 #include <string.h>
 #include "map.h"
 
+int get_node_count(map_t *map, int nodeID)
+{
+    node_t *node = map->nodes;
+        while (node != NULL)
+        {
+            if (node->id == nodeID) break;
+            node = node->next;
+        }
+    return node->count;
+}
+
 // 获取未访问节点中距离最短的节点
 int get_shortest_node(double* distances, bool* visited, int num_nodes)
 {
@@ -52,12 +63,13 @@ int dijkstra(map_t *map, node_t *start_node, node_t *end_node)
 
     distances[start_node->count] = 0;
 
-    for (int i = 0; i < map->num_nodes; i++)
+    for (int i = 0; i < map->num_nodes - 1; i++)
     {
         int current = get_shortest_node(distances, visited, map->num_nodes);
-        if (current == -1 || current == end_node->count) 
+        if (current == -1) 
             break;
         visited[current] = true;
+
         node_t *node = map->nodes;
         while (node != NULL)
         {
@@ -68,17 +80,15 @@ int dijkstra(map_t *map, node_t *start_node, node_t *end_node)
         edge_t *edge = node->edges;
         while (edge != NULL)
         {
-            node_t *neigh = map->nodes;
-            while (neigh != NULL)
-            {
-                if (neigh->id == edge->node2) break;
-                neigh = neigh->next;
-            }
-            int neighbor = neigh->count;
+            int neighbor = -1;
+            if (node->id == edge->node1) 
+                neighbor = get_node_count(map, edge->node2);
+            else if (node->id == edge->node2) 
+                neighbor = get_node_count(map, edge->node1);
             
-            if (!visited[neighbor])
+            if (neighbor != -1 && !visited[neighbor])
             {
-                int new_distance = distances[current] + edge->length;
+                double new_distance = distances[current] + edge->length;
 
                 if (new_distance < distances[neighbor])
                 {

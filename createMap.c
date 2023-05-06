@@ -116,10 +116,25 @@ int add_edge(map_t *map, int id, int node1, int node2, double length)
     }
     current_node->num_edges++;
 
+    current_node = map->nodes;
+    while (current_node != NULL && current_node->id != node2)
+    {
+        current_node = current_node->next;
+    }
+    if (current_node == NULL)
+    {
+        // 结束节点不存在，无法添加边
+        printf("Error: no such point\n");
+        free_map(map);
+        return EXIT_BAD_DATA;
+    }
+    current_node->num_edges++;
+
     // 更新地图中边的数量
     map->num_edges++;
     return EXIT_NO_ERRORS;
 }
+
 
 double get_distance(node_t *node1, node_t *node2)
 {

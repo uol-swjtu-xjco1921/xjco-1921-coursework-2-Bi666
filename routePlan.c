@@ -23,7 +23,7 @@ int main(int argc, char **argv)
         return readresult;
     }
 
-    sdl(map, bound);
+    sdl(map);
 
     // Find best path between two locations
     int start_node_id = 0, end_node_id = 0;

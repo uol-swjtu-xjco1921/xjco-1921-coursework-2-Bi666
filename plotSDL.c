@@ -19,7 +19,7 @@ node_t *get_node_by_id(map_t *map, int id)
     return NULL; // 如果找不到节点，返回空指针
 }
 
-void sdl(map_t *map, range *bound)
+void sdl(map_t *map)
 {
     // 初始化 SDL
     SDL_Init(SDL_INIT_VIDEO);
