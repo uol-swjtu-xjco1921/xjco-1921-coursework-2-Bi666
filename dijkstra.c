@@ -80,13 +80,8 @@ int dijkstra(map_t *map, node_t *start_node, node_t *end_node)
         edge_t *edge = node->edges;
         while (edge != NULL)
         {
-            int neighbor = -1;
-            if (node->id == edge->node1) 
-                neighbor = get_node_count(map, edge->node2);
-            else if (node->id == edge->node2) 
-                neighbor = get_node_count(map, edge->node1);
-            
-            if (neighbor != -1 && !visited[neighbor])
+            int neighbor = get_node_count(map, edge->node2);
+            if (!visited[neighbor])
             {
                 double new_distance = distances[current] + edge->length;
 
@@ -97,6 +92,37 @@ int dijkstra(map_t *map, node_t *start_node, node_t *end_node)
                 }
             }
             edge = edge->next;
+        }
+        node_t *findnode = map->nodes;
+        while (findnode != NULL)
+        {
+            if (findnode->count == node->count)
+            {
+                findnode = findnode->next;
+                continue;
+            }
+            int neighbor = -1;
+            edge_t *findedge = findnode->edges;
+            while (findedge != NULL)
+            {
+                if (node->id == findedge->node2) 
+                {
+                    neighbor = get_node_count(map, findedge->node1);
+                    break;
+                }
+                findedge = findedge->next;
+            }
+            if (neighbor != -1 && !visited[neighbor])
+            {
+                double new_distance = distances[current] + findedge->length;
+
+                if (new_distance < distances[neighbor])
+                {
+                    distances[neighbor] = new_distance;
+                    previous_nodes[neighbor] = node->count;
+                }
+            }
+            findnode = findnode->next;
         }
     }
 

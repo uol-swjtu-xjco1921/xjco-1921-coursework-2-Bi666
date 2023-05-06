@@ -56,16 +56,19 @@ void sdl(map_t *map)
         edge_t *edge = node->edges;
         while (edge != NULL)
         {
-            node_t *node1 = get_node_by_id(map, edge->node1);
-            node_t *node2 = get_node_by_id(map, edge->node2);
+            if (edge->node1 == node->id)
+            {
+                node_t *node1 = get_node_by_id(map, edge->node1);
+                node_t *node2 = get_node_by_id(map, edge->node2);
 
-            // 计算绘制的起始和终止坐标
-            int x1 = (int)((node1->lon + 1.565) * xRatio + xOffset);
-            int y1 = (int)((53.812 - node1->lat) * yRatio + yOffset - 50);
-            int x2 = (int)((node2->lon + 1.565) * xRatio + xOffset);
-            int y2 = (int)((53.812 - node2->lat) * yRatio + yOffset - 50);
-            SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
-            SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+                // 计算绘制的起始和终止坐标
+                int x1 = (int)((node1->lon + 1.565) * xRatio + xOffset);
+                int y1 = (int)((53.812 - node1->lat) * yRatio + yOffset - 50);
+                int x2 = (int)((node2->lon + 1.565) * xRatio + xOffset);
+                int y2 = (int)((53.812 - node2->lat) * yRatio + yOffset - 50);
+                SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
+                SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+            }
             edge = edge->next;
         }
         node = node->next;
