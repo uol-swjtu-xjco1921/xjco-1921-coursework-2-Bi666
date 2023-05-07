@@ -32,7 +32,7 @@ int get_shortest_node(double* distances, bool* visited, int num_nodes)
     return shortest_node;
 }
 
-int dijkstra(map_t *map, node_t *start_node, node_t *end_node)
+int dijkstra(map_t *map, node_t *start_node, node_t *end_node, path_t *path)
 {
     double *distances;
     int *previous_nodes;
@@ -136,25 +136,23 @@ int dijkstra(map_t *map, node_t *start_node, node_t *end_node)
     }
     
     // Traverse path and print output
-    int path[map->num_nodes], count = 0;
+    int pathC[map->num_nodes], count = 0;
     int nodeCount = end_node->count;
 
     while (nodeCount != start_node->count) {
-        path[count] = nodeCount;
+        pathC[count] = nodeCount;
         count++;
         nodeCount = previous_nodes[nodeCount];
     }
 
-    path[count] = start_node->count;
+    pathC[count] = start_node->count;
     count++;
-
+    
+    path->count = count;
+    path->pathCount = (int *)malloc(sizeof(int) * count);
     for (int i = count - 1; i >= 0; i--) {
-        printf("%d ", path[i]);
-        if (i != 0) {
-            printf("-> ");
-        }
+        path->pathCount[count -1 -i] = pathC[i];
     }
-    printf("\n");
 
     free(distances);
     free(previous_nodes);

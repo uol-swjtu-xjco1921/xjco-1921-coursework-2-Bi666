@@ -112,7 +112,8 @@ int readMap(char *filename, map_t *map, range *bound)
             char *land_str = strtok(NULL, " ");
             strtok(NULL, "=");
             char *poi_str = strtok(NULL, ";");
-            if (node1_str == NULL || node2_str == NULL || length_str == NULL || way_str == NULL)
+            if (node1_str == NULL || node2_str == NULL || length_str == NULL
+                || way_str == NULL || veg_str == NULL || arch_str == NULL || land_str == NULL)
             {
                 printf("Error: Invalid data for link %d\n", id);
                 free_map(map);
@@ -122,8 +123,11 @@ int readMap(char *filename, map_t *map, range *bound)
             int node2 = atoi(node2_str);
             int way = atoi(way_str);
             double length = atof(length_str);
+            double veg = atof(veg_str);
+            double arch = atof(arch_str);
+            double land = atof(land_str);
             // Create new edge and add to nodes
-            int addresult = add_edge(map, id, node1, node2, length);
+            int addresult = add_edge(map, id, node1, node2, length, veg, arch, land);
             if (addresult != EXIT_NO_ERRORS)
             {
                 return addresult;

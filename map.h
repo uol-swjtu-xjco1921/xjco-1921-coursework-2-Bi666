@@ -19,6 +19,11 @@
 
 /* Define data structures */
 
+typedef struct path_t {
+    int count;
+    int *pathCount;
+} path_t;
+
 typedef struct range {
     double minLat;
     double minLon;
@@ -31,6 +36,9 @@ typedef struct edge_t {
     int node1;
     int node2;
     double length;
+    double veg;
+    double arch;
+    double land;
     struct edge_t* next;
 } edge_t;
 

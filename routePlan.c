@@ -22,8 +22,10 @@ int main(int argc, char **argv)
     {
         return readresult;
     }
-
-    sdl(map);
+    path_t *path = (path_t*)malloc(sizeof(path_t));
+    path->count = 0;
+    path->pathCount = NULL;
+    sdl(map,path);
 
     // Find best path between two locations
     int start_node_id = 0, end_node_id = 0;
@@ -57,10 +59,11 @@ int main(int argc, char **argv)
         return EXIT_BAD_DATA;
     }
 
-    int result = dijkstra(map, start_node, end_node);
+    int result = dijkstra(map, start_node, end_node, path);
     if (result != EXIT_NO_ERRORS)
         return result;
 
+    sdl(map, path);
     // Free all allocated memory
     free_map(map);
     free(bound);
