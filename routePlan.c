@@ -22,10 +22,44 @@ int main(int argc, char **argv)
     {
         return readresult;
     }
-    path_t *path = (path_t*)malloc(sizeof(path_t));
+    path_t *path = (path_t *)malloc(sizeof(path_t));
     path->count = 0;
     path->pathCount = NULL;
-    sdl(map,path);
+    sdl(map, path, 0);
+
+    bool choose = true;
+    while (choose)
+    {
+        printf("Want to show more map details? (y/n): ");
+        char more;
+        scanf(" %c", &more);
+        // Read and discard any remaining characters in the input buffer
+        while (getchar() != '\n')
+            ;
+
+        if (more == 'Y' || more == 'y')
+        {
+            printf("Choose to show \"veg\", \"arch\" or \"land\": ");
+            char option[5];
+            scanf("%s", option);
+            // Read and discard any remaining characters in the input buffer
+            while (getchar() != '\n')
+                ;
+
+            if (strcmp(option, "veg") == 0)
+                sdl(map, path, 1);
+            else if (strcmp(option, "arch") == 0)
+                sdl(map, path, 2);
+            else if (strcmp(option, "land") == 0)
+                sdl(map, path, 3);
+            else
+                printf("Sorry, that is not an option!\n");
+        }
+        else
+        {
+            choose = false;
+        }
+    }
 
     // Find best path between two locations
     int start_node_id = 0, end_node_id = 0;
@@ -63,7 +97,7 @@ int main(int argc, char **argv)
     if (result != EXIT_NO_ERRORS)
         return result;
 
-    sdl(map, path);
+    sdl(map, path, 0);
     // Free all allocated memory
     free_map(map);
     free(bound);
