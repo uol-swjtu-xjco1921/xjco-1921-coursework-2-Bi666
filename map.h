@@ -18,7 +18,6 @@
 #define EXIT_OUTPUT_FAILED 7
 
 /* Define data structures */
-
 typedef struct path_t {
     int count;
     int *pathCount;
@@ -57,5 +56,15 @@ typedef struct map_t {
     int num_nodes;
     int num_edges;
 } map_t;
+
+typedef struct sizeMap_t {
+    double latRange;
+    double lonRange;
+    double xRatio;
+    double yRatio;
+    double xOffset;
+    double yOffset;
+    int NODE_SIZE;
+} sizeMap_t;
 
 #endif
