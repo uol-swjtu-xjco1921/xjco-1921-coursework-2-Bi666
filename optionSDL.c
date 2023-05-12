@@ -19,20 +19,20 @@ node_t *get_node_by_id(map_t *map, int id)
     return NULL; // 如果找不到节点，返回空指针
 }
 
-void initsize(sizeMap_t *size)
+void initsize(sizeMap_t *size, range_t *bound)
 {
 
     // 计算绘图缩放比例和平移量
-    size->latRange = 53.812 - 53.800;
-    size->lonRange = 1.565 - 1.540;
+    size->latRange = bound->maxLat - bound->minLat;
+    size->lonRange = bound->maxLon - bound->minLon;
     size->xRatio = 850.0 / size->lonRange;
-    size->yRatio = 840.0 / size->latRange;
+    size->yRatio = 860.0 / size->latRange;
     size->xOffset = 150.0;
     size->yOffset = 120.0;
     size->NODE_SIZE = 5;
 }
 
-void origin(map_t *map, sizeMap_t *size, SDL_Window *window, SDL_Renderer *renderer)
+void origin(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Renderer *renderer)
 {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // 设置渲染器颜色为白色
     SDL_RenderClear(renderer);                            // 清空渲染器，填充白色
@@ -46,8 +46,8 @@ void origin(map_t *map, sizeMap_t *size, SDL_Window *window, SDL_Renderer *rende
             continue;
         }
         SDL_Rect node_rect = {
-            (int)((node->lon + 1.565) * size->xRatio + size->xOffset - 2.5),
-            (int)((53.812 - node->lat) * size->yRatio + size->yOffset - 50 - 2.5),
+            (int)((node->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset - 2.5),
+            (int)((bound->maxLat - node->lat - 0.001) * size->yRatio + size->yOffset - 50 - 2.5),
             size->NODE_SIZE, size->NODE_SIZE};
         SDL_SetRenderDrawColor(renderer, 65, 105, 225, 255);
         SDL_RenderFillRect(renderer, &node_rect);
@@ -61,10 +61,10 @@ void origin(map_t *map, sizeMap_t *size, SDL_Window *window, SDL_Renderer *rende
                 node_t *node2 = get_node_by_id(map, edge->node2);
 
                 // 计算绘制的起始和终止坐标
-                int x1 = (int)((node1->lon + 1.565) * size->xRatio + size->xOffset);
-                int y1 = (int)((53.812 - node1->lat) * size->yRatio + size->yOffset - 50);
-                int x2 = (int)((node2->lon + 1.565) * size->xRatio + size->xOffset);
-                int y2 = (int)((53.812 - node2->lat) * size->yRatio + size->yOffset - 50);
+                int x1 = (int)((node1->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset);
+                int y1 = (int)((bound->maxLat - node1->lat - 0.001) * size->yRatio + size->yOffset - 50);
+                int x2 = (int)((node2->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset);
+                int y2 = (int)((bound->maxLat - node2->lat - 0.001) * size->yRatio + size->yOffset - 50);
 
                 SDL_SetRenderDrawColor(renderer, 169, 169, 169, 255);
                 SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
@@ -75,7 +75,7 @@ void origin(map_t *map, sizeMap_t *size, SDL_Window *window, SDL_Renderer *rende
     }
 }
 
-void link(map_t *map, sizeMap_t *size, SDL_Window *window, SDL_Renderer *renderer)
+void link(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Renderer *renderer)
 {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // 设置渲染器颜色为白色
     SDL_RenderClear(renderer);                            // 清空渲染器，填充白色
@@ -96,10 +96,10 @@ void link(map_t *map, sizeMap_t *size, SDL_Window *window, SDL_Renderer *rendere
                 node_t *node2 = get_node_by_id(map, edge->node2);
 
                 // 计算绘制的起始和终止坐标
-                int x1 = (int)((node1->lon + 1.565) * size->xRatio + size->xOffset);
-                int y1 = (int)((53.812 - node1->lat) * size->yRatio + size->yOffset - 50);
-                int x2 = (int)((node2->lon + 1.565) * size->xRatio + size->xOffset);
-                int y2 = (int)((53.812 - node2->lat) * size->yRatio + size->yOffset - 50);
+                int x1 = (int)((node1->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset);
+                int y1 = (int)((bound->maxLat - node1->lat - 0.001) * size->yRatio + size->yOffset - 50);
+                int x2 = (int)((node2->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset);
+                int y2 = (int)((bound->maxLat - node2->lat - 0.001) * size->yRatio + size->yOffset - 50);
 
                 SDL_SetRenderDrawColor(renderer, 169, 169, 169, 255);
                 SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
@@ -110,7 +110,7 @@ void link(map_t *map, sizeMap_t *size, SDL_Window *window, SDL_Renderer *rendere
     }
 }
 
-void extra(map_t *map, sizeMap_t *size, SDL_Window *window, SDL_Renderer *renderer, int option)
+void extra(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Renderer *renderer, int option)
 {
     // 清空窗口
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
@@ -133,10 +133,10 @@ void extra(map_t *map, sizeMap_t *size, SDL_Window *window, SDL_Renderer *render
                 node_t *node2 = get_node_by_id(map, edge->node2);
 
                 // 计算绘制的起始和终止坐标
-                int x1 = (int)((node1->lon + 1.565) * size->xRatio + size->xOffset);
-                int y1 = (int)((53.812 - node1->lat) * size->yRatio + size->yOffset - 50);
-                int x2 = (int)((node2->lon + 1.565) * size->xRatio + size->xOffset);
-                int y2 = (int)((53.812 - node2->lat) * size->yRatio + size->yOffset - 50);
+                int x1 = (int)((node1->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset);
+                int y1 = (int)((bound->maxLat - node1->lat - 0.001) * size->yRatio + size->yOffset - 50);
+                int x2 = (int)((node2->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset);
+                int y2 = (int)((bound->maxLat - node2->lat - 0.001) * size->yRatio + size->yOffset - 50);
 
                 if (option == 1)
                 {
@@ -199,7 +199,7 @@ void extra(map_t *map, sizeMap_t *size, SDL_Window *window, SDL_Renderer *render
     }
 }
 
-void plotpath(map_t *map, path_t *path, sizeMap_t *size, SDL_Window *window, SDL_Renderer *renderer, int option)
+void plotpath(map_t *map, path_t *path, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Renderer *renderer, int option)
 {
     double answer = 0.0;
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
@@ -213,8 +213,8 @@ void plotpath(map_t *map, path_t *path, sizeMap_t *size, SDL_Window *window, SDL
             continue;
         }
         SDL_Rect node_rect = {
-            (int)((node->lon + 1.565) * size->xRatio + size->xOffset - 2.5),
-            (int)((53.812 - node->lat) * size->yRatio + size->yOffset - 50 - 2.5),
+            (int)((node->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset - 2.5),
+            (int)((bound->maxLat - node->lat - 0.001) * size->yRatio + size->yOffset - 50 - 2.5),
             size->NODE_SIZE, size->NODE_SIZE};
         int judge = -1;
         for (int i = 0; i < path->count; i++)
@@ -245,10 +245,10 @@ void plotpath(map_t *map, path_t *path, sizeMap_t *size, SDL_Window *window, SDL
                 node_t *node2 = get_node_by_id(map, edge->node2);
 
                 // 计算绘制的起始和终止坐标
-                int x1 = (int)((node1->lon + 1.565) * size->xRatio + size->xOffset);
-                int y1 = (int)((53.812 - node1->lat) * size->yRatio + size->yOffset - 50);
-                int x2 = (int)((node2->lon + 1.565) * size->xRatio + size->xOffset);
-                int y2 = (int)((53.812 - node2->lat) * size->yRatio + size->yOffset - 50);
+                int x1 = (int)((node1->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset);
+                int y1 = (int)((bound->maxLat - node1->lat - 0.001) * size->yRatio + size->yOffset - 50);
+                int x2 = (int)((node2->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset);
+                int y2 = (int)((bound->maxLat - node2->lat - 0.001) * size->yRatio + size->yOffset - 50);
 
                 int judge = 2;
                 for (int i = 0; i < path->count; i++)
@@ -267,23 +267,21 @@ void plotpath(map_t *map, path_t *path, sizeMap_t *size, SDL_Window *window, SDL
                 {
                     SDL_SetRenderDrawColor(renderer, 220, 20, 60, 255);
                     SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
-                    if (option == 1)
-                        answer += edge->length;
-                    else
-                        answer += edge->length / edge->speed;
+            		if (option == 1) answer += edge->length;
+            		else answer += edge->length / edge->speed;
+                    
                 }
             }
             edge = edge->next;
         }
         node = node->next;
     }
-    if (option == 1)
-        printf("Total length of the shortest route is %.2f\n", answer);
-    else
-        printf("Total time of the quickest route is %.2f\n", answer);
+    if (option == 1) printf("Total length of the shortest route is %.2f\n", answer);
+            else printf("Total time of the quickest route is %.2f\n", answer);
+            
 }
 
-void axis(map_t *map, sizeMap_t *size, SDL_Window *window, SDL_Renderer *renderer, int option)
+void axis(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Renderer *renderer, int option)
 {
     // 初始化TTF库
     if (TTF_Init() < 0)
@@ -316,7 +314,7 @@ void axis(map_t *map, sizeMap_t *size, SDL_Window *window, SDL_Renderer *rendere
         SDL_RenderDrawLine(renderer, x, y, x, y + 10);
         SDL_RenderDrawLine(renderer, x, y - 761, x, y - 761 + 10);
         char text[16];
-        sprintf(text, "%.3f", (-1.565) + i * (size->lonRange / 5.0));
+        sprintf(text, "%.3f", (bound->minLon - 0.001) + i * (size->lonRange / 5.0));
         SDL_Surface *surface = TTF_RenderUTF8_Solid(font, text, (SDL_Color){0, 0, 0});
         SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
         SDL_Rect rect = {x - 20, y + 10, surface->w, surface->h};
@@ -333,7 +331,7 @@ void axis(map_t *map, sizeMap_t *size, SDL_Window *window, SDL_Renderer *rendere
         SDL_RenderDrawLine(renderer, x, y, x + 10, y);
         SDL_RenderDrawLine(renderer, x + 830, y, x + 830 + 10, y);
         char text[16];
-        sprintf(text, "%.3f", 53.80 + i * (size->latRange / 12.0));
+        sprintf(text, "%.3f", bound->minLat - 0.001 + i * (size->latRange / 12.0));
         SDL_Surface *surface = TTF_RenderUTF8_Solid(font, text, (SDL_Color){0, 0, 0});
         SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
         SDL_Rect rect = {x - 30 - surface->w, y - surface->h / 2, surface->w, surface->h};
@@ -352,7 +350,7 @@ void axis(map_t *map, sizeMap_t *size, SDL_Window *window, SDL_Renderer *rendere
 
     if (option == 1)
     {
-        SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, "Menu\nM: display menu\nQ: exit mode\n\nShow the map:\n1: original map\n2: node\n3: link\n4: veg\n5: arch\n6: land\n7: way\n8: geom\n\nFind the way:\nS: shortest route\nT: quickest route\n", (SDL_Color){0, 0, 0}, 1000);
+        SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, "Menu\nQ: exit mode\n\nShow the map:\n1: original map\n2: node\n3: link\n4: veg\n5: arch\n6: land\n7: way\n8: geom\n\nFind the way:\nS: shortest route\nT: quickest route\n", (SDL_Color){0, 0, 0}, 1000);
         SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
 
         SDL_Rect textRect = {1050, 95, textSurface->w, textSurface->h};
@@ -361,7 +359,7 @@ void axis(map_t *map, sizeMap_t *size, SDL_Window *window, SDL_Renderer *rendere
     else if (option == 2)
     {
 
-        SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, "Menu\nM: display menu\nQ: exit mode\n\nSelect the input mode:\nEnter the node id: press(1)\nClick on node in map(2)\n", (SDL_Color){0, 0, 0}, 1000);
+        SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, "Menu\nM: exit mode\nQ: exit mode\n\nSelect the input mode:\nEnter the node id: press(1)\nClick on node in map(2)\n", (SDL_Color){0, 0, 0}, 1000);
         SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
 
         SDL_Rect textRect = {1050, 95, textSurface->w, textSurface->h};

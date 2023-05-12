@@ -4,7 +4,7 @@
 #include "map.h"
 #include "createMap.h"
 
-int readMap(char *filename, map_t *map, range *bound)
+int readMap(char *filename, map_t *map, range_t *bound)
 {
     FILE *fp = fopen(filename, "r");
     if (fp == NULL)
@@ -74,10 +74,10 @@ int readMap(char *filename, map_t *map, range *bound)
                 free_map(map);
                 return EXIT_BAD_DATA;
             }
-            bound->minLat = atof(minlat_str);
-            bound->minLon = atof(minlon_str);
-            bound->maxLat = atof(maxlat_str);
-            bound->maxLon = atof(maxlon_str);
+            bound->minLat = atof(minlat_str) - 0.001;
+            bound->minLon = atof(minlon_str) - 0.001;
+            bound->maxLat = atof(maxlat_str) + 0.002;
+            bound->maxLon = atof(maxlon_str) + 0.003;
         }
     }
 

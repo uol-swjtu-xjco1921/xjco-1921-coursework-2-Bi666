@@ -46,7 +46,7 @@ void add_speed(map_t *map)
     }
 }
 
-void route(map_t *map, sizeMap_t *size, path_t *path, SDL_Window *window, SDL_Renderer *renderer, int type)
+void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window *window, SDL_Renderer *renderer, int type)
 {
     // 加载字体
     TTF_Font *font = TTF_OpenFont("/usr/share/fonts/truetype/tlwg/TlwgTypo-Bold.ttf", 24); // 24为字体大小
@@ -54,13 +54,13 @@ void route(map_t *map, sizeMap_t *size, path_t *path, SDL_Window *window, SDL_Re
     {
         printf("Error loading font: %s\n", TTF_GetError());
         TTF_Quit();
-        return;
+        exit(0);
     }
 
     SDL_Rect rect111 = {1050, 95, 1480, 960};
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderFillRect(renderer, &rect111);
-    SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, "Menu\nM: display menu\nQ: exit mode\n\nSelect the input mode:\nEnter the node id: press(1)\nClick on node in map(2)\n", (SDL_Color){0, 0, 0}, 1000);
+    SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, "Menu\nQ: exit mode\nM: exit mode\n\nSelect the input mode:\nEnter the node id: press(1)\nClick on node in map(2)\n", (SDL_Color){0, 0, 0}, 1000);
     SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
 
     SDL_Rect textRect = {1050, 95, textSurface->w, textSurface->h};
@@ -75,7 +75,10 @@ void route(map_t *map, sizeMap_t *size, path_t *path, SDL_Window *window, SDL_Re
         {
             if (eventM.type == SDL_QUIT)
             {
-                quit = true;
+		    SDL_DestroyRenderer(renderer);
+		    SDL_DestroyWindow(window);
+		    SDL_Quit();
+		    exit(0);
             }
             else if (eventM.type == SDL_KEYDOWN)
             {
@@ -89,7 +92,6 @@ void route(map_t *map, sizeMap_t *size, path_t *path, SDL_Window *window, SDL_Re
                     SDL_Rect node_rect1 = {1020, 275, 10, 10};
                     SDL_SetRenderDrawColor(renderer, 192, 14, 235, 255);
                     SDL_RenderFillRect(renderer, &node_rect1);
-                    SDL_RenderPresent(renderer);
                     break;
                 case SDLK_2:
                     option = 2;
@@ -97,11 +99,8 @@ void route(map_t *map, sizeMap_t *size, path_t *path, SDL_Window *window, SDL_Re
                     SDL_Rect node_rect2 = {1020, 310, 10, 10};
                     SDL_SetRenderDrawColor(renderer, 192, 14, 235, 255);
                     SDL_RenderFillRect(renderer, &node_rect2);
-                    SDL_RenderPresent(renderer);
                     break;
                 case SDLK_q:
-                    quit = true;
-                    break;
                 case SDLK_m:
                     quit = true;
                     break;
@@ -116,7 +115,6 @@ void route(map_t *map, sizeMap_t *size, path_t *path, SDL_Window *window, SDL_Re
             continue;
         if (option == 1)
         {
-            int quittext = 0;
             char inputText[256] = "";
 
             SDL_Surface *Surface = TTF_RenderText_Solid(font, "Enter start node: ", (SDL_Color){138, 43, 226});
@@ -129,6 +127,7 @@ void route(map_t *map, sizeMap_t *size, path_t *path, SDL_Window *window, SDL_Re
             SDL_RenderPresent(renderer);
 
             SDL_Event e;
+            int quittext = 0;
             inputText[0] = '\0';
             while (!quittext)
             {
@@ -136,7 +135,10 @@ void route(map_t *map, sizeMap_t *size, path_t *path, SDL_Window *window, SDL_Re
                 {
                     if (e.type == SDL_QUIT)
                     {
-                        quittext = 1;
+			    SDL_DestroyRenderer(renderer);
+			    SDL_DestroyWindow(window);
+			    SDL_Quit();
+			    exit(0);
                     }
                     else if (e.type == SDL_KEYDOWN)
                     {
@@ -206,7 +208,10 @@ void route(map_t *map, sizeMap_t *size, path_t *path, SDL_Window *window, SDL_Re
                 {
                     if (e1.type == SDL_QUIT)
                     {
-                        quittext = 1;
+			    SDL_DestroyRenderer(renderer);
+			    SDL_DestroyWindow(window);
+			    SDL_Quit();
+			    exit(0);
                     }
                     else if (e1.type == SDL_KEYDOWN)
                     {
@@ -300,7 +305,14 @@ void route(map_t *map, sizeMap_t *size, path_t *path, SDL_Window *window, SDL_Re
             while (true)
             {
                 SDL_WaitEvent(&eventnode);
-                if (eventnode.type == SDL_MOUSEBUTTONDOWN)
+                if (eventnode.type == SDL_QUIT)
+                    {
+			    SDL_DestroyRenderer(renderer);
+			    SDL_DestroyWindow(window);
+			    SDL_Quit();
+			    exit(0);
+                    }
+                else if (eventnode.type == SDL_MOUSEBUTTONDOWN)
                 {
                     SDL_Rect rect = {1050, 700, 1480, 960};
                     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
@@ -308,10 +320,10 @@ void route(map_t *map, sizeMap_t *size, path_t *path, SDL_Window *window, SDL_Re
                     node_t *node = map->nodes;
                     while (node != NULL)
                     {
-                        if (eventnode.button.x >= (int)((node->lon + 1.565) * size->xRatio + size->xOffset - 2.5) &&
-                            eventnode.button.x <= (int)((node->lon + 1.565) * size->xRatio + size->xOffset + 2.5) &&
-                            eventnode.button.y >= (int)((53.812 - node->lat) * size->yRatio + size->yOffset - 50 - 2.5) &&
-                            eventnode.button.y <= (int)((53.812 - node->lat) * size->yRatio + size->yOffset - 50 + 2.5))
+                        if (eventnode.button.x >= (int)((node->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset - 2.5) &&
+                            eventnode.button.x <= (int)((node->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset + 2.5) &&
+                            eventnode.button.y >= (int)((bound->maxLat - node->lat - 0.001) * size->yRatio + size->yOffset - 50 - 2.5) &&
+                            eventnode.button.y <= (int)((bound->maxLat - node->lat - 0.001) * size->yRatio + size->yOffset - 50 + 2.5))
                         {
                             start_node = node;
                             char text[100];
@@ -346,10 +358,10 @@ void route(map_t *map, sizeMap_t *size, path_t *path, SDL_Window *window, SDL_Re
                     node_t *node = map->nodes;
                     while (node != NULL)
                     {
-                        if (eventnode.button.x >= (int)((node->lon + 1.565) * size->xRatio + size->xOffset - 2.5) &&
-                            eventnode.button.x <= (int)((node->lon + 1.565) * size->xRatio + size->xOffset + 2.5) &&
-                            eventnode.button.y >= (int)((53.812 - node->lat) * size->yRatio + size->yOffset - 50 - 2.5) &&
-                            eventnode.button.y <= (int)((53.812 - node->lat) * size->yRatio + size->yOffset - 50 + 2.5))
+                        if (eventnode.button.x >= (int)((node->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset - 2.5) &&
+                            eventnode.button.x <= (int)((node->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset + 2.5) &&
+                            eventnode.button.y >= (int)((bound->maxLat - node->lat - 0.001) * size->yRatio + size->yOffset - 50 - 2.5) &&
+                            eventnode.button.y <= (int)((bound->maxLat - node->lat - 0.001) * size->yRatio + size->yOffset - 50 + 2.5))
                         {
                             end_node = node;
                             char text[100];
@@ -378,12 +390,12 @@ void route(map_t *map, sizeMap_t *size, path_t *path, SDL_Window *window, SDL_Re
         if (type == 1)
         {
             dijkstra(map, start_node, end_node, path, 1);
-            plotpath(map, path, size, window, renderer, 1);
+            plotpath(map, path, size, bound, window, renderer, 1);
         }
         else
         {
             dijkstra(map, start_node, end_node, path, 2);
-            plotpath(map, path, size, window, renderer, 2);
+            plotpath(map, path, size, bound, window, renderer, 2);
         }
         quit = true;
     }
@@ -391,3 +403,6 @@ void route(map_t *map, sizeMap_t *size, path_t *path, SDL_Window *window, SDL_Re
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderFillRect(renderer, &rectclean);
 }
+
+
+

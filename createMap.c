@@ -13,21 +13,18 @@ void init_map(map_t *map)
     map->num_ways = 0;
 }
 
-void free_map(map_t *map)
-{
+void free_map(map_t* map) {
     // Free the nodes in the map
-    node_t *node = map->nodes;
-    while (node != NULL)
-    {
+    node_t* node = map->nodes;
+    while (node != NULL) {
         // Free the edges in each node
-        edge_t *edge = node->edges;
-        while (edge != NULL)
-        {
-            edge_t *temp = edge->next; // save the next edge pointer before freeing the current one
+        edge_t* edge = node->edges;
+        while (edge != NULL) {
+            edge_t* temp = edge->next; // save the next edge pointer before freeing the current one
             free(edge);
             edge = temp; // move to the next edge
         }
-        node_t *temp = node->next; // save the next node pointer before freeing the current one
+        node_t* temp = node->next; // save the next node pointer before freeing the current one
         free(node);
         node = temp; // move to the next node
     }
@@ -59,7 +56,7 @@ int add_node(map_t *map, int id, double lat, double lon)
     new_node->edges = NULL;
     new_node->num_edges = 0;
     new_node->next = NULL;
-    new_node->count = map->num_nodes;
+     new_node->count = map->num_nodes;
     // 将新节点添加到节点列表的末尾
     if (map->nodes == NULL)
     {
@@ -157,8 +154,7 @@ int add_way(map_t *map, int id, int count, int nodes[MAX_WAY])
     new_way->id = id;
     new_way->node_count = count;
     new_way->speed_limit = 0;
-    for (int i = 0; i < count; i++)
-    {
+    for(int i = 0; i < count; i++){
         new_way->node[i] = nodes[i];
     }
     // 将新节点添加到节点列表的末尾
@@ -169,9 +165,9 @@ int add_way(map_t *map, int id, int count, int nodes[MAX_WAY])
     else
     {
         way_t *current_way = map->ways;
-        while (current_way->next != NULL)
+        while (current_way ->next != NULL)
         {
-            current_way = current_way->next;
+            current_way  = current_way->next;
         }
         current_way->next = new_way;
     }

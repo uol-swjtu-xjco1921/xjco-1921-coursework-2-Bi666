@@ -24,12 +24,12 @@ typedef struct path_t {
     int *pathCount;
 } path_t;
 
-typedef struct range {
+typedef struct range_t {
     double minLat;
     double minLon;
     double maxLat;
     double maxLon;
-} range;
+} range_t;
 
 typedef struct edge_t {
     int id;

@@ -11,7 +11,7 @@ int main(int argc, char **argv)
 {
     map_t *map = (map_t *)malloc(sizeof(map_t));
     init_map(map);
-    range *bound = (range *)malloc(sizeof(range));
+    range_t *bound = (range_t *)malloc(sizeof(range_t));
 
     // Load map from file
     char *filename = argv[1];
@@ -20,10 +20,10 @@ int main(int argc, char **argv)
     {
         return readresult;
     }
-    path_t *path = (path_t*)malloc(sizeof(path_t));
+    path_t *path = (path_t *)malloc(sizeof(path_t));
     path->count = 0;
     path->pathCount = NULL;
-    sdl(map,path);
+    sdl(map, path, bound);
 
     free_map(map);
     free(bound);

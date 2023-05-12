@@ -7,10 +7,10 @@
 #include "optionSDL.h"
 #include "shortSDL.h"
 
-void sdl(map_t *map, path_t *path)
+void sdl(map_t *map, path_t *path, range_t *bound)
 {
     sizeMap_t size;
-    initsize(&size);
+    initsize(&size, bound);
     // 初始化 SDL
     SDL_Init(SDL_INIT_VIDEO);
     // 初始化TTF库
@@ -33,9 +33,9 @@ void sdl(map_t *map, path_t *path)
     SDL_Window *window = SDL_CreateWindow("Map", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1500, 960, SDL_WINDOW_SHOWN);
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-    origin(map, &size, window, renderer); // 绘制原始地图
-    axis(map, &size, window, renderer, 1);
-    // 随机添加速度属性
+    origin(map, &size, bound, window, renderer); // 绘制原始地图
+    axis(map, &size, bound, window, renderer, 1);
+    //随机添加速度属性
     add_speed(map);
 
     // 获取用户键盘输入事件
@@ -103,17 +103,17 @@ void sdl(map_t *map, path_t *path)
                 node_t *node = map->nodes;
                 while (node != NULL)
                 {
-                    if (eventM.button.x >= (int)((node->lon + 1.565) * size.xRatio + size.xOffset - 2.5) &&
-                        eventM.button.x <= (int)((node->lon + 1.565) * size.xRatio + size.xOffset + 2.5) &&
-                        eventM.button.y >= (int)((53.812 - node->lat) * size.yRatio + size.yOffset - 50 - 2.5) &&
-                        eventM.button.y <= (int)((53.812 - node->lat) * size.yRatio + size.yOffset - 50 + 2.5))
+                    if (eventM.button.x >= (int)((node->lon - bound->minLon + 0.001) * size.xRatio + size.xOffset - 2.5) &&
+                        eventM.button.x <= (int)((node->lon - bound->minLon + 0.001) * size.xRatio + size.xOffset + 2.5) &&
+                        eventM.button.y >= (int)((bound->maxLat - node->lat - 0.001) * size.yRatio + size.yOffset - 50 - 2.5) &&
+                        eventM.button.y <= (int)((bound->maxLat - node->lat - 0.001) * size.yRatio + size.yOffset - 50 + 2.5))
                     {
                         char text[100];
                         sprintf(text, "node: id: %d\n      lat: %lf\n      lon: %lf", node->id, node->lat, node->lon);
                         SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, text, (SDL_Color){220, 20, 60}, 1000);
                         SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
 
-                        SDL_Rect textRect = {1050, 710, textSurface->w, textSurface->h};
+                        SDL_Rect textRect = {1050, 700, textSurface->w, textSurface->h};
                         SDL_RenderCopy(renderer, textTexture, NULL, &textRect);
 
                         SDL_RenderPresent(renderer);
@@ -127,7 +127,7 @@ void sdl(map_t *map, path_t *path)
             continue;
         if (option == 1)
         {
-            origin(map, &size, window, renderer);
+            origin(map, &size, bound, window, renderer);
         }
         else if (option == 2)
         {
@@ -137,8 +137,8 @@ void sdl(map_t *map, path_t *path)
             while (node != NULL)
             {
                 SDL_Rect node_rect = {
-                    (int)((node->lon + 1.565) * size.xRatio + size.xOffset - 2.5),
-                    (int)((53.812 - node->lat) * size.yRatio + size.yOffset - 50 - 2.5),
+                    (int)((node->lon - bound->minLon + 0.001) * size.xRatio + size.xOffset - 2.5),
+                    (int)((bound->maxLat - node->lat - 0.001) * size.yRatio + size.yOffset - 50 - 2.5),
                     size.NODE_SIZE, size.NODE_SIZE};
                 SDL_SetRenderDrawColor(renderer, 65, 105, 225, 255);
                 SDL_RenderFillRect(renderer, &node_rect);
@@ -147,34 +147,35 @@ void sdl(map_t *map, path_t *path)
         }
         else if (option == 3)
         {
-            link(map, &size, window, renderer);
+            link(map, &size, bound, window, renderer);
         }
         else if (option == 4)
         {
-            extra(map, &size, window, renderer, 1);
+            extra(map, &size, bound, window, renderer, 1);
         }
         else if (option == 5)
         {
-            extra(map, &size, window, renderer, 2);
+            extra(map, &size, bound, window, renderer, 2);
         }
         else if (option == 6)
         {
-            extra(map, &size, window, renderer, 3);
+            extra(map, &size, bound, window, renderer, 3);
         }
         else if (option == 11)
         {
-            route(map, &size, path, window, renderer, 1);
+            route(map, &size, bound, path, window, renderer, 1);
         }
         else if (option == 12)
         {
-            route(map, &size, path, window, renderer, 2);
+            route(map, &size, bound, path, window, renderer, 2);
         }
-        axis(map, &size, window, renderer, 1);
+        axis(map, &size, bound, window, renderer, 1);
     }
 
     // 释放资源
-
+    
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
 }
+
