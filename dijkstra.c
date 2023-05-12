@@ -7,16 +7,17 @@
 int get_node_count(map_t *map, int nodeID)
 {
     node_t *node = map->nodes;
-        while (node != NULL)
-        {
-            if (node->id == nodeID) break;
-            node = node->next;
-        }
+    while (node != NULL)
+    {
+        if (node->id == nodeID)
+            break;
+        node = node->next;
+    }
     return node->count;
 }
 
 // 获取未访问节点中距离最短的节点
-int get_shortest_node(double* distances, bool* visited, int num_nodes)
+int get_shortest_node(double *distances, bool *visited, int num_nodes)
 {
     int i, shortest_node = -1;
     int shortest_distance = DIS_MAX;
@@ -32,7 +33,7 @@ int get_shortest_node(double* distances, bool* visited, int num_nodes)
     return shortest_node;
 }
 
-int dijkstra(map_t *map, node_t *start_node, node_t *end_node, path_t *path)
+int dijkstra(map_t *map, node_t *start_node, node_t *end_node, path_t *path, int option)
 {
     double *distances;
     int *previous_nodes;
@@ -66,14 +67,15 @@ int dijkstra(map_t *map, node_t *start_node, node_t *end_node, path_t *path)
     for (int i = 0; i < map->num_nodes - 1; i++)
     {
         int current = get_shortest_node(distances, visited, map->num_nodes);
-        if (current == -1) 
+        if (current == -1)
             break;
         visited[current] = true;
 
         node_t *node = map->nodes;
         while (node != NULL)
         {
-            if (node->count == current) break;
+            if (node->count == current)
+                break;
             node = node->next;
         }
 
@@ -83,8 +85,11 @@ int dijkstra(map_t *map, node_t *start_node, node_t *end_node, path_t *path)
             int neighbor = get_node_count(map, edge->node2);
             if (!visited[neighbor])
             {
-                double new_distance = distances[current] + edge->length;
-
+                double new_distance;
+                if (option == 1)
+                    new_distance = distances[current] + edge->length;
+                else if (edge->speed != 0)
+                    new_distance = distances[current] + edge->length / edge->speed;
                 if (new_distance < distances[neighbor])
                 {
                     distances[neighbor] = new_distance;
@@ -105,7 +110,7 @@ int dijkstra(map_t *map, node_t *start_node, node_t *end_node, path_t *path)
             edge_t *findedge = findnode->edges;
             while (findedge != NULL)
             {
-                if (node->id == findedge->node2) 
+                if (node->id == findedge->node2)
                 {
                     neighbor = get_node_count(map, findedge->node1);
                     break;
@@ -114,7 +119,11 @@ int dijkstra(map_t *map, node_t *start_node, node_t *end_node, path_t *path)
             }
             if (neighbor != -1 && !visited[neighbor])
             {
-                double new_distance = distances[current] + findedge->length;
+                double new_distance;
+                if (option == 1)
+                    new_distance = distances[current] + findedge->length;
+                else if (findedge->speed != 0)
+                    new_distance = distances[current] + findedge->length / findedge->speed;
 
                 if (new_distance < distances[neighbor])
                 {
@@ -134,12 +143,13 @@ int dijkstra(map_t *map, node_t *start_node, node_t *end_node, path_t *path)
         free(visited);
         return EXIT_NO_PATH_FOUND;
     }
-    
+
     // Traverse path and print output
     int pathC[map->num_nodes], count = 0;
     int nodeCount = end_node->count;
 
-    while (nodeCount != start_node->count) {
+    while (nodeCount != start_node->count)
+    {
         pathC[count] = nodeCount;
         count++;
         nodeCount = previous_nodes[nodeCount];
@@ -147,16 +157,17 @@ int dijkstra(map_t *map, node_t *start_node, node_t *end_node, path_t *path)
 
     pathC[count] = start_node->count;
     count++;
-    
+
     path->count = count;
     path->pathCount = (int *)malloc(sizeof(int) * count);
-    for (int i = count - 1; i >= 0; i--) {
-        path->pathCount[count -1 -i] = pathC[i];
+    for (int i = count - 1; i >= 0; i--)
+    {
+        path->pathCount[count - 1 - i] = pathC[i];
     }
 
     free(distances);
     free(previous_nodes);
     free(visited);
-    
+
     return EXIT_NO_ERRORS;
 }

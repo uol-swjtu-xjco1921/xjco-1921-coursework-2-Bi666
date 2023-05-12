@@ -7,6 +7,7 @@
 #define MAX_NODES 10000
 #define MAX_LINE_LENGTH 10000
 #define DIS_MAX 2147483647.0
+#define MAX_WAY 100 // 假设每条路最多有 100 个节点
 
 #define EXIT_NO_ERRORS 0
 #define EXIT_WRONG_ARG_COUNT 1
@@ -38,6 +39,7 @@ typedef struct edge_t {
     double veg;
     double arch;
     double land;
+    int speed;
     struct edge_t* next;
 } edge_t;
 
@@ -45,16 +47,26 @@ typedef struct node_t {
     int id;
     double lat;
     double lon;
-    edge_t* edges;
+    struct edge_t* edges;
     int num_edges;
     struct node_t* next;
     int count;
 } node_t;
 
+typedef struct way_t {
+    int id;
+    int node[MAX_WAY];
+    int node_count;
+    int speed_limit;
+    struct way_t* next;
+} way_t;
+
 typedef struct map_t {
     node_t* nodes;
     int num_nodes;
     int num_edges;
+    way_t* ways;
+    int num_ways;
 } map_t;
 
 typedef struct sizeMap_t {

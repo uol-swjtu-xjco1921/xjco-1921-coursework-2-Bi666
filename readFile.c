@@ -14,7 +14,7 @@ int readMap(char *filename, map_t *map, range *bound)
     }
 
     char buffer[1000];
-    //Read node
+    // Read node
     while (fgets(buffer, sizeof(buffer), fp) != NULL)
     {
         // Parse data line
@@ -81,9 +81,9 @@ int readMap(char *filename, map_t *map, range *bound)
         }
     }
 
-    //Go back to the head of file
+    // Go back to the head of file
     fseek(fp, 0, SEEK_SET);
-    //Read link
+    // Read link
     while (fgets(buffer, sizeof(buffer), fp) != NULL)
     {
         char *tag = strtok(buffer, " ");
@@ -112,8 +112,7 @@ int readMap(char *filename, map_t *map, range *bound)
             char *land_str = strtok(NULL, " ");
             strtok(NULL, "=");
             char *poi_str = strtok(NULL, ";");
-            if (node1_str == NULL || node2_str == NULL || length_str == NULL
-                || way_str == NULL || veg_str == NULL || arch_str == NULL || land_str == NULL)
+            if (node1_str == NULL || node2_str == NULL || length_str == NULL || way_str == NULL || veg_str == NULL || arch_str == NULL || land_str == NULL)
             {
                 printf("Error: Invalid data for link %d\n", id);
                 free_map(map);
@@ -132,6 +131,31 @@ int readMap(char *filename, map_t *map, range *bound)
             {
                 return addresult;
             }
+        }
+        if (tag != NULL && tag[1] == 'w')
+        {
+            int count = 0;
+            int nodeid[MAX_WAY];
+            strtok(NULL, "=");
+            char *id_str = strtok(NULL, " ");
+            if (id_str == NULL)
+            {
+                continue; // ignore lines without an ID
+            }
+            int id = atoi(id_str);
+            while (strcmp(strtok(NULL, "="), "node") == 0)
+            {
+                char *node_str = strtok(NULL, " ");
+                if (node_str == NULL)
+                {
+                    printf("Error: Invalid data for way %d\n", id);
+                    free_map(map);
+                    return EXIT_BAD_DATA;
+                }
+                nodeid[count] = atoi(node_str);
+                count++;
+            }
+            add_way(map, id, count, nodeid);
         }
     }
     fclose(fp);

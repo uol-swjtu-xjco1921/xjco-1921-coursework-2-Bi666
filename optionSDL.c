@@ -110,9 +110,98 @@ void link(map_t *map, sizeMap_t *size, SDL_Window *window, SDL_Renderer *rendere
     }
 }
 
-void plotpath(map_t *map, path_t *path, sizeMap_t *size, SDL_Window *window, SDL_Renderer *renderer)
+void extra(map_t *map, sizeMap_t *size, SDL_Window *window, SDL_Renderer *renderer, int option)
 {
+    // 清空窗口
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_RenderClear(renderer);
 
+    node_t *node = map->nodes;
+    while (node != NULL)
+    {
+        if (node->num_edges == 0)
+        {
+            node = node->next;
+            continue;
+        }
+        edge_t *edge = node->edges;
+        while (edge != NULL)
+        {
+            if (edge->node1 == node->id)
+            {
+                node_t *node1 = get_node_by_id(map, edge->node1);
+                node_t *node2 = get_node_by_id(map, edge->node2);
+
+                // 计算绘制的起始和终止坐标
+                int x1 = (int)((node1->lon + 1.565) * size->xRatio + size->xOffset);
+                int y1 = (int)((53.812 - node1->lat) * size->yRatio + size->yOffset - 50);
+                int x2 = (int)((node2->lon + 1.565) * size->xRatio + size->xOffset);
+                int y2 = (int)((53.812 - node2->lat) * size->yRatio + size->yOffset - 50);
+
+                if (option == 1)
+                {
+                    if (edge->veg <= edge->length && edge->veg > 0)
+                    {
+                        SDL_SetRenderDrawColor(renderer, 0, 250, 154, 255);
+                        SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+                    }
+                    else if (edge->veg > edge->length)
+                    {
+                        SDL_SetRenderDrawColor(renderer, 46, 139, 87, 255);
+                        SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+                    }
+                    else
+                    {
+                        SDL_SetRenderDrawColor(renderer, 192, 192, 192, 255);
+                        SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+                    }
+                }
+                else if (option == 2)
+                {
+                    if (edge->arch <= edge->length && edge->arch > 0)
+                    {
+                        SDL_SetRenderDrawColor(renderer, 255, 0, 255, 255);
+                        SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+                    }
+                    else if (edge->arch > edge->length)
+                    {
+                        SDL_SetRenderDrawColor(renderer, 75, 0, 130, 255);
+                        SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+                    }
+                    else
+                    {
+                        SDL_SetRenderDrawColor(renderer, 192, 192, 192, 255);
+                        SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+                    }
+                }
+                else if (option == 3)
+                {
+                    if (edge->land <= edge->length && edge->land > 0)
+                    {
+                        SDL_SetRenderDrawColor(renderer, 255, 165, 0, 255);
+                        SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+                    }
+                    else if (edge->land > edge->length)
+                    {
+                        SDL_SetRenderDrawColor(renderer, 160, 82, 45, 255);
+                        SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+                    }
+                    else
+                    {
+                        SDL_SetRenderDrawColor(renderer, 192, 192, 192, 255);
+                        SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+                    }
+                }
+            }
+            edge = edge->next;
+        }
+        node = node->next;
+    }
+}
+
+void plotpath(map_t *map, path_t *path, sizeMap_t *size, SDL_Window *window, SDL_Renderer *renderer, int option)
+{
+    double answer = 0.0;
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
     node_t *node = map->nodes;
@@ -178,12 +267,20 @@ void plotpath(map_t *map, path_t *path, sizeMap_t *size, SDL_Window *window, SDL
                 {
                     SDL_SetRenderDrawColor(renderer, 220, 20, 60, 255);
                     SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+                    if (option == 1)
+                        answer += edge->length;
+                    else
+                        answer += edge->length / edge->speed;
                 }
             }
             edge = edge->next;
         }
         node = node->next;
     }
+    if (option == 1)
+        printf("Total length of the shortest route is %.2f\n", answer);
+    else
+        printf("Total time of the quickest route is %.2f\n", answer);
 }
 
 void axis(map_t *map, sizeMap_t *size, SDL_Window *window, SDL_Renderer *renderer, int option)
@@ -255,7 +352,7 @@ void axis(map_t *map, sizeMap_t *size, SDL_Window *window, SDL_Renderer *rendere
 
     if (option == 1)
     {
-        SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, "Menu\nM: display menu\n\nShow the map:\n1: original map\n2: node\n3: link\n4: veg\n5: arch\n6: land\n7: way\n8: geom\n\nFind the way:\nS: shortest path", (SDL_Color){0, 0, 0}, 1000);
+        SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, "Menu\nM: display menu\nQ: exit mode\n\nShow the map:\n1: original map\n2: node\n3: link\n4: veg\n5: arch\n6: land\n7: way\n8: geom\n\nFind the way:\nS: shortest route\nT: quickest route\n", (SDL_Color){0, 0, 0}, 1000);
         SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
 
         SDL_Rect textRect = {1050, 95, textSurface->w, textSurface->h};

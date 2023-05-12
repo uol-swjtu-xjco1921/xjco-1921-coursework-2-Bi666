@@ -9,20 +9,25 @@ void init_map(map_t *map)
     map->nodes = NULL;
     map->num_nodes = 0;
     map->num_edges = 0;
+    map->ways = NULL;
+    map->num_ways = 0;
 }
 
-void free_map(map_t* map) {
+void free_map(map_t *map)
+{
     // Free the nodes in the map
-    node_t* node = map->nodes;
-    while (node != NULL) {
+    node_t *node = map->nodes;
+    while (node != NULL)
+    {
         // Free the edges in each node
-        edge_t* edge = node->edges;
-        while (edge != NULL) {
-            edge_t* temp = edge->next; // save the next edge pointer before freeing the current one
+        edge_t *edge = node->edges;
+        while (edge != NULL)
+        {
+            edge_t *temp = edge->next; // save the next edge pointer before freeing the current one
             free(edge);
             edge = temp; // move to the next edge
         }
-        node_t* temp = node->next; // save the next node pointer before freeing the current one
+        node_t *temp = node->next; // save the next node pointer before freeing the current one
         free(node);
         node = temp; // move to the next node
     }
@@ -54,7 +59,7 @@ int add_node(map_t *map, int id, double lat, double lon)
     new_node->edges = NULL;
     new_node->num_edges = 0;
     new_node->next = NULL;
-     new_node->count = map->num_nodes;
+    new_node->count = map->num_nodes;
     // 将新节点添加到节点列表的末尾
     if (map->nodes == NULL)
     {
@@ -90,6 +95,7 @@ int add_edge(map_t *map, int id, int node1, int node2, double length, double veg
     new_edge->veg = veg;
     new_edge->arch = arch;
     new_edge->land = land;
+    new_edge->speed = 0;
     new_edge->next = NULL;
     // 将新边添加到起始节点的边列表中
     node_t *current_node = map->nodes;
@@ -138,6 +144,41 @@ int add_edge(map_t *map, int id, int node1, int node2, double length, double veg
     return EXIT_NO_ERRORS;
 }
 
+// Add way to map
+int add_way(map_t *map, int id, int count, int nodes[MAX_WAY])
+{
+    way_t *new_way = (way_t *)malloc(sizeof(way_t));
+    if (new_way == NULL)
+    {
+        printf("Error: malloc failed\n");
+        free_map(map);
+        return EXIT_MALLOC_FAILED;
+    }
+    new_way->id = id;
+    new_way->node_count = count;
+    new_way->speed_limit = 0;
+    for (int i = 0; i < count; i++)
+    {
+        new_way->node[i] = nodes[i];
+    }
+    // 将新节点添加到节点列表的末尾
+    if (map->ways == NULL)
+    {
+        map->ways = new_way;
+    }
+    else
+    {
+        way_t *current_way = map->ways;
+        while (current_way->next != NULL)
+        {
+            current_way = current_way->next;
+        }
+        current_way->next = new_way;
+    }
+    // 更新地图中节点的数量
+    map->num_ways++;
+    return EXIT_NO_ERRORS;
+}
 
 double get_distance(node_t *node1, node_t *node2)
 {

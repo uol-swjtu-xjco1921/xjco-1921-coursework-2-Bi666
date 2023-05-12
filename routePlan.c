@@ -5,7 +5,6 @@
 #include <math.h>
 #include "map.h"
 #include "readFile.h"
-#include "createMap.h"
 #include "plotSDL.h"
 
 int main(int argc, char **argv)
