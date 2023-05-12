@@ -4,76 +4,15 @@
 #include <SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include "map.h"
+#include "optionSDL.h"
+#include "shortSDL.h"
 
-node_t *get_node_by_id(map_t *map, int id)
+void sdl(map_t *map, path_t *path)
 {
-    node_t *node = map->nodes;
-    while (node != NULL)
-    {
-        if (node->id == id)
-        {
-            return node;
-        }
-        node = node->next;
-    }
-    return NULL; // 如果找不到节点，返回空指针
-}
-
-void sdl(map_t *map)
-{
+    sizeMap_t size;
+    initsize(&size);
     // 初始化 SDL
     SDL_Init(SDL_INIT_VIDEO);
-
-    // 创建窗口和渲染器
-    SDL_Window *window = SDL_CreateWindow("Map", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1080, 960, SDL_WINDOW_SHOWN);
-    SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-
-    // 计算绘图缩放比例和平移量
-    double latRange = 53.812 - 53.800;
-    double lonRange = 1.565 - 1.540;
-    double xRatio = 850.0 / lonRange;
-    double yRatio = 761.0 / latRange;
-    double xOffset = 150.0;
-    double yOffset = 120.0;
-    int NODE_SIZE = 5;
-    // 绘制地图
-
-    node_t *node = map->nodes;
-    while (node != NULL)
-    {
-        if (node->num_edges == 0)
-        {
-            node = node->next;
-            continue;
-        }
-        SDL_Rect node_rect = {
-            (int)((node->lon + 1.565) * xRatio + xOffset),
-            (int)((53.812 - node->lat) * yRatio + yOffset - 50),
-            NODE_SIZE, NODE_SIZE};
-        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-        SDL_RenderFillRect(renderer, &node_rect);
-
-        edge_t *edge = node->edges;
-        while (edge != NULL)
-        {
-            if (edge->node1 == node->id)
-            {
-                node_t *node1 = get_node_by_id(map, edge->node1);
-                node_t *node2 = get_node_by_id(map, edge->node2);
-
-                // 计算绘制的起始和终止坐标
-                int x1 = (int)((node1->lon + 1.565) * xRatio + xOffset);
-                int y1 = (int)((53.812 - node1->lat) * yRatio + yOffset - 50);
-                int x2 = (int)((node2->lon + 1.565) * xRatio + xOffset);
-                int y2 = (int)((53.812 - node2->lat) * yRatio + yOffset - 50);
-                SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
-                SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
-            }
-            edge = edge->next;
-        }
-        node = node->next;
-    }
-
     // 初始化TTF库
     if (TTF_Init() < 0)
     {
@@ -90,60 +29,151 @@ void sdl(map_t *map)
         return;
     }
 
-    // 绘制X和Y轴
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderDrawLine(renderer, xOffset, 960 - yOffset, 1080 - xOffset + 60, 960 - yOffset);
-    SDL_RenderDrawLine(renderer, 1080 - xOffset + 60, 960 - yOffset, 1080 - xOffset + 60, yOffset - 50);
-    SDL_RenderDrawLine(renderer, xOffset, yOffset - 50, 1080 - xOffset + 60, yOffset - 50);
-    SDL_RenderDrawLine(renderer, xOffset, 960 - yOffset, xOffset, yOffset - 50);
+    // 创建窗口和渲染器
+    SDL_Window *window = SDL_CreateWindow("Map", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1500, 960, SDL_WINDOW_SHOWN);
+    SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-    // 绘制X轴标尺和文本
-    for (int i = 0; i <= 5; i++)
+    origin(map, &size, window, renderer); // 绘制原始地图
+    axis(map, &size, window, renderer, 1);
+    // 随机添加速度属性
+    add_speed(map);
+
+    // 获取用户键盘输入事件
+    bool quit = false;
+    while (!quit)
     {
-        int x = (int)(i * 168) + xOffset;
-        int y = 711 + yOffset;
-        SDL_RenderDrawLine(renderer, x, y - 10, x, y);
-        char text[16];
-        sprintf(text, "%.3f", (-1.565) + i * (lonRange / 5.0));
-        SDL_Surface *surface = TTF_RenderUTF8_Solid(font, text, (SDL_Color){255, 255, 255});
-        SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
-        SDL_Rect rect = {x - 20, y + 10, surface->w, surface->h};
-        SDL_RenderCopy(renderer, texture, NULL, &rect);
-        SDL_FreeSurface(surface);
-        SDL_DestroyTexture(texture);
-    }
-
-    // 绘制Y轴标尺和文本
-    for (int i = 1; i <= 12; i++)
-    {
-        int x = xOffset;
-        int y = 790- (int)(i * 70) + yOffset;
-        SDL_RenderDrawLine(renderer, x, y, x + 10, y);
-        char text[16];
-        sprintf(text, "%.3f", 53.80 + i * (latRange / 12.0));
-        SDL_Surface *surface = TTF_RenderUTF8_Solid(font, text, (SDL_Color){255, 255, 255});
-        SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
-        SDL_Rect rect = {x - 30 - surface->w, y - surface->h / 2, surface->w, surface->h};
-        SDL_RenderCopy(renderer, texture, NULL, &rect);
-        SDL_FreeSurface(surface);
-        SDL_DestroyTexture(texture);
-    }
-
-    // 显示地图
-    SDL_RenderPresent(renderer);
-
-    // 等待用户关闭窗口
-    SDL_Event event;
-    while (true)
-    {
-        if (SDL_PollEvent(&event) && event.type == SDL_QUIT)
+        SDL_Event eventM;
+        int option = -1;
+        while (SDL_PollEvent(&eventM))
         {
-            SDL_PollEvent(&event);
-            break;
+            if (eventM.type == SDL_QUIT)
+            {
+                quit = true;
+            }
+            else if (eventM.type == SDL_KEYDOWN)
+            {
+                switch (eventM.key.keysym.sym)
+                {
+                case SDLK_ESCAPE:
+                    quit = true;
+                    break;
+                case SDLK_q:
+                    quit = true;
+                    break;
+                case SDLK_m:
+                    option = 0;
+                    break;
+                case SDLK_1:
+                    option = 1;
+                    break;
+                case SDLK_2:
+                    option = 2;
+                    break;
+                case SDLK_3:
+                    option = 3;
+                    break;
+                case SDLK_4:
+                    option = 4;
+                    break;
+                case SDLK_5:
+                    option = 5;
+                    break;
+                case SDLK_6:
+                    option = 6;
+                    break;
+                case SDLK_7:
+                    option = 7;
+                    break;
+                case SDLK_s:
+                    option = 11;
+                    break;
+                case SDLK_t:
+                    option = 12;
+                    break;
+                default:
+                    break;
+                }
+            }
+            else if (eventM.type == SDL_MOUSEBUTTONDOWN)
+            {
+                // 遍历点数组，查找是否有鼠标点击的点
+                SDL_Rect rect = {1050, 700, 1480, 960};
+                SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+                SDL_RenderFillRect(renderer, &rect);
+                node_t *node = map->nodes;
+                while (node != NULL)
+                {
+                    if (eventM.button.x >= (int)((node->lon + 1.565) * size.xRatio + size.xOffset - 2.5) &&
+                        eventM.button.x <= (int)((node->lon + 1.565) * size.xRatio + size.xOffset + 2.5) &&
+                        eventM.button.y >= (int)((53.812 - node->lat) * size.yRatio + size.yOffset - 50 - 2.5) &&
+                        eventM.button.y <= (int)((53.812 - node->lat) * size.yRatio + size.yOffset - 50 + 2.5))
+                    {
+                        char text[100];
+                        sprintf(text, "node: id: %d\n      lat: %lf\n      lon: %lf", node->id, node->lat, node->lon);
+                        SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, text, (SDL_Color){220, 20, 60}, 1000);
+                        SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
+
+                        SDL_Rect textRect = {1050, 710, textSurface->w, textSurface->h};
+                        SDL_RenderCopy(renderer, textTexture, NULL, &textRect);
+
+                        SDL_RenderPresent(renderer);
+                        break;
+                    }
+                    node = node->next;
+                }
+            }
         }
+        if (option == -1)
+            continue;
+        if (option == 1)
+        {
+            origin(map, &size, window, renderer);
+        }
+        else if (option == 2)
+        {
+            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+            SDL_RenderClear(renderer);
+            node_t *node = map->nodes;
+            while (node != NULL)
+            {
+                SDL_Rect node_rect = {
+                    (int)((node->lon + 1.565) * size.xRatio + size.xOffset - 2.5),
+                    (int)((53.812 - node->lat) * size.yRatio + size.yOffset - 50 - 2.5),
+                    size.NODE_SIZE, size.NODE_SIZE};
+                SDL_SetRenderDrawColor(renderer, 65, 105, 225, 255);
+                SDL_RenderFillRect(renderer, &node_rect);
+                node = node->next;
+            }
+        }
+        else if (option == 3)
+        {
+            link(map, &size, window, renderer);
+        }
+        else if (option == 4)
+        {
+            extra(map, &size, window, renderer, 1);
+        }
+        else if (option == 5)
+        {
+            extra(map, &size, window, renderer, 2);
+        }
+        else if (option == 6)
+        {
+            extra(map, &size, window, renderer, 3);
+        }
+        else if (option == 11)
+        {
+            route(map, &size, path, window, renderer, 1);
+        }
+        else if (option == 12)
+        {
+            route(map, &size, path, window, renderer, 2);
+        }
+        axis(map, &size, window, renderer, 1);
     }
-    
+
     // 释放资源
+
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
