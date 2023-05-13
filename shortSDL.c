@@ -57,7 +57,7 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
         exit(0);
     }
 
-    SDL_Rect rect111 = {1050, 95, 430, 865};
+    SDL_Rect rect111 = {1050, 95, 450, 865};
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderFillRect(renderer, &rect111);
     SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, "Menu\nQ: exit mode\nM: exit mode\n\nSelect the input mode:\nEnter the node id: press(1)\nClick on node in map(2)\n", (SDL_Color){0, 0, 0}, 1000);
@@ -92,12 +92,14 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                     SDL_Rect node_rect1 = {1020, 275, 10, 10};
                     SDL_SetRenderDrawColor(renderer, 192, 14, 235, 255);
                     SDL_RenderFillRect(renderer, &node_rect1);
+                    SDL_RenderPresent(renderer);
                     break;
                 case SDLK_2:
                     option = 2;
                     SDL_Rect node_rect2 = {1020, 310, 10, 10};
                     SDL_SetRenderDrawColor(renderer, 192, 14, 235, 255);
                     SDL_RenderFillRect(renderer, &node_rect2);
+                    SDL_RenderPresent(renderer);
                     break;
                 case SDLK_q:
                 case SDLK_m:
@@ -157,7 +159,7 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                                 else
                                     inputText[strlen(inputText) - 1] = '\0';
 
-                                SDL_Rect rect = {1050, 450, 300, 40};
+                                SDL_Rect rect = {1020, 450, 450, 40};
                                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
                                 SDL_RenderFillRect(renderer, &rect);
                                 SDL_Surface *inputSurface = TTF_RenderText_Solid(font, inputText, (SDL_Color){100, 149, 237});
@@ -186,7 +188,7 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                 }
             }
 
-            SDL_Rect rect = {1050, 400, 430, 200};
+            SDL_Rect rect = {1020, 400, 450, 200};
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             SDL_RenderFillRect(renderer, &rect);
             SDL_Surface *Surface1 = TTF_RenderText_Solid(font, "Enter end node: ", (SDL_Color){138, 43, 226});
@@ -230,7 +232,7 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                                 else
                                     inputText1[strlen(inputText1) - 1] = '\0';
 
-                                SDL_Rect rect = {1050, 450, 450, 40};
+                                SDL_Rect rect = {1020, 450, 450, 40};
                                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
                                 SDL_RenderFillRect(renderer, &rect);
                                 SDL_Surface *inputSurface = TTF_RenderText_Solid(font, inputText1, (SDL_Color){100, 149, 237});
@@ -315,7 +317,7 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                 }
                 else if (eventnode.type == SDL_MOUSEBUTTONDOWN)
                 {
-                    SDL_Rect rect = {1050, 700, 450, 260};
+                    SDL_Rect rect = {1020, 700, 450, 260};
                     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
                     SDL_RenderFillRect(renderer, &rect);
                     node_t *node = map->nodes;
@@ -353,7 +355,7 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                 SDL_WaitEvent(&eventnode);
                 if (eventnode.type == SDL_MOUSEBUTTONDOWN)
                 {
-                    SDL_Rect rect = {1050, 700, 450, 260};
+                    SDL_Rect rect = {1020, 700, 450, 260};
                     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
                     SDL_RenderFillRect(renderer, &rect);
                     node_t *node = map->nodes;
@@ -400,7 +402,8 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
         }
         else
         {
-            SDL_Rect rectif = {1050, 400, 450, 200};
+
+            SDL_Rect rectif = {1050, 400, 450, 150};
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             SDL_RenderFillRect(renderer, &rectif);
 
@@ -412,12 +415,12 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
             SDL_Rect inputBox = {1050, 450, 300, 40};
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
             SDL_RenderDrawRect(renderer, &inputBox);
-            SDL_RenderPresent(renderer);
 
             SDL_Event e;
             int quittext = 0;
             inputText3[0] = '\0';
             node_t *pass_node = NULL;
+            SDL_RenderPresent(renderer);
             while (!quittext)
             {
                 while (SDL_PollEvent(&e) != 0)
@@ -446,7 +449,7 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                                 else
                                     inputText3[strlen(inputText3) - 1] = '\0';
 
-                                SDL_Rect rect = {1050, 450, 450, 40};
+                                SDL_Rect rect = {1020, 450, 450, 40};
                                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
                                 SDL_RenderFillRect(renderer, &rect);
                                 SDL_Surface *inputSurface = TTF_RenderText_Solid(font, inputText3, (SDL_Color){100, 149, 237});
@@ -483,18 +486,21 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                                 e.button.y >= (int)((bound->maxLat - node->lat - 0.001) * size->yRatio + size->yOffset - 50 - 2.5) &&
                                 e.button.y <= (int)((bound->maxLat - node->lat - 0.001) * size->yRatio + size->yOffset - 50 + 2.5))
                             {
+                                SDL_Rect rectnode = {1020, 700, 450, 200};
+                                SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+                                SDL_RenderFillRect(renderer, &rectnode);
                                 pass_node = node;
                                 char text[100];
                                 sprintf(text, "node: id: %d\n      lat: %lf\n      lon: %lf", node->id, node->lat, node->lon);
                                 SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, text, (SDL_Color){220, 20, 60}, 1000);
                                 SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
 
-                                SDL_Rect textRect = {1050, 720, textSurface->w, textSurface->h};
+                                SDL_Rect textRect = {1050, 700, textSurface->w, textSurface->h};
                                 SDL_RenderCopy(renderer, textTexture, NULL, &textRect);
 
                                 char str[50] = "";
                                 sprintf(str, "%d", node->id);
-                                SDL_Rect rect = {1050, 450, 450, 40};
+                                SDL_Rect rect = {1020, 450, 450, 40};
                                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
                                 SDL_RenderFillRect(renderer, &rect);
                                 SDL_Surface *inputSurface = TTF_RenderText_Solid(font, str, (SDL_Color){100, 149, 237});
@@ -521,7 +527,7 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                 {
                     printf("Error: Invalid node ID\n");
                     quit = true;
-                    SDL_Rect rectclean = {1020, 95, 260, 865};
+                    SDL_Rect rectclean = {1050, 95, 450, 865};
                     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
                     SDL_RenderFillRect(renderer, &rectclean);
                     return;
@@ -581,6 +587,7 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                             break;
                         case SDLK_s:
                             dijkstra(map, start_node, pass_node, path, 1);
+                            //没有路径提前退出！
                             dijkstra(map, pass_node, end_node, path1, 1);
                             plotpath(map, path, path1, size, bound, window, renderer, 1);
                             quitif = true;
@@ -588,7 +595,7 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                         case SDLK_t:
                             dijkstra(map, start_node, pass_node, path, 2);
                             dijkstra(map, pass_node, end_node, path1, 2);
-                            plotpath(map, path, path1, size, bound, window, renderer, 1);
+                            plotpath(map, path, path1, size, bound, window, renderer, 2);
                             quitif = true;
                             break;
                         case SDLK_q:
@@ -604,7 +611,7 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
         }
         quit = true;
     }
-    SDL_Rect rectclean = {1020, 95, 1480, 960};
+    SDL_Rect rectclean = {1020, 95, 450, 865};
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderFillRect(renderer, &rectclean);
 }
