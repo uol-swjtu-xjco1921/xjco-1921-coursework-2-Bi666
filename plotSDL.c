@@ -90,6 +90,9 @@ void sdl(map_t *map, path_t *path, range_t *bound)
                 case SDLK_t:
                     option = 12;
                     break;
+                case SDLK_p:
+                    option = 13;
+                    break;
                 default:
                     break;
                 }
@@ -97,7 +100,7 @@ void sdl(map_t *map, path_t *path, range_t *bound)
             else if (eventM.type == SDL_MOUSEBUTTONDOWN)
             {
                 // 遍历点数组，查找是否有鼠标点击的点
-                SDL_Rect rect = {1050, 700, 1480, 960};
+                SDL_Rect rect = {1050, 720, 430, 240};
                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
                 SDL_RenderFillRect(renderer, &rect);
                 node_t *node = map->nodes;
@@ -113,7 +116,7 @@ void sdl(map_t *map, path_t *path, range_t *bound)
                         SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, text, (SDL_Color){220, 20, 60}, 1000);
                         SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
 
-                        SDL_Rect textRect = {1050, 700, textSurface->w, textSurface->h};
+                        SDL_Rect textRect = {1050, 720, textSurface->w, textSurface->h};
                         SDL_RenderCopy(renderer, textTexture, NULL, &textRect);
 
                         SDL_RenderPresent(renderer);
@@ -169,13 +172,18 @@ void sdl(map_t *map, path_t *path, range_t *bound)
         {
             route(map, &size, bound, path, window, renderer, 2);
         }
+        
+        else if (option == 13)
+        {
+            route(map, &size, bound, path, window, renderer, 3);
+        }
         axis(map, &size, bound, window, renderer, 1);
     }
 
     // 释放资源
-    
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
 }
+
 
