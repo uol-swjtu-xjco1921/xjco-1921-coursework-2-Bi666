@@ -412,7 +412,7 @@ int axis(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Re
 
     if (option == 1)
     {
-        SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, "Menu\nQ: exit mode\n\nShow the map:\n1: original map\n2: node\n3: link\n4: veg\n5: arch\n6: land\n7: geom\n\nFind the way:\nS: shortest route\nT: quickest route\nP: pass given location\n", (SDL_Color){0, 0, 0}, 1000);
+        SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, "Menu\nQ: exit mode\n\nShow the map:\n1: original map\n2: node\n3: link\n4: veg\n5: arch\n6: land\n7: geom\n\nFind the way:\nS: shortest route\nT: quickest route\nP: pass given location\nE: edit map attributes\n", (SDL_Color){0, 0, 0}, 1000);
         SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
 
         SDL_Rect textRect = {1050, 95, textSurface->w, textSurface->h};
@@ -421,7 +421,7 @@ int axis(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Re
     else if (option == 2)
     {
 
-        SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, "Menu\nM: exit mode\nQ: exit mode\n\nSelect the input mode:\nEnter the node id: press(1)\nClick on node in map(2)\n", (SDL_Color){0, 0, 0}, 1000);
+        SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, "Menu\nM: exit mode\nQ: exit mode\n\nSelect the input mode:\n1: Enter the node id\n2: Click on node in map\n", (SDL_Color){0, 0, 0}, 1000);
         SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
 
         SDL_Rect textRect = {1050, 95, textSurface->w, textSurface->h};
