@@ -3,50 +3,13 @@
 #include <stdbool.h>
 #include <SDL.h>
 #include <SDL2/SDL_ttf.h>
-#include <time.h>
 #include <math.h>
 #include "map.h"
+#include "createMap.h"
 #include "dijkstra.h"
 #include "optionSDL.h"
 
-void add_speed(map_t *map)
-{
-    way_t *current_way = map->ways;
-    // 设置随机数种子
-    srand((unsigned)time(NULL));
-    while (current_way->next != NULL)
-    {
-        // 生成随机速度限制
-        int speed_li = (rand() % 50) + 30;
-        current_way->speed_limit = speed_li;
-        for (int i = 0; i < current_way->node_count - 1; i++)
-        {
-            int node1 = current_way->node[i];
-            int node2 = current_way->node[i + 1];
-            node_t *node = map->nodes;
-            while (node != NULL)
-            {
-                if (node->id == node1 || node->id == node2)
-                {
-                    edge_t *edge = node->edges;
-                    while (edge != NULL)
-                    {
-                        if ((edge->node1 == node1 && edge->node2 == node2) || (edge->node1 == node2 && edge->node2 == node1))
-                        {
-                            edge->speed = speed_li;
-                            break;
-                        }
-                        edge = edge->next;
-                    }
-                }
-                node = node->next;
-            }
-        }
-        current_way = current_way->next;
-    }
-}
-
-void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window *window, SDL_Renderer *renderer, int type)
+int route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window *window, SDL_Renderer *renderer, int type)
 {
     // 加载字体
     TTF_Font *font = TTF_OpenFont("/usr/share/fonts/truetype/tlwg/TlwgTypo-Bold.ttf", 24); // 24为字体大小
@@ -54,7 +17,7 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
     {
         printf("Error loading font: %s\n", TTF_GetError());
         TTF_Quit();
-        exit(0);
+        return EXIT_SDL_FAILED;
     }
 
     SDL_Rect rect111 = {1050, 95, 450, 865};
@@ -78,7 +41,8 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                 SDL_DestroyRenderer(renderer);
                 SDL_DestroyWindow(window);
                 SDL_Quit();
-                exit(0);
+                freeMap(map, bound, path);
+                exit(EXIT_NO_ERRORS);
             }
             else if (eventM.type == SDL_KEYDOWN)
             {
@@ -140,7 +104,8 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                         SDL_DestroyRenderer(renderer);
                         SDL_DestroyWindow(window);
                         SDL_Quit();
-                        exit(0);
+                        freeMap(map, bound, path);
+                        exit(EXIT_NO_ERRORS);
                     }
                     else if (e.type == SDL_KEYDOWN)
                     {
@@ -213,7 +178,8 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                         SDL_DestroyRenderer(renderer);
                         SDL_DestroyWindow(window);
                         SDL_Quit();
-                        exit(0);
+                        freeMap(map, bound, path);
+                        exit(EXIT_NO_ERRORS);
                     }
                     else if (e1.type == SDL_KEYDOWN)
                     {
@@ -271,7 +237,7 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                 SDL_Rect rectclean = {1020, 95, 460, 865};
                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
                 SDL_RenderFillRect(renderer, &rectclean);
-                return;
+                break;
             }
 
             node_t *current_node = map->nodes;
@@ -293,9 +259,6 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                 printf("Error: Invalid node ID\n");
                 quit = true;
                 break;
-                // free_map(map);
-                // free(bound);
-                // return EXIT_BAD_DATA;
             }
             printf("Enter start node ID: %d\n", start_node_id);
             printf("Enter end node ID: %d\n", end_node_id);
@@ -313,7 +276,9 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                     SDL_DestroyRenderer(renderer);
                     SDL_DestroyWindow(window);
                     SDL_Quit();
-                    exit(0);
+
+                    freeMap(map, bound, path);
+                    exit(EXIT_NO_ERRORS);
                 }
                 else if (eventnode.type == SDL_MOUSEBUTTONDOWN)
                 {
@@ -430,7 +395,9 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                         SDL_DestroyRenderer(renderer);
                         SDL_DestroyWindow(window);
                         SDL_Quit();
-                        exit(0);
+
+                        freeMap(map, bound, path);
+                        exit(EXIT_NO_ERRORS);
                     }
                     else if (e.type == SDL_KEYDOWN)
                     {
@@ -530,7 +497,7 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                     SDL_Rect rectclean = {1050, 95, 450, 865};
                     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
                     SDL_RenderFillRect(renderer, &rectclean);
-                    return;
+                    break;
                 }
                 node_t *current_node = map->nodes;
                 while (current_node != NULL)
@@ -548,19 +515,14 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                     printf("Error: Invalid node ID\n");
                     quit = true;
                     break;
-                    // free_map(map);
-                    // free(bound);
-                    // return EXIT_BAD_DATA;
                 }
             }
             printf("Enter pass node ID: %d\n", pass_node->id);
 
-            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-            SDL_RenderFillRect(renderer, &rectif);
             SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, "S: shortest route\nT: quickest route\n", (SDL_Color){138, 43, 226}, 1000);
             SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
 
-            SDL_Rect textRectif = {1050, 400, textSurface->w, textSurface->h};
+            SDL_Rect textRectif = {1050, 550, textSurface->w, textSurface->h};
             SDL_RenderCopy(renderer, textTexture, NULL, &textRectif);
             SDL_RenderPresent(renderer);
 
@@ -576,7 +538,9 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                         SDL_DestroyRenderer(renderer);
                         SDL_DestroyWindow(window);
                         SDL_Quit();
-                        exit(0);
+
+                        freeMap(map, bound, path);
+                        exit(EXIT_NO_ERRORS);
                     }
                     else if (eventM.type == SDL_KEYDOWN)
                     {
@@ -587,7 +551,7 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
                             break;
                         case SDLK_s:
                             dijkstra(map, start_node, pass_node, path, 1);
-                            //没有路径提前退出！
+                            // 没有路径提前退出！
                             dijkstra(map, pass_node, end_node, path1, 1);
                             plotpath(map, path, path1, size, bound, window, renderer, 1);
                             quitif = true;
@@ -614,4 +578,5 @@ void route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window
     SDL_Rect rectclean = {1020, 95, 450, 865};
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderFillRect(renderer, &rectclean);
+    return EXIT_NO_ERRORS;
 }

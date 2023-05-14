@@ -6285,660 +6285,1970 @@
 <node id=-1867901283 lat=53.801855 lon=-1.563465 /node>
 <node id=-1867901273 lat=53.801912 lon=-1.563301 /node>
 <way id=-8850 node=-8847 node=-8849 /way>
+<add speed=66 /add>
+<add speed=52 /add>
 <way id=-7726 node=-2560 node=-2562 node=-2558 /way>
+<add speed=44 /add>
+<add speed=40 /add>
 <way id=-7724 node=1970536624 node=1967343264 node=1615401915 node=319432035 /way>
+<add speed=71 /add>
+<add speed=41 /add>
 <way id=-7722 node=247293203 node=1615404345 node=454231775 node=1968799687 node=1970536626 /way>
+<add speed=61 /add>
+<add speed=36 /add>
 <way id=-7720 node=-2554 node=-2552 /way>
+<add speed=67 /add>
+<add speed=48 /add>
 <way id=-7718 node=247293206 node=-2548 node=-2550 /way>
+<add speed=71 /add>
+<add speed=36 /add>
 <way id=-7716 node=-2542 node=-2544 node=-2546 node=-2528 /way>
+<add speed=54 /add>
+<add speed=67 /add>
 <way id=-7714 node=-2524 node=-2540 node=247958669 /way>
+<add speed=35 /add>
+<add speed=58 /add>
 <way id=-7712 node=-2384 node=-2538 /way>
+<add speed=41 /add>
+<add speed=45 /add>
 <way id=-7710 node=301673223 node=-2536 /way>
+<add speed=66 /add>
+<add speed=57 /add>
 <way id=-7708 node=-2530 node=-2532 node=-2534 node=-2526 /way>
+<add speed=58 /add>
+<add speed=37 /add>
 <way id=-7704 node=-2512 node=-2514 /way>
+<add speed=72 /add>
+<add speed=48 /add>
 <way id=-7700 node=-2506 node=-2508 /way>
+<add speed=78 /add>
+<add speed=75 /add>
 <way id=-7698 node=-2504 node=54060647 /way>
+<add speed=39 /add>
+<add speed=61 /add>
 <way id=-7696 node=-2500 node=-2502 /way>
+<add speed=50 /add>
+<add speed=37 /add>
 <way id=-7694 node=-2496 node=-2498 /way>
+<add speed=71 /add>
+<add speed=53 /add>
 <way id=-7692 node=-2492 node=-2494 /way>
+<add speed=35 /add>
+<add speed=37 /add>
 <way id=-7690 node=-2488 node=-2490 /way>
+<add speed=77 /add>
+<add speed=70 /add>
 <way id=-7688 node=-2484 node=-2486 /way>
+<add speed=68 /add>
+<add speed=48 /add>
 <way id=-7686 node=-2480 node=-2482 /way>
+<add speed=56 /add>
+<add speed=38 /add>
 <way id=-7684 node=-2476 node=-2478 /way>
+<add speed=72 /add>
+<add speed=55 /add>
 <way id=-7682 node=-2472 node=-2474 /way>
+<add speed=74 /add>
+<add speed=61 /add>
 <way id=-7680 node=-2468 node=-2470 /way>
+<add speed=39 /add>
+<add speed=33 /add>
 <way id=-7678 node=984231161 node=-2466 /way>
+<add speed=55 /add>
+<add speed=73 /add>
 <way id=-7676 node=-2464 node=304990730 /way>
+<add speed=30 /add>
+<add speed=75 /add>
 <way id=-7674 node=-2460 node=-2462 /way>
+<add speed=51 /add>
+<add speed=63 /add>
 <way id=-7672 node=-2456 node=-2458 node=247293176 /way>
+<add speed=57 /add>
+<add speed=53 /add>
 <way id=-7670 node=-2452 node=-2454 /way>
+<add speed=54 /add>
+<add speed=44 /add>
 <way id=-7668 node=-2448 node=-2450 /way>
+<add speed=49 /add>
+<add speed=63 /add>
 <way id=-7666 node=-2440 node=-2444 node=-2446 /way>
+<add speed=69 /add>
+<add speed=33 /add>
 <way id=-7664 node=-2438 node=-2440 node=-2442 /way>
+<add speed=30 /add>
+<add speed=60 /add>
 <way id=-7660 node=-2430 node=-2432 /way>
+<add speed=37 /add>
+<add speed=37 /add>
 <way id=-7658 node=-2428 node=247293214 /way>
+<add speed=35 /add>
+<add speed=45 /add>
 <way id=-7656 node=-2426 node=1160269683 /way>
+<add speed=71 /add>
+<add speed=72 /add>
 <way id=-7654 node=-2422 node=-2424 /way>
+<add speed=70 /add>
+<add speed=45 /add>
 <way id=-7652 node=-2418 node=-2420 /way>
+<add speed=72 /add>
+<add speed=64 /add>
 <way id=-7650 node=-2380 node=-2416 /way>
+<add speed=65 /add>
+<add speed=30 /add>
 <way id=-7648 node=-2386 node=-2414 /way>
+<add speed=47 /add>
+<add speed=32 /add>
 <way id=-7646 node=-2388 node=-2412 /way>
+<add speed=77 /add>
+<add speed=44 /add>
 <way id=-7644 node=-2394 node=-2410 /way>
+<add speed=78 /add>
+<add speed=47 /add>
 <way id=-7642 node=-2390 node=-2408 /way>
+<add speed=33 /add>
+<add speed=61 /add>
 <way id=-7640 node=-2398 node=-2406 /way>
+<add speed=58 /add>
+<add speed=53 /add>
 <way id=-7638 node=-2392 node=-2404 /way>
+<add speed=70 /add>
+<add speed=66 /add>
 <way id=-7636 node=-2400 node=-2402 /way>
+<add speed=33 /add>
+<add speed=59 /add>
 <way id=-7634 node=247293216 node=-2382 /way>
+<add speed=69 /add>
+<add speed=34 /add>
 <way id=-7632 node=-2378 node=-2376 /way>
+<add speed=40 /add>
+<add speed=73 /add>
 <way id=-7630 node=-2374 node=-2372 /way>
+<add speed=74 /add>
+<add speed=32 /add>
 <way id=-7628 node=-2370 node=-2368 /way>
+<add speed=76 /add>
+<add speed=43 /add>
 <way id=-7626 node=-2366 node=-2364 /way>
+<add speed=40 /add>
+<add speed=65 /add>
 <way id=-7624 node=-2362 node=-2360 /way>
+<add speed=65 /add>
+<add speed=50 /add>
 <way id=1709460 node=7270052 node=7270055 node=7270056 node=7270058 /way>
+<add speed=53 /add>
+<add speed=54 /add>
 <way id=4004426 node=21069412 node=993673509 node=993673515 /way>
+<add speed=32 /add>
+<add speed=40 /add>
 <way id=4072011 node=21545939 node=1601125109 node=1601125136 /way>
+<add speed=61 /add>
+<add speed=33 /add>
 <way id=4371080 node=26653391 node=26653390 node=26653389 node=26653388 node=1150101849 node=26653387 node=26653386 node=26653385 node=26653384 node=26653383 node=26653394 node=26653393 node=26653392 node=26653391 /way>
+<add speed=64 /add>
+<add speed=59 /add>
 <way id=4371081 node=26653389 node=26653396 node=26653400 node=26653402 node=26653403 node=26653404 node=26653405 node=26653406 node=26653407 /way>
+<add speed=59 /add>
+<add speed=35 /add>
 <way id=4371082 node=26653383 node=26653408 node=26653389 /way>
+<add speed=61 /add>
+<add speed=78 /add>
 <way id=4371084 node=26653414 node=26653415 node=26653416 /way>
+<add speed=35 /add>
+<add speed=43 /add>
 <way id=4419867 node=27081295 node=-1887796224 node=26653394 /way>
+<add speed=39 /add>
+<add speed=58 /add>
 <way id=4419868 node=26653402 node=1698094567 node=27081298 node=27081300 node=27081301 node=1643830811 node=27081302 node=1150101850 node=1160269580 node=1150101875 /way>
+<add speed=37 /add>
+<add speed=44 /add>
 <way id=4596953 node=298186506 node=747560524 node=298186510 node=9791529 /way>
+<add speed=56 /add>
+<add speed=78 /add>
 <way id=4824073 node=31004228 node=1152071958 node=1643851245 node=1643851239 node=31004229 node=288963460 node=288976337 node=31004230 node=1698087079 /way>
+<add speed=78 /add>
+<add speed=63 /add>
 <way id=5944833 node=48930560 node=1152071953 node=1152071943 node=247957029 node=247958702 node=304990723 node=49511828 node=298186499 node=395710376 node=1160269690 node=48930588 /way>
+<add speed=37 /add>
+<add speed=77 /add>
 <way id=5946368 node=48945804 node=48945801 node=48945799 node=48945797 node=48945795 node=48945792 node=7270077 /way>
+<add speed=65 /add>
+<add speed=35 /add>
 <way id=6009983 node=49509575 node=353914405 node=49509980 node=49510014 node=920423484 node=49510335 node=49510365 node=50773820 node=49510370 node=50773817 node=49510378 node=49510383 node=7270040 /way>
+<add speed=33 /add>
+<add speed=79 /add>
 <way id=6009984 node=49509575 node=31004238 /way>
+<add speed=31 /add>
+<add speed=69 /add>
 <way id=6009986 node=49509575 node=49510397 node=49510408 /way>
+<add speed=58 /add>
+<add speed=53 /add>
 <way id=6009987 node=288963460 node=288963465 node=53358618 node=53358714 node=53358637 node=53358675 node=1643862531 node=1643862530 node=53358649 node=53358700 node=920423655 node=53358706 node=53358711 node=49510408 node=49510415 node=921305204 node=49510418 /way>
+<add speed=77 /add>
+<add speed=65 /add>
 <way id=6009991 node=7270035 node=49511698 node=304990778 node=301673135 node=49511715 node=49511720 node=49511765 node=49511781 node=49511795 node=49511821 node=49511828 /way>
+<add speed=66 /add>
+<add speed=71 /add>
 <way id=6021587 node=49572650 node=49572648 node=274077715 node=1790779978 node=49572646 node=274156147 node=-1887884934 node=151854594 node=-1887884917 node=274156150 node=288953354 node=274156151 node=288953370 node=288953366 node=274156153 node=354734668 node=354734667 /way>
+<add speed=75 /add>
+<add speed=55 /add>
 <way id=6074270 node=48900282 node=921304562 node=41337014 node=41337020 node=1160269578 node=41337023 node=41337027 node=41337031 /way>
+<add speed=76 /add>
+<add speed=79 /add>
 <way id=6136468 node=50773846 node=50773839 /way>
+<add speed=64 /add>
+<add speed=38 /add>
 <way id=6136469 node=41337027 node=1150101859 node=1150101900 node=50773842 node=1150101889 node=50773846 /way>
+<add speed=78 /add>
+<add speed=39 /add>
 <way id=6136470 node=7270043 node=50773834 /way>
+<add speed=56 /add>
+<add speed=52 /add>
 <way id=6136471 node=50773825 node=921305006 node=920423392 node=920423382 node=50773817 /way>
+<add speed=56 /add>
+<add speed=74 /add>
 <way id=6136473 node=52889903 node=50773830 node=50773828 /way>
+<add speed=33 /add>
+<add speed=68 /add>
 <way id=6184037 node=21133758 node=21133759 node=21133760 node=21133761 node=21133762 node=21133763 node=21133764 node=21133765 /way>
+<add speed=48 /add>
+<add speed=58 /add>
 <way id=6270677 node=21545964 node=250525999 node=52635272 /way>
+<add speed=68 /add>
+<add speed=67 /add>
 <way id=6270678 node=52635273 node=52635272 node=52635269 node=52635270 node=52635273 /way>
+<add speed=30 /add>
+<add speed=72 /add>
 <way id=6270679 node=52635270 node=52635265 /way>
+<add speed=44 /add>
+<add speed=74 /add>
 <way id=6275809 node=52732230 node=342647080 node=52635279 /way>
+<add speed=78 /add>
+<add speed=55 /add>
 <way id=6275816 node=21545963 node=250525998 node=52635274 /way>
+<add speed=65 /add>
+<add speed=44 /add>
 <way id=6275818 node=52732399 node=250221629 node=52635274 /way>
+<add speed=69 /add>
+<add speed=50 /add>
 <way id=6277600 node=31004285 node=1644818711 node=1644818715 node=-1887621628 node=-1887621624 node=21069420 node=983407599 node=-2358 /way>
+<add speed=33 /add>
+<add speed=67 /add>
 <way id=6277601 node=21069421 node=31004286 node=-1887621620 node=354734671 node=1644818712 node=1644818710 node=31004285 /way>
+<add speed=48 /add>
+<add speed=47 /add>
 <way id=6287843 node=52871154 node=52871161 node=1862252966 /way>
+<add speed=54 /add>
+<add speed=79 /add>
 <way id=6287844 node=52871154 node=-1851654833 node=52871157 node=1862252977 node=52871159 node=250225338 node=151917543 /way>
+<add speed=62 /add>
+<add speed=75 /add>
 <way id=6287847 node=52871146 node=52871149 node=52871152 node=52871154 /way>
+<add speed=32 /add>
+<add speed=45 /add>
 <way id=6287849 node=52871142 node=304898244 node=304898245 /way>
+<add speed=61 /add>
+<add speed=44 /add>
 <way id=6287851 node=304898245 node=52871144 node=304898246 node=52871146 node=342647082 /way>
+<add speed=73 /add>
+<add speed=53 /add>
 <way id=6295678 node=21069423 node=247293286 node=247293164 node=52905103 /way>
+<add speed=41 /add>
+<add speed=62 /add>
 <way id=6295680 node=54060543 node=354734674 node=354734667 /way>
+<add speed=38 /add>
+<add speed=42 /add>
 <way id=6298392 node=31004245 node=7270077 node=7270071 node=7270070 node=7270067 node=7270066 node=7270065 node=7270062 node=7270061 node=7270058 node=50773839 node=-2034126738 /way>
+<add speed=73 /add>
+<add speed=39 /add>
 <way id=6605288 node=53358637 node=53358688 node=53358682 node=921304957 node=53358642 node=920423652 node=49509575 /way>
+<add speed=49 /add>
+<add speed=59 /add>
 <way id=6605290 node=53358649 node=53358642 /way>
+<add speed=75 /add>
+<add speed=50 /add>
 <way id=6605294 node=53358626 node=921345535 node=55424432 node=921345544 node=53358714 /way>
+<add speed=76 /add>
+<add speed=40 /add>
 <way id=6962430 node=54060547 node=-8761 node=-8759 node=54060488 node=54060489 /way>
+<add speed=52 /add>
+<add speed=50 /add>
 <way id=6962433 node=1150101838 node=54060376 node=54060380 node=54060383 node=54060386 node=54060390 node=54060392 node=54060396 node=54060399 node=54060401 node=54060405 node=54060407 node=54060409 node=54060411 node=54060414 node=54060417 node=54060343 /way>
+<add speed=53 /add>
+<add speed=73 /add>
 <way id=6962435 node=1150101880 node=54060421 node=54060427 node=54060433 node=54060437 node=54060442 node=54060446 node=54060449 node=54060452 node=54060455 node=54060458 node=54060461 node=54060464 node=54060467 node=54060471 node=54060474 node=54060475 node=54060478 node=54060481 node=54060484 node=54060486 node=54060417 /way>
+<add speed=75 /add>
+<add speed=75 /add>
 <way id=6962440 node=301382603 node=54060499 node=-2486 node=1150101838 node=54060595 node=1150101880 node=54060502 node=1668111635 node=54060506 node=54060510 node=54060547 node=54060515 node=984231603 node=54060524 /way>
+<add speed=38 /add>
+<add speed=41 /add>
 <way id=6962444 node=54060527 node=54060545 node=1668111636 /way>
+<add speed=48 /add>
+<add speed=50 /add>
 <way id=6962445 node=54060561 node=1668111640 /way>
+<add speed=72 /add>
+<add speed=76 /add>
 <way id=6962448 node=54060557 node=54060565 /way>
+<add speed=74 /add>
+<add speed=51 /add>
 <way id=6962453 node=54060343 node=54060492 /way>
+<add speed=48 /add>
+<add speed=61 /add>
 <way id=6962455 node=54060492 node=54060608 node=54060611 node=54060613 node=54060615 node=54060617 /way>
+<add speed=50 /add>
+<add speed=50 /add>
 <way id=6962457 node=54060647 node=54060649 node=54060651 node=985096827 /way>
+<add speed=50 /add>
+<add speed=46 /add>
 <way id=6966713 node=21069419 node=54070538 node=54070520 node=54070540 node=54070542 node=54070548 node=54070550 node=54070553 node=54070557 node=54070558 node=54070561 node=54070564 node=54070615 /way>
+<add speed=52 /add>
+<add speed=49 /add>
 <way id=6966716 node=54070538 node=54070583 node=54070586 /way>
+<add speed=68 /add>
+<add speed=30 /add>
 <way id=6966718 node=54070520 node=52905141 /way>
+<add speed=40 /add>
+<add speed=35 /add>
 <way id=6966720 node=54070542 node=54070597 /way>
+<add speed=52 /add>
+<add speed=43 /add>
 <way id=6966722 node=54070548 node=54070601 /way>
+<add speed=33 /add>
+<add speed=76 /add>
 <way id=6966725 node=54070550 node=54070603 node=54070620 /way>
+<add speed=41 /add>
+<add speed=60 /add>
 <way id=6966726 node=54070557 node=54070608 /way>
+<add speed=39 /add>
+<add speed=57 /add>
 <way id=6966728 node=54070553 node=54070606 /way>
+<add speed=74 /add>
+<add speed=48 /add>
 <way id=6966730 node=54070561 node=52905134 /way>
+<add speed=44 /add>
+<add speed=50 /add>
 <way id=6966733 node=54070558 node=54070611 /way>
+<add speed=59 /add>
+<add speed=74 /add>
 <way id=6966736 node=54070540 node=54070592 /way>
+<add speed=50 /add>
+<add speed=48 /add>
 <way id=6977108 node=288963462 node=288963474 node=54093194 node=54093197 node=31004229 /way>
+<add speed=78 /add>
+<add speed=45 /add>
 <way id=6977109 node=54093197 node=54093200 /way>
+<add speed=61 /add>
+<add speed=42 /add>
 <way id=6977951 node=54060524 node=984231425 node=1187324690 node=984231428 /way>
+<add speed=32 /add>
+<add speed=64 /add>
 <way id=7363075 node=54741756 node=41337058 node=1563622352 node=41337049 node=1563622351 node=41337047 node=41337044 node=57627860 node=1563529904 node=1563529900 node=41337031 /way>
+<add speed=72 /add>
+<add speed=70 /add>
 <way id=7364325 node=54744188 node=54744185 /way>
+<add speed=73 /add>
+<add speed=76 /add>
 <way id=7622625 node=50773820 node=54092996 /way>
+<add speed=42 /add>
+<add speed=79 /add>
 <way id=7662504 node=55424694 node=921345545 node=55424432 /way>
+<add speed=65 /add>
+<add speed=79 /add>
 <way id=7662505 node=55424436 node=55424440 node=921345534 /way>
+<add speed=44 /add>
+<add speed=55 /add>
 <way id=7662506 node=55424440 node=55424443 node=55424472 node=55424635 node=55424639 node=55424644 node=55424650 node=55424658 node=55424665 node=55424673 node=55424683 node=55424437 node=1643862538 node=55424436 node=55424432 /way>
+<add speed=37 /add>
+<add speed=49 /add>
 <way id=7839640 node=54060643 node=1187324679 node=-2420 node=57620252 node=-2474 node=57620248 node=-2470 node=1644818711 /way>
+<add speed=64 /add>
+<add speed=39 /add>
 <way id=7839642 node=31004273 node=31004274 node=31004275 node=31004276 node=-2432 node=31004277 /way>
+<add speed=66 /add>
+<add speed=77 /add>
 <way id=7839643 node=31004271 node=31004273 node=59775853 node=59775852 /way>
+<add speed=61 /add>
+<add speed=44 /add>
 <way id=7839644 node=31004259 node=31004270 node=31004271 node=54060645 node=-2514 node=31004272 node=54060620 node=54060623 node=-2482 node=54060624 node=54060617 node=54060627 node=54060647 node=54060628 node=54060630 node=54060632 node=54060635 node=54060637 node=54060643 /way>
+<add speed=59 /add>
+<add speed=36 /add>
 <way id=7840030 node=21069413 /way>
+<add speed=76 /add>
+<add speed=40 /add>
 <way id=7840031 node=31004277 node=301677729 node=-2442 node=1603595524 node=301677725 node=301677728 node=301673175 node=57627860 /way>
+<add speed=31 /add>
+<add speed=64 /add>
 <way id=7989988 node=41337031 node=304990766 node=31004280 node=31004281 /way>
+<add speed=53 /add>
+<add speed=32 /add>
 <way id=7989989 node=59775853 node=274057352 node=1563622361 node=274057354 node=1603595522 node=274057355 node=-2446 node=301677729 /way>
+<add speed=70 /add>
+<add speed=61 /add>
 <way id=7996301 node=7270009 node=7270018 node=7270024 node=7270027 node=7270029 /way>
+<add speed=50 /add>
+<add speed=46 /add>
 <way id=7996302 node=7270009 node=50773825 node=921305120 node=7270034 /way>
+<add speed=76 /add>
+<add speed=54 /add>
 <way id=7996321 node=50773828 node=301673133 node=7270029 /way>
+<add speed=42 /add>
+<add speed=77 /add>
 <way id=7996323 node=7270029 node=1152071920 node=7270030 node=354891737 node=7270034 node=7270035 node=7270040 node=7270041 node=7270042 node=7270043 /way>
+<add speed=72 /add>
+<add speed=67 /add>
 <way id=8094904 node=54070564 node=54070613 /way>
+<add speed=64 /add>
+<add speed=55 /add>
 <way id=11354219 node=26653386 node=26653408 node=26653392 node=1150101835 node=993673515 /way>
+<add speed=52 /add>
+<add speed=35 /add>
 <way id=11354220 node=27081332 node=27081333 node=984231081 node=26653386 /way>
+<add speed=46 /add>
+<add speed=31 /add>
 <way id=15327452 node=151854594 node=151854598 node=151854600 node=151854604 node=151854610 node=151854614 node=151854618 node=151854706 node=151854710 node=151854712 node=151854715 node=151854719 node=151854723 node=151854727 node=1601125112 /way>
+<add speed=69 /add>
+<add speed=51 /add>
 <way id=15327453 node=151854604 node=-1887865276 node=151854759 node=274082792 node=-1888556230 node=151854784 /way>
+<add speed=63 /add>
+<add speed=67 /add>
 <way id=15327455 node=151854759 node=151854764 node=-1887865268 node=151854761 /way>
+<add speed=55 /add>
+<add speed=60 /add>
 <way id=15327456 node=151854764 node=151854768 /way>
+<add speed=64 /add>
+<add speed=70 /add>
 <way id=15327457 node=151854770 node=151854768 node=151854775 /way>
+<add speed=79 /add>
+<add speed=37 /add>
 <way id=15327459 node=151854775 node=151854778 node=-1887865278 node=-1887865275 node=-1887865280 node=-1887865265 /way>
+<add speed=34 /add>
+<add speed=57 /add>
 <way id=15327462 node=151854614 node=151854788 /way>
+<add speed=34 /add>
+<add speed=40 /add>
 <way id=15327463 node=151854788 node=-1886286497 node=151854793 node=-1886286512 node=-1886286516 node=-1886286495 node=-1886286505 node=-1886286510 node=-1886286488 /way>
+<add speed=78 /add>
+<add speed=52 /add>
 <way id=15327464 node=921270535 node=921270536 /way>
+<add speed=68 /add>
+<add speed=71 /add>
 <way id=15327465 node=151854719 node=151854798 node=151854801 node=151854805 node=-1887763522 node=151854811 node=-1887763521 node=151854812 node=151854818 node=151854855 node=151854823 /way>
+<add speed=38 /add>
+<add speed=76 /add>
 <way id=15327468 node=151854798 node=151854827 node=151854832 node=151854837 node=151854841 node=151854845 /way>
+<add speed=72 /add>
+<add speed=43 /add>
 <way id=15327469 node=151854827 node=151854852 /way>
+<add speed=63 /add>
+<add speed=67 /add>
 <way id=15327472 node=151854855 node=151854857 /way>
+<add speed=50 /add>
+<add speed=75 /add>
 <way id=15327473 node=151854801 node=151854859 node=151854861 node=151854863 /way>
+<add speed=57 /add>
+<add speed=44 /add>
 <way id=15327476 node=151854863 node=151854870 node=151854875 node=151854879 node=151854883 node=151854886 node=151854894 node=151854891 /way>
+<add speed=77 /add>
+<add speed=44 /add>
 <way id=15327477 node=151854863 node=151854866 /way>
+<add speed=58 /add>
+<add speed=44 /add>
 <way id=15330392 node=151880403 node=151880406 node=151880413 node=151880497 node=151880424 node=151880428 node=151880432 node=151880436 node=151880440 node=151880447 node=151880450 node=151880460 node=151880467 node=151880771 /way>
+<add speed=41 /add>
+<add speed=54 /add>
 <way id=15330394 node=151880413 node=151880473 node=151880479 node=151880483 node=151880487 node=151880491 /way>
+<add speed=65 /add>
+<add speed=41 /add>
 <way id=15330397 node=151880497 node=151880503 /way>
+<add speed=41 /add>
+<add speed=58 /add>
 <way id=15330399 node=151880447 node=151880511 node=151880513 node=151880520 /way>
+<add speed=73 /add>
+<add speed=60 /add>
 <way id=15330400 node=151880428 node=151880524 node=151880528 node=151854736 /way>
+<add speed=61 /add>
+<add speed=51 /add>
 <way id=15330410 node=151880771 node=151880775 node=151880778 node=151880503 node=151880784 /way>
+<add speed=42 /add>
+<add speed=45 /add>
 <way id=15333691 node=151854712 node=-1887859184 node=151917301 node=151917302 node=-1887859206 node=151917303 /way>
+<add speed=48 /add>
+<add speed=65 /add>
 <way id=15333692 node=151917314 node=151917305 node=151917303 node=151917306 node=151917307 /way>
+<add speed=51 /add>
+<add speed=34 /add>
 <way id=15333694 node=151917310 node=151917307 node=151917312 /way>
+<add speed=62 /add>
+<add speed=61 /add>
 <way id=15333698 node=151917354 node=151917356 node=151917362 node=151917368 node=151917374 node=151917380 /way>
+<add speed=44 /add>
+<add speed=39 /add>
 <way id=15333699 node=151917380 node=151917383 /way>
+<add speed=65 /add>
+<add speed=34 /add>
 <way id=15333701 node=151917368 node=151917510 node=151917424 node=151917497 node=151917580 node=151917480 node=151917595 node=151917468 node=151917452 node=152063552 node=151917440 node=152062035 node=151917434 node=151880755 /way>
+<add speed=56 /add>
+<add speed=50 /add>
 <way id=15333702 node=151854610 node=151917388 node=151917392 node=151917398 node=151917403 node=151917408 node=151917411 node=151917418 node=151917424 /way>
+<add speed=79 /add>
+<add speed=64 /add>
 <way id=15333704 node=151917430 node=151917517 node=151917434 /way>
+<add speed=37 /add>
+<add speed=39 /add>
 <way id=15333705 node=151917440 node=151917445 /way>
+<add speed=72 /add>
+<add speed=53 /add>
 <way id=15333706 node=151917452 node=151917522 node=151917460 /way>
+<add speed=70 /add>
+<add speed=38 /add>
 <way id=15333708 node=151917468 node=151917476 /way>
+<add speed=73 /add>
+<add speed=78 /add>
 <way id=15333709 node=151917480 node=151917527 /way>
+<add speed=49 /add>
+<add speed=34 /add>
 <way id=15333710 node=151917497 node=151917503 /way>
+<add speed=56 /add>
+<add speed=30 /add>
 <way id=15333712 node=151917510 node=151917532 /way>
+<add speed=72 /add>
+<add speed=36 /add>
 <way id=15333713 node=151917527 node=151917484 /way>
+<add speed=56 /add>
+<add speed=61 /add>
 <way id=15333726 node=151917532 node=151917512 /way>
+<add speed=61 /add>
+<add speed=42 /add>
 <way id=15333727 node=151917418 node=151917561 /way>
+<add speed=70 /add>
+<add speed=60 /add>
 <way id=15333728 node=151917411 node=151917563 /way>
+<add speed=44 /add>
+<add speed=52 /add>
 <way id=15333729 node=151917398 node=151917569 /way>
+<add speed=71 /add>
+<add speed=40 /add>
 <way id=15333730 node=151917392 node=151917575 /way>
+<add speed=62 /add>
+<add speed=75 /add>
 <way id=15333732 node=151917580 node=151917585 /way>
+<add speed=77 /add>
+<add speed=41 /add>
 <way id=15333733 node=151917595 node=151917614 node=151917608 node=151917599 /way>
+<add speed=42 /add>
+<add speed=36 /add>
 <way id=15333734 node=151917590 node=151917605 /way>
+<add speed=42 /add>
+<add speed=40 /add>
 <way id=15333736 node=151917585 node=151917599 node=151917590 /way>
+<add speed=76 /add>
+<add speed=55 /add>
 <way id=15333738 node=151880767 node=151917622 /way>
+<add speed=72 /add>
+<add speed=52 /add>
 <way id=15333739 node=151917622 node=302743150 node=151917575 /way>
+<add speed=55 /add>
+<add speed=66 /add>
 <way id=15333740 node=151917575 node=151917626 node=151917305 /way>
+<add speed=61 /add>
+<add speed=68 /add>
 <way id=15349621 node=151880771 node=152062034 node=151917306 /way>
+<add speed=33 /add>
+<add speed=33 /add>
 <way id=15349623 node=152062035 node=152062036 node=152062038 node=152062039 /way>
+<add speed=50 /add>
+<add speed=48 /add>
 <way id=15349625 node=152062039 node=152063390 node=152062040 node=152062042 node=152063388 node=152062044 node=152062048 node=152062050 node=152063581 node=152062052 node=152063327 node=152063333 node=152063343 node=152063383 node=152063348 node=152063352 node=152063361 node=152063367 node=152063370 node=152063372 node=152063528 node=152062039 /way>
+<add speed=44 /add>
+<add speed=41 /add>
 <way id=15349626 node=152063333 node=152063390 /way>
+<add speed=47 /add>
+<add speed=48 /add>
 <way id=15349630 node=152062040 node=152063501 node=151880759 /way>
+<add speed=69 /add>
+<add speed=33 /add>
 <way id=15349632 node=152062044 node=151880765 /way>
+<add speed=65 /add>
+<add speed=45 /add>
 <way id=15349634 node=152062050 node=152063570 node=152063563 node=152063507 node=152063565 node=152063574 node=152063593 node=152063513 node=152063518 node=151917605 node=152063520 node=152063525 node=152063560 node=152062038 /way>
+<add speed=32 /add>
+<add speed=31 /add>
 <way id=15349636 node=152063525 node=152063528 /way>
+<add speed=33 /add>
+<add speed=45 /add>
 <way id=15349639 node=152063520 node=152063534 node=152063542 node=152063545 node=152063552 /way>
+<add speed=50 /add>
+<add speed=49 /add>
 <way id=15349641 node=152063545 node=152063560 /way>
+<add speed=58 /add>
+<add speed=51 /add>
 <way id=15349643 node=152063513 node=152063333 /way>
+<add speed=34 /add>
+<add speed=31 /add>
 <way id=15349646 node=152063565 node=152063570 /way>
+<add speed=59 /add>
+<add speed=60 /add>
 <way id=15349647 node=152063574 node=152063581 /way>
+<add speed=53 /add>
+<add speed=75 /add>
 <way id=15349649 node=152063593 node=152062052 /way>
+<add speed=77 /add>
+<add speed=41 /add>
 <way id=16171809 node=52635273 node=163639535 /way>
+<add speed=52 /add>
+<add speed=59 /add>
 <way id=16172327 node=163655038 node=163655020 /way>
+<add speed=72 /add>
+<add speed=31 /add>
 <way id=22770533 node=244449804 node=1600382094 node=1862252966 node=244449805 node=244449807 node=1600382093 node=244449808 node=244449804 /way>
+<add speed=53 /add>
+<add speed=41 /add>
 <way id=22770535 node=21069424 node=249661995 node=21069425 node=664212051 /way>
+<add speed=47 /add>
+<add speed=65 /add>
 <way id=22770536 node=244449810 node=247957367 node=21069424 /way>
+<add speed=50 /add>
+<add speed=64 /add>
 <way id=22946179 node=21069422 node=454256160 node=54070615 node=1873019789 node=-2053181562 /way>
+<add speed=36 /add>
+<add speed=55 /add>
 <way id=22951901 node=247293164 node=247293165 node=247293166 node=247293167 node=247330376 node=247293168 node=247293169 node=247293170 node=247293171 node=247293172 node=247293173 /way>
+<add speed=39 /add>
+<add speed=47 /add>
 <way id=22951902 node=48930588 node=1160269614 node=247957371 node=247957376 node=249338805 node=247293173 node=1160269499 /way>
+<add speed=66 /add>
+<add speed=36 /add>
 <way id=22951903 node=247293176 node=247293178 node=247330398 node=1685591179 node=247958728 node=247330399 node=247293177 /way>
+<add speed=78 /add>
+<add speed=66 /add>
 <way id=22951906 node=247293189 node=247293190 /way>
+<add speed=74 /add>
+<add speed=43 /add>
 <way id=22951907 node=247293192 node=247293193 node=247293194 node=247293217 node=247293198 node=247293192 /way>
+<add speed=63 /add>
+<add speed=47 /add>
 <way id=22951909 node=1685591179 node=247330380 node=247958727 node=247293190 node=-2538 node=247293202 node=-2450 node=247293200 node=1160269507 node=1160269686 node=247293201 node=319432030 node=247957030 node=247957031 node=41337031 /way>
+<add speed=40 /add>
+<add speed=74 /add>
 <way id=22951910 node=247293208 node=247293209 node=247293210 node=247293211 node=247293200 node=247293203 /way>
+<add speed=36 /add>
+<add speed=53 /add>
 <way id=22951911 node=247293209 node=249318066 node=249318067 node=247293198 /way>
+<add speed=61 /add>
+<add speed=74 /add>
 <way id=22951912 node=247293217 node=-2364 node=247293216 /way>
+<add speed=34 /add>
+<add speed=46 /add>
 <way id=22951913 node=247293215 node=-2508 node=247293218 node=985096754 node=54070501 /way>
+<add speed=63 /add>
+<add speed=41 /add>
 <way id=22951914 node=247293216 node=985084904 node=1160269683 node=247957021 node=985084873 /way>
+<add speed=44 /add>
+<add speed=62 /add>
 <way id=22951916 node=247293220 node=247293221 node=354721640 /way>
+<add speed=37 /add>
+<add speed=49 /add>
 <way id=22951919 node=247293274 node=-2404 node=247958726 node=-2408 node=-2412 node=247330399 node=-2414 node=247293253 /way>
+<add speed=34 /add>
+<add speed=59 /add>
 <way id=22951920 node=247957020 node=247957022 node=247957019 node=247957018 node=247956995 /way>
+<add speed=58 /add>
+<add speed=73 /add>
 <way id=22951921 node=247293248 node=247293249 node=247293250 node=247293251 node=247293252 /way>
+<add speed=56 /add>
+<add speed=69 /add>
 <way id=22951922 node=247293247 node=247293252 /way>
+<add speed=73 /add>
+<add speed=65 /add>
 <way id=22951923 node=52905103 node=247293257 node=247293254 node=247330377 /way>
+<add speed=45 /add>
+<add speed=40 /add>
 <way id=22951924 node=247293256 node=247293257 /way>
+<add speed=58 /add>
+<add speed=70 /add>
 <way id=22951930 node=247293286 node=244449810 /way>
+<add speed=78 /add>
+<add speed=30 /add>
 <way id=22955581 node=247330378 node=247330379 node=1160269552 /way>
+<add speed=67 /add>
+<add speed=60 /add>
 <way id=22955585 node=247330398 node=247293188 /way>
+<add speed=37 /add>
+<add speed=44 /add>
 <way id=22957120 node=247353854 node=247353855 node=247353856 node=247353859 node=247353857 /way>
+<add speed=35 /add>
+<add speed=31 /add>
 <way id=22957121 node=247353857 node=247353860 node=247353858 /way>
+<add speed=47 /add>
+<add speed=40 /add>
 <way id=22957122 node=247353859 node=247353861 node=247353862 node=247353863 node=247353864 node=247353865 node=288753144 node=151880403 node=288753141 node=288753142 node=288753143 /way>
+<add speed=62 /add>
+<add speed=41 /add>
 <way id=23000225 node=247956996 node=247956997 /way>
+<add speed=32 /add>
+<add speed=43 /add>
 <way id=23000227 node=31004285 node=54070505 node=-2498 node=247956995 /way>
+<add speed=71 /add>
+<add speed=71 /add>
 <way id=23000228 node=247957008 node=247957009 /way>
+<add speed=56 /add>
+<add speed=42 /add>
 <way id=23000229 node=247957005 node=247957010 node=247957008 /way>
+<add speed=55 /add>
+<add speed=56 /add>
 <way id=23000230 node=247957004 node=247957012 node=247957013 /way>
+<add speed=40 /add>
+<add speed=58 /add>
 <way id=23000231 node=247957017 /way>
+<add speed=77 /add>
+<add speed=78 /add>
 <way id=23000232 node=247957021 node=1160269664 node=247957023 node=247957019 /way>
+<add speed=62 /add>
+<add speed=34 /add>
 <way id=23000233 node=985096754 node=-2494 node=247957022 node=247957023 /way>
+<add speed=50 /add>
+<add speed=76 /add>
 <way id=23000235 node=301677732 node=247957026 node=247957027 node=247957028 /way>
+<add speed=63 /add>
+<add speed=34 /add>
 <way id=23000236 node=247957029 node=31004281 /way>
+<add speed=62 /add>
+<add speed=72 /add>
 <way id=23000265 node=237230497 node=247957333 node=247957334 node=1563096029 /way>
+<add speed=44 /add>
+<add speed=39 /add>
 <way id=23000271 node=247957367 node=249338785 node=247957368 node=247957369 /way>
+<add speed=49 /add>
+<add speed=53 /add>
 <way id=23000272 node=247957372 node=247957373 node=247957374 node=247957375 node=247957376 /way>
+<add speed=72 /add>
+<add speed=66 /add>
 <way id=23000273 node=247957369 node=247957370 /way>
+<add speed=52 /add>
+<add speed=64 /add>
 <way id=23000274 node=247957370 node=247957372 node=247957371 /way>
+<add speed=30 /add>
+<add speed=49 /add>
 <way id=23000451 node=301673250 node=301673241 node=247958598 node=247958611 node=247958610 node=247958608 node=247958607 node=247958606 node=247958605 node=247958604 node=301673248 node=247958601 node=247958600 node=247958599 node=247293219 node=-2502 node=247293220 node=247293215 node=985096764 /way>
+<add speed=76 /add>
+<add speed=32 /add>
 <way id=23000452 node=247958607 node=247958612 node=247958613 node=247958614 node=247958615 node=247958617 node=247958618 node=247958619 node=247958620 node=247958621 node=247958622 node=247958624 node=247958625 node=247958626 node=247958627 node=247958628 node=247958629 node=247958631 node=247958632 node=247958633 node=247958634 node=247958635 node=247958636 node=247958638 node=247958639 node=247958640 node=247958641 node=247958642 node=247958643 /way>
+<add speed=37 /add>
+<add speed=75 /add>
 <way id=23000453 node=247958640 node=247958645 node=247958646 node=247958647 node=247958648 node=247958649 node=247958650 node=247958651 node=247958653 node=247958654 node=301673241 /way>
+<add speed=47 /add>
+<add speed=31 /add>
 <way id=23000454 node=247957025 node=301677710 node=247958666 node=247958665 node=247958663 node=247958662 node=247958661 node=301673220 node=247958659 node=247958657 node=301673223 node=247958667 node=301673250 /way>
+<add speed=35 /add>
+<add speed=54 /add>
 <way id=23000455 node=247958643 node=301673229 node=247958668 node=247958669 node=247958670 node=247958672 node=301673209 node=301673215 node=247958674 node=247958675 node=301673220 /way>
+<add speed=41 /add>
+<add speed=56 /add>
 <way id=23000456 node=247958676 node=247958669 /way>
+<add speed=75 /add>
+<add speed=76 /add>
 <way id=23000457 node=247958678 node=301677704 node=247958679 node=1160269703 node=247958680 node=319432025 node=247958681 node=301673206 node=301673209 node=247958678 /way>
+<add speed=61 /add>
+<add speed=43 /add>
 <way id=23000459 node=301677706 node=301673215 /way>
+<add speed=36 /add>
+<add speed=41 /add>
 <way id=23000460 node=301677703 node=301677704 /way>
+<add speed=43 /add>
+<add speed=38 /add>
 <way id=23000463 node=247958702 node=247958703 node=247958705 /way>
+<add speed=42 /add>
+<add speed=36 /add>
 <way id=23000464 node=247958706 node=247958707 node=247958702 /way>
+<add speed=37 /add>
+<add speed=43 /add>
 <way id=23000465 node=247958707 node=247958708 /way>
+<add speed=30 /add>
+<add speed=68 /add>
 <way id=23000467 node=247293274 node=247293202 node=-2530 node=247958724 node=247293175 /way>
+<add speed=49 /add>
+<add speed=50 /add>
 <way id=23000468 node=247958724 node=-2542 node=247958725 /way>
+<add speed=42 /add>
+<add speed=47 /add>
 <way id=23000469 node=247958726 node=247958727 /way>
+<add speed=49 /add>
+<add speed=31 /add>
 <way id=23000470 node=247330377 node=247958728 /way>
+<add speed=33 /add>
+<add speed=63 /add>
 <way id=23000473 node=247958729 node=247958731 /way>
+<add speed=46 /add>
+<add speed=62 /add>
 <way id=23000475 node=247958732 node=247958731 node=247958733 /way>
+<add speed=41 /add>
+<add speed=72 /add>
 <way id=23041409 node=9791529 node=298186509 node=48930592 /way>
+<add speed=59 /add>
+<add speed=77 /add>
 <way id=23120522 node=21545947 /way>
+<add speed=73 /add>
+<add speed=38 /add>
 <way id=23120523 node=21545947 node=21545948 node=1377189446 node=21545949 node=298186520 /way>
+<add speed=53 /add>
+<add speed=53 /add>
 <way id=23123672 node=274070529 node=249661436 node=249661437 /way>
+<add speed=56 /add>
+<add speed=75 /add>
 <way id=23123683 node=274069728 node=1644773888 node=1967770415 node=274069737 node=274069735 node=274069733 node=274069731 /way>
+<add speed=55 /add>
+<add speed=44 /add>
 <way id=23123727 node=249661995 node=249661996 /way>
+<add speed=73 /add>
+<add speed=49 /add>
 <way id=23123728 node=21545948 node=249661997 node=249661998 /way>
+<add speed=40 /add>
+<add speed=31 /add>
 <way id=23148581 node=52728502 node=52635279 node=52635278 node=163639535 node=52635265 node=52732399 node=52635287 node=250221603 /way>
+<add speed=39 /add>
+<add speed=36 /add>
 <way id=23153164 node=250131779 node=2137538421 node=250131781 node=342660349 /way>
+<add speed=39 /add>
+<add speed=60 /add>
 <way id=23153165 node=250131781 node=250131782 node=250131786 /way>
+<add speed=59 /add>
+<add speed=54 /add>
 <way id=23157603 node=250131782 node=250218815 node=1564466415 node=250217033 /way>
+<add speed=31 /add>
+<add speed=74 /add>
 <way id=23157794 node=250221603 node=250221605 node=250221606 node=250221609 node=250221612 node=250221614 node=250221616 node=250221619 node=250221621 node=250221623 node=250221626 node=250221627 node=250221631 node=250221629 /way>
+<add speed=63 /add>
+<add speed=44 /add>
 <way id=23157795 node=250221634 node=250221635 node=1377189445 node=1377189444 node=1377189434 node=250221639 node=1377189432 node=250221641 node=250525998 node=250525999 node=250221642 node=250221645 /way>
+<add speed=61 /add>
+<add speed=73 /add>
 <way id=23157845 node=250225338 node=250225341 node=250225342 node=1659456268 node=151917549 /way>
+<add speed=79 /add>
+<add speed=77 /add>
 <way id=23163630 node=250217033 node=250133215 node=250133216 node=-2143392595 node=250133218 /way>
+<add speed=71 /add>
+<add speed=41 /add>
 <way id=24038319 node=52728506 node=26083241 node=342633514 node=342660331 /way>
+<add speed=78 /add>
+<add speed=76 /add>
 <way id=25146519 node=31004274 node=274057356 /way>
+<add speed=36 /add>
+<add speed=51 /add>
 <way id=25146520 node=31004275 node=274057364 node=274057354 /way>
+<add speed=32 /add>
+<add speed=67 /add>
 <way id=25146521 node=31004276 node=274057355 /way>
+<add speed=76 /add>
+<add speed=74 /add>
 <way id=25146522 node=274057358 node=274057352 /way>
+<add speed=70 /add>
+<add speed=66 /add>
 <way id=25146523 node=274057356 node=274057358 /way>
+<add speed=41 /add>
+<add speed=31 /add>
 <way id=25146524 node=274057358 node=274057359 node=274057362 node=274057363 node=274057364 /way>
+<add speed=39 /add>
+<add speed=32 /add>
 <way id=25147674 node=274069732 node=274069783 node=274069780 node=274069733 /way>
+<add speed=32 /add>
+<add speed=72 /add>
 <way id=25147675 node=274069734 node=274069787 node=274069735 /way>
+<add speed=48 /add>
+<add speed=44 /add>
 <way id=25147676 node=274069780 node=274069784 node=274069779 node=274069778 node=274069777 node=274069734 node=274070524 node=274069736 node=274069786 node=274069737 /way>
+<add speed=39 /add>
+<add speed=73 /add>
 <way id=25147687 node=274069779 node=274069781 node=274069782 node=274069783 /way>
+<add speed=53 /add>
+<add speed=44 /add>
 <way id=25147774 node=274070508 node=274070516 node=274070529 node=274070520 /way>
+<add speed=62 /add>
+<add speed=63 /add>
 <way id=25147779 node=274070522 node=274070526 node=274070523 node=274070525 node=274070524 /way>
+<add speed=59 /add>
+<add speed=76 /add>
 <way id=25147780 node=274070526 node=274070527 node=274070528 /way>
+<add speed=56 /add>
+<add speed=77 /add>
 <way id=25147781 node=274070528 node=274070518 /way>
+<add speed=78 /add>
+<add speed=45 /add>
 <way id=25148060 node=52866098 node=52866100 /way>
+<add speed=72 /add>
+<add speed=70 /add>
 <way id=25148064 node=274248809 node=274073101 node=274073134 node=274073102 /way>
+<add speed=35 /add>
+<add speed=74 /add>
 <way id=25148066 node=274073114 node=274248805 node=274248808 node=274073102 node=49572632 /way>
+<add speed=71 /add>
+<add speed=56 /add>
 <way id=25148068 node=274073125 node=274073126 node=1790852799 node=274252695 node=274073127 node=274073132 node=274252669 node=274073133 /way>
+<add speed=45 /add>
+<add speed=43 /add>
 <way id=25148071 node=274073126 node=274073134 /way>
+<add speed=64 /add>
+<add speed=69 /add>
 <way id=25149094 node=274082792 node=274082794 node=-1886288649 node=-1888556173 node=-1888556245 node=-1888556209 node=274082796 node=-1888556198 node=-1888556231 node=274082802 /way>
+<add speed=49 /add>
+<add speed=70 /add>
 <way id=25149095 node=274082796 node=-1888556144 node=274082803 node=-1888556142 node=274082805 node=-1888556117 node=-1888581130 node=-1888556128 node=274082807 node=-1888556171 node=274082809 node=-1888556133 node=-1888556125 node=274082816 node=-1888556234 node=274082802 node=274082811 node=-1887865284 node=-1888581142 node=274082812 node=-1888556127 node=-1888556150 node=274082814 /way>
+<add speed=41 /add>
+<add speed=62 /add>
 <way id=25149097 node=151854784 node=151854755 node=274082822 node=274082824 node=-1886285620 node=49572641 /way>
+<add speed=74 /add>
+<add speed=70 /add>
 <way id=25153913 node=151854598 node=151854764 /way>
+<add speed=58 /add>
+<add speed=79 /add>
 <way id=25153914 node=274156147 node=49572641 node=49572638 node=151854891 node=1790779977 node=49572635 node=52866100 /way>
+<add speed=50 /add>
+<add speed=42 /add>
 <way id=25153915 node=274156150 node=274156161 node=274156156 /way>
+<add speed=55 /add>
+<add speed=46 /add>
 <way id=25153916 node=274156157 node=274156160 node=274156159 /way>
+<add speed=62 /add>
+<add speed=73 /add>
 <way id=25153917 node=274156160 node=274156161 /way>
+<add speed=36 /add>
+<add speed=58 /add>
 <way id=25157386 node=274246827 node=274246828 node=274246829 /way>
+<add speed=38 /add>
+<add speed=41 /add>
 <way id=25157387 node=274073128 node=274246831 node=274246835 node=274246832 node=145291618 node=274246833 node=274246834 node=274246835 /way>
+<add speed=63 /add>
+<add speed=72 /add>
 <way id=25157388 node=274246831 node=145291623 node=274246837 /way>
+<add speed=77 /add>
+<add speed=69 /add>
 <way id=25157389 node=274246837 node=274073133 /way>
+<add speed=37 /add>
+<add speed=39 /add>
 <way id=25158087 node=274252662 node=274252664 node=274252665 /way>
+<add speed=70 /add>
+<add speed=45 /add>
 <way id=25158088 node=274252666 node=274252665 node=274252667 node=274073132 /way>
+<add speed=31 /add>
+<add speed=59 /add>
 <way id=25158089 node=274252668 node=274252669 /way>
+<add speed=35 /add>
+<add speed=35 /add>
 <way id=25158091 node=274252695 node=274252712 /way>
+<add speed=60 /add>
+<add speed=32 /add>
 <way id=25158092 node=274252696 node=274252702 /way>
+<add speed=42 /add>
+<add speed=62 /add>
 <way id=25158093 node=49572630 node=274252709 node=274252708 /way>
+<add speed=44 /add>
+<add speed=38 /add>
 <way id=25158094 node=274252709 node=274252710 node=274252711 /way>
+<add speed=62 /add>
+<add speed=74 /add>
 <way id=25158095 node=274252712 node=274252711 node=274252708 node=274252696 /way>
+<add speed=62 /add>
+<add speed=78 /add>
 <way id=25158097 node=49572628 node=274252717 /way>
+<add speed=55 /add>
+<add speed=33 /add>
 <way id=25158099 node=274073129 node=274252720 /way>
+<add speed=37 /add>
+<add speed=39 /add>
 <way id=25583619 node=278865326 node=278865327 node=-1887884868 node=278865328 node=278865337 node=278865329 node=278865330 node=-1887884791 node=-1887884750 node=49572646 /way>
+<add speed=44 /add>
+<add speed=62 /add>
 <way id=25583620 node=278865337 node=-1887884907 node=-1887884927 node=-1887884775 node=278865339 node=278865334 node=278865332 /way>
+<add speed=36 /add>
+<add speed=79 /add>
 <way id=25583621 node=278865333 node=288953459 node=288953358 node=278865336 node=-1887884743 node=278865334 /way>
+<add speed=63 /add>
+<add speed=38 /add>
 <way id=25583622 node=-1887884671 node=278865335 node=-1887884732 node=278865336 /way>
+<add speed=42 /add>
+<add speed=77 /add>
 <way id=25583623 node=278865339 node=288953444 /way>
+<add speed=78 /add>
+<add speed=71 /add>
 <way id=26354941 node=288750412 node=288750413 /way>
+<add speed=70 /add>
+<add speed=33 /add>
 <way id=26354942 node=288750413 node=288750414 node=288750416 node=1914623337 /way>
+<add speed=36 /add>
+<add speed=55 /add>
 <way id=26355208 node=288753144 node=288753145 /way>
+<add speed=46 /add>
+<add speed=35 /add>
 <way id=26355209 node=288753145 node=288752005 /way>
+<add speed=54 /add>
+<add speed=74 /add>
 <way id=26355336 node=288754246 node=288754244 node=288777800 node=288754245 /way>
+<add speed=57 /add>
+<add speed=46 /add>
 <way id=26355619 node=288752016 node=288757365 node=288757367 node=288757364 /way>
+<add speed=59 /add>
+<add speed=69 /add>
 <way id=26357756 node=288777800 node=288777801 /way>
+<add speed=50 /add>
+<add speed=67 /add>
 <way id=26357757 node=288777802 node=288777801 node=288777803 node=288777805 node=288777862 node=288777806 node=288777807 node=288777861 node=288777808 node=288777810 node=288777809 node=288777824 node=288777813 node=288777823 node=288777814 /way>
+<add speed=37 /add>
+<add speed=47 /add>
 <way id=26357758 node=288777810 node=-1887763498 /way>
+<add speed=31 /add>
+<add speed=32 /add>
 <way id=26357759 node=288777817 node=288777814 node=288777820 node=288777822 node=288777823 /way>
+<add speed=75 /add>
+<add speed=33 /add>
 <way id=26357760 node=288777822 node=288777824 /way>
+<add speed=69 /add>
+<add speed=40 /add>
 <way id=26357761 node=288777809 node=288777825 /way>
+<add speed=37 /add>
+<add speed=62 /add>
 <way id=26357762 node=288777825 node=288777826 node=288777827 node=288777828 node=288777829 node=288777830 node=2053377760 /way>
+<add speed=34 /add>
+<add speed=47 /add>
 <way id=26357763 node=288777825 node=-1887763485 node=288777832 node=288777834 node=288777835 node=288777836 node=288777841 node=288777837 node=288777838 node=288754244 /way>
+<add speed=53 /add>
+<add speed=33 /add>
 <way id=26357764 node=288777839 node=288777873 node=-1887763473 node=288777840 /way>
+<add speed=34 /add>
+<add speed=54 /add>
 <way id=26357765 node=288777840 node=-1887763510 /way>
+<add speed=43 /add>
+<add speed=56 /add>
 <way id=26357766 node=288777837 node=288777860 /way>
+<add speed=43 /add>
+<add speed=48 /add>
 <way id=26357767 node=288777836 node=288777861 /way>
+<add speed=38 /add>
+<add speed=35 /add>
 <way id=26357768 node=288777862 node=288777867 /way>
+<add speed=48 /add>
+<add speed=62 /add>
 <way id=26357769 node=288754246 node=288777873 /way>
+<add speed=75 /add>
+<add speed=52 /add>
 <way id=26374915 node=288953352 node=288953362 node=278865333 node=-1886275265 node=288953380 node=288953354 /way>
+<add speed=50 /add>
+<add speed=67 /add>
 <way id=26374916 node=288953356 node=288953358 /way>
+<add speed=64 /add>
+<add speed=72 /add>
 <way id=26374917 node=288953360 node=288953362 /way>
+<add speed=59 /add>
+<add speed=49 /add>
 <way id=26374919 node=288953364 node=288953366 /way>
+<add speed=33 /add>
+<add speed=67 /add>
 <way id=26374920 node=288953370 node=-1887884754 node=1790797031 node=288953374 node=288953395 node=288953397 node=288953404 node=288953406 node=-1886275269 node=-1886275246 node=288953408 node=288953360 node=288953410 node=288953412 node=288953414 node=288953416 /way>
+<add speed=39 /add>
+<add speed=75 /add>
 <way id=26374922 node=288953374 node=288953376 node=-1887884802 node=288953380 /way>
+<add speed=66 /add>
+<add speed=60 /add>
 <way id=26374923 node=288953446 node=288953444 /way>
+<add speed=49 /add>
+<add speed=49 /add>
 <way id=26374924 node=288953450 node=288953446 /way>
+<add speed=48 /add>
+<add speed=76 /add>
 <way id=26374926 node=288953412 node=288953418 node=288953423 node=288953434 node=288953442 node=288953352 node=288953454 node=288953457 /way>
+<add speed=51 /add>
+<add speed=68 /add>
 <way id=26374927 node=288953450 node=288953459 /way>
+<add speed=64 /add>
+<add speed=49 /add>
 <way id=26375577 node=288958053 node=288958055 node=288958054 /way>
+<add speed=48 /add>
+<add speed=67 /add>
 <way id=26375578 node=54070597 node=288958058 /way>
+<add speed=43 /add>
+<add speed=73 /add>
 <way id=26375579 node=288958059 node=288958060 node=288958061 /way>
+<add speed=70 /add>
+<add speed=74 /add>
 <way id=26375580 node=288958063 node=-1887884677 /way>
+<add speed=64 /add>
+<add speed=72 /add>
 <way id=26375582 node=288958066 node=288958073 /way>
+<add speed=68 /add>
+<add speed=68 /add>
 <way id=26375584 node=288958079 node=288958082 node=288958085 node=-1887884783 node=288958095 node=-1887884805 node=288958080 /way>
+<add speed=49 /add>
+<add speed=42 /add>
 <way id=26375585 node=288958081 node=288958082 /way>
+<add speed=43 /add>
+<add speed=62 /add>
 <way id=26375586 node=288958083 node=288958085 /way>
+<add speed=40 /add>
+<add speed=55 /add>
 <way id=26375587 node=288958089 node=288958095 /way>
+<add speed=56 /add>
+<add speed=59 /add>
 <way id=26376159 node=59775852 node=288963440 node=31004253 /way>
+<add speed=45 /add>
+<add speed=66 /add>
 <way id=26376160 node=288963440 node=288963441 node=288963443 node=31004252 /way>
+<add speed=36 /add>
+<add speed=60 /add>
 <way id=26376162 node=288963462 node=288963465 /way>
+<add speed=46 /add>
+<add speed=72 /add>
 <way id=26377533 node=288976337 node=288976405 node=-2436 node=288976346 node=288976338 node=-8847 node=288976339 node=288976341 node=288976342 node=288976343 node=288976377 node=288976374 node=288976344 node=288976345 node=288976404 node=31004254 /way>
+<add speed=54 /add>
+<add speed=50 /add>
 <way id=26377536 node=288976371 node=-8849 node=288976372 /way>
+<add speed=42 /add>
+<add speed=77 /add>
 <way id=27176948 node=48930592 node=747560525 node=298186505 node=1857831719 node=298186506 /way>
+<add speed=71 /add>
+<add speed=77 /add>
 <way id=27176949 node=298186515 node=298186516 node=1659456268 node=21545961 /way>
+<add speed=61 /add>
+<add speed=74 /add>
 <way id=27176950 node=21545962 node=664226304 node=298186517 node=298186520 /way>
+<add speed=55 /add>
+<add speed=54 /add>
 <way id=27250229 node=7270043 node=7270046 node=7270047 node=7270052 node=48945804 node=31004233 node=31004234 node=31004235 node=31004236 node=31004237 node=1643862532 node=31004238 node=31004239 node=1643862534 node=31004240 node=31004241 node=31004242 node=31004243 node=31004244 node=31004245 /way>
+<add speed=36 /add>
+<add speed=47 /add>
 <way id=27250230 node=50773834 node=304990762 node=48930565 node=304990761 node=1152071957 node=48930560 /way>
+<add speed=69 /add>
+<add speed=79 /add>
 <way id=27250231 node=298186520 node=1377189433 node=1659456384 node=21545960 /way>
+<add speed=75 /add>
+<add speed=36 /add>
 <way id=27250232 node=21545960 node=21545963 node=151917543 /way>
+<add speed=31 /add>
+<add speed=70 /add>
 <way id=27250811 node=299089272 node=304898147 node=304898148 node=304898149 node=304898150 node=304898151 node=304898152 node=304898153 node=304898154 node=304898155 node=304898156 node=299089272 /way>
+<add speed=41 /add>
+<add speed=68 /add>
 <way id=27448664 node=247293246 node=247293245 node=247293244 node=247293243 node=1160269552 node=247293242 node=247293241 node=247293174 /way>
+<add speed=61 /add>
+<add speed=30 /add>
 <way id=27449149 node=274070508 node=354734678 /way>
+<add speed=62 /add>
+<add speed=39 /add>
 <way id=27475041 node=163654960 node=921270449 node=163655038 node=288757364 node=163655025 /way>
+<add speed=46 /add>
+<add speed=56 /add>
 <way id=27475043 node=301673133 node=301673161 node=301673135 /way>
+<add speed=72 /add>
+<add speed=75 /add>
 <way id=27475044 node=52872225 node=301673138 node=301673139 node=301673158 node=301673142 node=301673160 node=301673147 node=301673148 node=304898163 node=301673150 node=301673153 node=301673154 node=301673156 node=301673158 /way>
+<add speed=50 /add>
+<add speed=71 /add>
 <way id=27475045 node=301673160 node=301673161 /way>
+<add speed=66 /add>
+<add speed=77 /add>
 <way id=27475046 node=301677703 node=985084945 node=301673200 node=247293258 /way>
+<add speed=40 /add>
+<add speed=71 /add>
 <way id=27475171 node=247293217 node=247293194 node=985084880 node=301677699 node=301677701 node=247293258 /way>
+<add speed=73 /add>
+<add speed=59 /add>
 <way id=27475173 node=301677706 node=247957025 node=301677732 node=301677729 /way>
+<add speed=50 /add>
+<add speed=46 /add>
 <way id=27767010 node=48930588 node=550148664 node=299089272 /way>
+<add speed=59 /add>
+<add speed=58 /add>
 <way id=27767033 node=247958732 node=304898246 /way>
+<add speed=36 /add>
+<add speed=53 /add>
 <way id=27776422 node=304990723 node=304990734 node=304990725 /way>
+<add speed=42 /add>
+<add speed=43 /add>
 <way id=27776424 node=304990725 node=304990727 node=304990726 /way>
+<add speed=45 /add>
+<add speed=53 /add>
 <way id=27776425 node=304990727 node=304990728 node=304990729 node=304990730 /way>
+<add speed=76 /add>
+<add speed=43 /add>
 <way id=27776426 node=304990725 node=304990731 node=304990732 /way>
+<add speed=61 /add>
+<add speed=55 /add>
 <way id=27776430 node=298186499 node=304990749 /way>
+<add speed=61 /add>
+<add speed=37 /add>
 <way id=27776431 node=247958708 node=247958709 node=247958711 node=247958712 node=247958713 node=247958718 node=247958719 node=304990760 /way>
+<add speed=37 /add>
+<add speed=70 /add>
 <way id=27776432 node=247293175 node=304990760 node=247958720 node=247958721 node=247958722 node=304990756 node=304990758 /way>
+<add speed=37 /add>
+<add speed=37 /add>
 <way id=27776434 node=304990762 node=319432017 node=304990763 node=304990765 node=304990766 /way>
+<add speed=78 /add>
+<add speed=75 /add>
 <way id=27776435 node=48930560 node=304990768 node=304990769 node=304990771 node=304990772 node=304990773 /way>
+<add speed=43 /add>
+<add speed=50 /add>
 <way id=27776437 node=304990773 node=304990774 node=304990775 node=304990777 node=1152071919 node=304990778 /way>
+<add speed=55 /add>
+<add speed=31 /add>
 <way id=29042484 node=247293208 node=319432024 /way>
+<add speed=52 /add>
+<add speed=45 /add>
 <way id=29042485 node=319432024 node=-2554 node=319432025 /way>
+<add speed=57 /add>
+<add speed=48 /add>
 <way id=30832230 node=342647082 node=342647086 node=342647088 /way>
+<add speed=48 /add>
+<add speed=78 /add>
 <way id=30832231 node=342647082 node=342647084 node=52728502 /way>
+<add speed=33 /add>
+<add speed=42 /add>
 <way id=30832310 node=299171009 node=342660317 node=342660319 node=26083239 /way>
+<add speed=34 /add>
+<add speed=74 /add>
 <way id=30832312 node=342660327 node=247958733 node=52728506 /way>
+<add speed=54 /add>
+<add speed=45 /add>
 <way id=30832313 node=342660331 node=342660333 node=342660335 node=342660337 node=342660339 node=342660345 /way>
+<add speed=74 /add>
+<add speed=43 /add>
 <way id=31645385 node=54060637 node=985096817 /way>
+<add speed=79 /add>
+<add speed=32 /add>
 <way id=31645387 node=274070516 node=274070517 node=274070518 node=274070522 node=274070521 /way>
+<add speed=57 /add>
+<add speed=37 /add>
 <way id=31705583 node=21069415 node=354726139 /way>
+<add speed=36 /add>
+<add speed=32 /add>
 <way id=31705832 node=354734656 node=354734658 /way>
+<add speed=62 /add>
+<add speed=32 /add>
 <way id=31705833 node=354734660 node=354734661 node=354734662 /way>
+<add speed=39 /add>
+<add speed=48 /add>
 <way id=31705834 node=274070517 node=354734664 node=354734665 /way>
+<add speed=52 /add>
+<add speed=60 /add>
 <way id=31705835 node=354734667 node=354734673 node=354734670 /way>
+<add speed=54 /add>
+<add speed=77 /add>
 <way id=31705836 node=354734670 node=-2053181545 node=21069418 node=354734676 node=54060543 /way>
+<add speed=61 /add>
+<add speed=39 /add>
 <way id=31705837 node=354734670 node=21069419 node=21069420 node=31004287 node=1377189453 node=21069421 node=247956997 node=21069422 /way>
+<add speed=38 /add>
+<add speed=57 /add>
 <way id=31705838 node=354734667 node=1377220129 node=354734676 /way>
+<add speed=65 /add>
+<add speed=70 /add>
 <way id=31705839 node=354734678 node=354734679 node=354734680 /way>
+<add speed=54 /add>
+<add speed=71 /add>
 <way id=31741308 node=31004231 node=31004259 node=354734659 node=31004260 node=31004261 node=354734656 node=31004262 node=31004263 node=1644773883 node=54060497 node=301382603 node=31004264 node=31004265 node=31004266 node=-2490 node=31004267 node=354734662 /way>
+<add speed=60 /add>
+<add speed=74 /add>
 <way id=31741324 node=21069412 node=301383345 node=21069413 node=1974454284 node=354734678 node=21069414 node=354734666 node=1644773889 node=21069415 node=1644773886 /way>
+<add speed=46 /add>
+<add speed=50 /add>
 <way id=31741492 node=342660331 node=26083239 node=304898252 node=342660345 /way>
+<add speed=61 /add>
+<add speed=46 /add>
 <way id=31958494 node=237230489 node=237230507 node=237230494 node=298186511 node=237230497 node=9791529 /way>
+<add speed=72 /add>
+<add speed=39 /add>
 <way id=31970230 node=21133755 node=1152092786 node=21133756 node=1152092864 node=21133757 node=1152092823 node=21133758 /way>
+<add speed=61 /add>
+<add speed=75 /add>
 <way id=32073106 node=48930592 node=48930590 node=1862252981 node=298186514 node=48930588 /way>
+<add speed=57 /add>
+<add speed=59 /add>
 <way id=32073107 node=298186506 node=-1851654831 /way>
+<add speed=55 /add>
+<add speed=66 /add>
 <way id=34430463 node=298186505 node=298186510 /way>
+<add speed=42 /add>
+<add speed=32 /add>
 <way id=38422624 node=21069422 node=247293248 node=21069423 node=288953461 node=244449810 /way>
+<add speed=64 /add>
+<add speed=51 /add>
 <way id=38422711 node=1601125112 node=151854731 node=151854750 node=151854736 node=-1887763497 node=1790831308 node=151854739 /way>
+<add speed=65 /add>
+<add speed=73 /add>
 <way id=38422712 node=151854739 node=1790831310 node=288777802 node=288754245 /way>
+<add speed=42 /add>
+<add speed=79 /add>
 <way id=38422733 node=52866100 node=-1887763505 node=49572632 node=-1887763481 node=274073125 node=1790779976 node=49572630 node=288777831 node=274252702 node=2053377764 node=49572628 node=-1887763472 /way>
+<add speed=79 /add>
+<add speed=71 /add>
 <way id=38422777 node=20621476 node=993673535 node=993673493 node=18667981 node=18667982 node=1160269503 node=18667983 node=1160269644 node=21069412 /way>
+<add speed=42 /add>
+<add speed=76 /add>
 <way id=38422788 node=354734667 node=54070579 node=21545937 node=1668868122 node=52905141 node=288958059 node=21545938 node=54070620 node=288958054 node=1601125172 node=21545939 /way>
+<add speed=65 /add>
+<add speed=47 /add>
 <way id=38426563 node=319432035 node=454231775 /way>
+<add speed=58 /add>
+<add speed=41 /add>
 <way id=43566918 node=550148658 node=550148664 /way>
+<add speed=61 /add>
+<add speed=74 /add>
 <way id=43569645 node=550173412 node=550173748 node=550173750 node=550173754 node=550173756 node=550173759 node=550173761 node=550173763 node=550173765 node=550173767 node=550173769 node=550172856 node=550173412 /way>
+<add speed=70 /add>
+<add speed=59 /add>
 <way id=52123756 node=664210167 node=1659456367 node=1152092878 node=249612086 /way>
+<add speed=62 /add>
+<add speed=35 /add>
 <way id=52123757 node=664210167 node=664210172 node=664210175 /way>
+<add speed=35 /add>
+<add speed=42 /add>
 <way id=52123761 node=664210191 /way>
+<add speed=65 /add>
+<add speed=74 /add>
 <way id=52123762 node=21545958 node=21545959 node=21133755 /way>
+<add speed=63 /add>
+<add speed=37 /add>
 <way id=52123769 node=664210228 node=1152092850 node=1152092785 node=664210191 node=664210229 node=664235211 node=664210230 node=664210231 node=1377189445 node=21545949 /way>
+<add speed=65 /add>
+<add speed=49 /add>
 <way id=52123771 node=664210234 node=664210237 node=664210238 node=664210239 node=664210240 node=664210241 node=664210242 node=262687715 /way>
+<add speed=71 /add>
+<add speed=76 /add>
 <way id=52123774 node=664210252 node=664210253 node=664210254 node=664210255 node=664210256 node=664210257 node=664210258 node=664210228 /way>
+<add speed=45 /add>
+<add speed=39 /add>
 <way id=52123775 node=664210251 node=664217543 node=664210252 /way>
+<add speed=74 /add>
+<add speed=70 /add>
 <way id=52123776 node=21133755 /way>
+<add speed=43 /add>
+<add speed=56 /add>
 <way id=52123777 node=664210228 node=1836072747 node=1152092840 node=664210260 /way>
+<add speed=70 /add>
+<add speed=38 /add>
 <way id=52123940 node=21545949 node=664212050 node=1659456407 node=1659456374 node=1659456320 node=664212051 /way>
+<add speed=58 /add>
+<add speed=79 /add>
 <way id=52125885 node=21545961 node=151917549 node=21545962 /way>
+<add speed=54 /add>
+<add speed=34 /add>
 <way id=72848417 node=31004277 node=57620259 /way>
+<add speed=57 /add>
+<add speed=30 /add>
 <way id=78431190 node=920423379 node=920423382 /way>
+<add speed=32 /add>
+<add speed=72 /add>
 <way id=78431191 node=920423389 node=920423392 /way>
+<add speed=36 /add>
+<add speed=30 /add>
 <way id=78431195 node=920423470 node=920423473 /way>
+<add speed=73 /add>
+<add speed=51 /add>
 <way id=78431196 node=920423480 node=920423484 /way>
+<add speed=65 /add>
+<add speed=38 /add>
 <way id=78431197 node=31004234 node=920423490 node=49510335 /way>
+<add speed=31 /add>
+<add speed=41 /add>
 <way id=78431198 node=920423508 node=920423490 node=920423511 /way>
+<add speed=56 /add>
+<add speed=46 /add>
 <way id=78431199 node=31004235 node=920423521 node=920423523 node=920423526 node=31004236 /way>
+<add speed=45 /add>
+<add speed=69 /add>
 <way id=78431202 node=920423600 node=920423604 node=49510397 /way>
+<add speed=58 /add>
+<add speed=77 /add>
 <way id=78431203 node=1701812266 node=920423473 node=920423631 node=1701810678 node=1701810680 node=1701810681 node=920423633 node=1701810683 node=920423634 node=1701810685 node=920423604 /way>
+<add speed=71 /add>
+<add speed=51 /add>
 <way id=78431204 node=920423652 node=920423655 /way>
+<add speed=31 /add>
+<add speed=40 /add>
 <way id=78507512 node=921270449 node=921270450 node=921270450 /way>
+<add speed=43 /add>
+<add speed=73 /add>
 <way id=78507521 node=921270509 node=921270511 node=921270513 node=151880755 /way>
+<add speed=33 /add>
+<add speed=52 /add>
 <way id=78509748 node=921304545 node=921304549 node=921304554 node=921304490 /way>
+<add speed=31 /add>
+<add speed=34 /add>
 <way id=78509768 node=921304949 node=921304957 /way>
+<add speed=56 /add>
+<add speed=69 /add>
 <way id=78509781 node=921305003 node=921305006 /way>
+<add speed=68 /add>
+<add speed=69 /add>
 <way id=78509785 node=49510370 node=920423379 /way>
+<add speed=61 /add>
+<add speed=45 /add>
 <way id=78509788 node=921305117 node=921305120 /way>
+<add speed=37 /add>
+<add speed=64 /add>
 <way id=78509789 node=49510418 /way>
+<add speed=61 /add>
+<add speed=50 /add>
 <way id=78509790 node=921305201 node=921305204 /way>
+<add speed=44 /add>
+<add speed=51 /add>
 <way id=78514627 node=921345534 node=921345535 node=921345536 node=41338176 /way>
+<add speed=44 /add>
+<add speed=78 /add>
 <way id=78514634 node=921345543 node=921345544 /way>
+<add speed=46 /add>
+<add speed=45 /add>
 <way id=78514636 node=921345545 node=921345536 /way>
+<add speed=77 /add>
+<add speed=58 /add>
 <way id=84749527 node=54060524 node=54060527 /way>
+<add speed=79 /add>
+<add speed=49 /add>
 <way id=84841924 node=247293258 node=-2402 node=247957013 node=-2406 node=-2410 node=247293177 node=247957009 node=1160269615 node=-2454 node=983404841 node=247293259 /way>
+<add speed=37 /add>
+<add speed=43 /add>
 <way id=84842210 node=985084904 node=985074726 node=1160269599 node=985074731 node=985074735 node=1914623340 /way>
+<add speed=43 /add>
+<add speed=70 /add>
 <way id=84842211 node=1160269664 node=985074756 node=985074731 /way>
+<add speed=76 /add>
+<add speed=39 /add>
 <way id=84842212 node=985084875 node=247293213 /way>
+<add speed=52 /add>
+<add speed=72 /add>
 <way id=84842213 node=247293213 node=247293214 node=-2360 node=-2424 node=354721641 node=354721642 node=247293218 /way>
+<add speed=35 /add>
+<add speed=30 /add>
 <way id=84842676 node=985084873 node=985084875 /way>
+<add speed=54 /add>
+<add speed=41 /add>
 <way id=84842677 node=985074726 node=985084877 /way>
+<add speed=78 /add>
+<add speed=78 /add>
 <way id=84842678 node=247293274 node=985084880 /way>
+<add speed=62 /add>
+<add speed=31 /add>
 <way id=84843005 node=985096804 node=57620259 node=985096805 node=-2372 node=-2376 node=-2368 node=985096810 node=985096764 node=985096813 node=985096817 node=985096821 node=985096825 node=-2416 node=985096827 node=985096804 /way>
+<add speed=58 /add>
+<add speed=33 /add>
 <way id=99432881 node=21029316 node=1150101894 node=1150101849 /way>
+<add speed=37 /add>
+<add speed=30 /add>
 <way id=99644809 node=26653412 node=354734659 /way>
+<add speed=57 /add>
+<add speed=54 /add>
 <way id=99644814 node=26653414 node=1152071963 /way>
+<add speed=44 /add>
+<add speed=44 /add>
 <way id=100370721 node=41337031 node=1160269681 node=1563529901 node=1160269481 node=1160269544 node=1160269597 node=1563529907 node=1160269646 node=1160269709 node=1160269518 node=1160269576 node=1160269619 node=1160269684 node=1160269489 node=1160269548 node=1563529908 node=1563529909 node=1160269600 node=1563529910 node=247957025 /way>
+<add speed=38 /add>
+<add speed=41 /add>
 <way id=100370724 node=1160269481 node=1160269703 /way>
+<add speed=33 /add>
+<add speed=70 /add>
 <way id=100370730 node=1150101835 node=1160269666 node=1160269726 node=1160269531 node=1160269580 /way>
+<add speed=59 /add>
+<add speed=33 /add>
 <way id=100370732 node=1160269499 node=247293174 node=304990730 node=247293176 node=-2462 node=247293175 /way>
+<add speed=66 /add>
+<add speed=38 /add>
 <way id=100370743 node=1160269683 node=1160269599 /way>
+<add speed=76 /add>
+<add speed=43 /add>
 <way id=100370749 node=921304534 node=921304537 node=41337014 /way>
+<add speed=60 /add>
+<add speed=46 /add>
 <way id=100370750 node=50773846 node=1160269723 /way>
+<add speed=32 /add>
+<add speed=33 /add>
 <way id=100370757 node=41337049 node=1160269730 node=1160269658 node=1160269713 node=48900282 /way>
+<add speed=30 /add>
+<add speed=66 /add>
 <way id=100443307 node=247293203 node=247293204 node=247293201 node=247293205 node=247293206 node=247293207 node=247293212 node=247293208 /way>
+<add speed=63 /add>
+<add speed=50 /add>
 <way id=102816015 node=1187324679 node=1187324666 node=-2560 node=1187324670 node=1187324682 node=1187324692 node=1187324676 node=1187324678 node=1187324665 node=1187324690 /way>
+<add speed=58 /add>
+<add speed=73 /add>
 <way id=115383104 node=1303879428 node=1303879425 node=1303879416 node=21545957 node=21545958 /way>
+<add speed=70 /add>
+<add speed=55 /add>
 <way id=123522401 node=250221635 node=1377189446 /way>
+<add speed=45 /add>
+<add speed=65 /add>
 <way id=123522402 node=664210230 node=1377189443 node=1377189434 node=1377189433 /way>
+<add speed=67 /add>
+<add speed=59 /add>
 <way id=142813706 node=1562924005 node=1914623339 node=1562912126 node=288976346 /way>
+<add speed=51 /add>
+<add speed=78 /add>
 <way id=142813962 node=288976346 node=288976377 node=1562919320 node=41337068 /way>
+<add speed=61 /add>
+<add speed=36 /add>
 <way id=142814173 node=1562924056 node=1914623339 node=288976344 /way>
+<add speed=33 /add>
+<add speed=57 /add>
 <way id=142892967 node=1563529904 node=1563529905 node=1563529906 node=1563529903 node=1563529902 node=1563529900 /way>
+<add speed=69 /add>
+<add speed=45 /add>
 <way id=142903078 node=1563622354 node=1563622351 /way>
+<add speed=58 /add>
+<add speed=67 /add>
 <way id=142903079 node=1563622361 node=1563622357 node=1563622355 node=1563622354 /way>
+<add speed=33 /add>
+<add speed=76 /add>
 <way id=146893866 node=1601125142 node=1601125088 node=1601125096 node=1601125103 node=1601125136 /way>
+<add speed=76 /add>
+<add speed=58 /add>
 <way id=146893869 node=1601125142 node=1601125099 node=151880755 node=1601125151 node=1601125104 node=151880759 node=151880765 node=1914623337 node=1601125106 node=151880767 node=151880771 node=1601125135 node=1601125132 node=1601125086 node=1601125112 /way>
+<add speed=73 /add>
+<add speed=59 /add>
 <way id=146893875 node=1601125172 node=1601125137 node=1601125144 node=1601125154 /way>
+<add speed=79 /add>
+<add speed=36 /add>
 <way id=146896220 node=1601134795 node=1601134705 node=41337068 node=41338176 node=55424694 node=1601134769 node=53358618 node=1601134736 node=1601134692 /way>
+<add speed=51 /add>
+<add speed=52 /add>
 <way id=147151516 node=301677725 node=1603595521 node=1603595547 node=1603595522 /way>
+<add speed=30 /add>
+<add speed=59 /add>
 <way id=147151521 node=1603595524 node=1603595529 node=1603595557 node=1603595553 node=247957025 /way>
+<add speed=55 /add>
+<add speed=47 /add>
 <way id=148669828 node=1160269594 node=31004288 node=21545940 node=21545941 node=21545942 /way>
+<add speed=51 /add>
+<add speed=50 /add>
 <way id=151645336 node=354734671 node=1644818713 node=1644818714 node=1644818715 /way>
+<add speed=64 /add>
+<add speed=60 /add>
 <way id=151646783 node=31004287 node=1644833945 node=-2053181548 node=-1887621624 /way>
+<add speed=33 /add>
+<add speed=52 /add>
 <way id=153236480 node=21545960 node=298186515 node=21545962 /way>
+<add speed=58 /add>
+<add speed=50 /add>
 <way id=153236481 node=1659456384 node=1659456325 node=1659456321 node=298186515 /way>
+<add speed=41 /add>
+<add speed=36 /add>
 <way id=153236483 node=249612090 node=1659456314 node=249612086 node=1659456274 node=1659456290 node=1659456282 node=1659456363 node=1659456331 node=1659456411 /way>
+<add speed=49 /add>
+<add speed=66 /add>
 <way id=153236484 node=1836072746 node=1659456391 node=1303879442 node=1659456323 node=1836072750 node=1303879428 /way>
+<add speed=68 /add>
+<add speed=61 /add>
 <way id=153236488 node=262687715 /way>
+<add speed=47 /add>
+<add speed=77 /add>
 <way id=153236491 node=1659456263 node=1659456284 node=1659456339 /way>
+<add speed=78 /add>
+<add speed=72 /add>
 <way id=153236492 node=249612090 node=1659456310 node=1659456357 node=1659456267 node=664210167 /way>
+<add speed=57 /add>
+<add speed=72 /add>
 <way id=153236493 node=21545941 node=1659456329 node=1659456312 node=249612090 /way>
+<add speed=43 /add>
+<add speed=42 /add>
 <way id=153236495 node=21545962 node=1659456381 node=664212051 /way>
+<add speed=61 /add>
+<add speed=38 /add>
 <way id=153236498 node=21545947 node=1659456356 node=250221634 node=1659456358 node=1659456370 node=1659456361 node=1659456260 node=1659456355 node=1659456324 node=1659456293 node=1659456360 node=1659456337 node=21545957 /way>
+<add speed=59 /add>
+<add speed=75 /add>
 <way id=154247695 node=54060555 node=54060557 /way>
+<add speed=45 /add>
+<add speed=78 /add>
 <way id=154247696 node=1668111641 node=54060557 /way>
+<add speed=46 /add>
+<add speed=58 /add>
 <way id=154247697 node=54060547 node=54060551 node=1725582974 /way>
+<add speed=39 /add>
+<add speed=70 /add>
 <way id=154247698 node=1668111635 node=1668111640 /way>
+<add speed=36 /add>
+<add speed=56 /add>
 <way id=154340506 node=54070586 node=1668868122 /way>
+<add speed=61 /add>
+<add speed=45 /add>
 <way id=157572877 node=1698087079 node=1698087083 /way>
+<add speed=78 /add>
+<add speed=49 /add>
 <way id=157961770 node=920423634 node=1701810682 /way>
+<add speed=59 /add>
+<add speed=56 /add>
 <way id=157961860 node=1701812266 /way>
+<add speed=44 /add>
+<add speed=54 /add>
 <way id=160502811 node=1668111630 node=54060530 node=1668111631 node=54060527 /way>
+<add speed=31 /add>
+<add speed=78 /add>
 <way id=160502812 node=1668111630 node=1668111629 node=54060534 node=54060603 node=1377220131 /way>
+<add speed=49 /add>
+<add speed=71 /add>
 <way id=160502813 node=1668111640 node=1668111641 node=1668111642 /way>
+<add speed=73 /add>
+<add speed=43 /add>
 <way id=160502814 node=1725582974 node=54060555 node=1725582979 node=1725582984 node=1725582987 node=1725582982 node=1725582977 node=1668111636 /way>
+<add speed=36 /add>
+<add speed=75 /add>
 <way id=162399981 node=1601125136 node=1160269594 /way>
+<add speed=47 /add>
+<add speed=51 /add>
 <way id=167705637 node=1790797031 node=1790797032 node=1790797033 node=1790797034 node=1790797036 node=288953386 node=288953376 /way>
+<add speed=68 /add>
+<add speed=72 /add>
 <way id=176018691 node=1152071926 node=52872225 node=50773828 /way>
+<add speed=37 /add>
+<add speed=33 /add>
 <way id=176813947 node=1601125154 node=1601125125 node=1601125107 node=1601125142 /way>
+<add speed=70 /add>
+<add speed=74 /add>
 <way id=176813948 node=1601125109 node=1601125110 node=1601125154 /way>
+<add speed=69 /add>
+<add speed=53 /add>
 <way id=176813951 node=1659456404 node=1873019771 /way>
+<add speed=62 /add>
+<add speed=52 /add>
 <way id=176813953 node=1873019771 node=1601125109 /way>
+<add speed=42 /add>
+<add speed=44 /add>
 <way id=186077628 node=1967770415 node=1967770416 node=1967770418 node=1967770421 node=1967770422 /way>
+<add speed=53 /add>
+<add speed=36 /add>
 <way id=192215163 node=151854750 node=2027774282 node=2027774280 node=2027774276 node=2027774338 node=2027774317 node=-1887763514 /way>
+<add speed=68 /add>
+<add speed=74 /add>
 <way id=192215167 node=2027774338 node=2027774294 node=2027774306 node=2027774326 node=2027774311 /way>
+<add speed=72 /add>
+<add speed=67 /add>
 <way id=192215168 node=2027774294 node=2027774301 node=2027774335 /way>
+<add speed=67 /add>
+<add speed=42 /add>
 <way id=192215170 node=2027774301 node=2027774300 node=-1887763495 node=2027774319 /way>
+<add speed=37 /add>
+<add speed=63 /add>
 <way id=192215178 node=2027774281 node=2027774285 node=921270536 node=288752023 node=288750412 node=288752018 node=288752016 node=247353854 node=288752015 node=288752007 node=163655025 node=288752005 node=1790831305 node=151854739 /way>
+<add speed=63 /add>
+<add speed=48 /add>
 <way id=192215180 node=2027774300 node=-1887763536 node=2027774330 node=-1887763469 node=2027774291 /way>
+<add speed=36 /add>
+<add speed=39 /add>
 <way id=192215183 node=274073127 node=274073128 node=1790852800 node=274246829 node=274073129 node=274073130 /way>
+<add speed=38 /add>
+<add speed=55 /add>
 <way id=194832089 node=54070505 node=-2466 node=-1887884712 node=984231792 node=54070501 /way>
+<add speed=40 /add>
+<add speed=42 /add>
 <way id=194832090 node=54070586 node=54070576 node=54070579 /way>
+<add speed=51 /add>
+<add speed=54 /add>
 <way id=194832091 node=2053377766 node=-1887763541 node=2053377760 node=2053377755 node=2053377762 node=2053377764 /way>
+<add speed=71 /add>
+<add speed=63 /add>
 <way id=194832092 node=247956995 node=1914623340 node=247957004 node=247957005 node=247957006 node=247957007 /way>
+<add speed=71 /add>
+<add speed=40 /add>
 <way id=194832093 node=247956995 node=247956996 node=247293247 node=247293259 node=247293253 node=247330377 node=247293246 /way>
+<add speed=67 /add>
+<add speed=52 /add>
 <way id=203756292 node=2137538402 node=2137538406 node=2137538435 /way>
+<add speed=37 /add>
+<add speed=43 /add>
 <way id=203756293 node=342660319 node=2137538414 node=2137538402 node=2137538421 /way>
+<add speed=32 /add>
+<add speed=30 /add>
 <way id=206752180 node=-2127045364 node=52635292 node=52635284 node=250131779 /way>
+<add speed=73 /add>
+<add speed=30 /add>
 <way id=214437328 node=-2053181562 node=-2053181555 node=1659456404 node=1160269542 node=1160269594 /way>
+<add speed=71 /add>
+<add speed=60 /add>
 <way id=214691789 node=21069418 node=-2053181541 node=-2053181543 node=354734673 /way>
+<add speed=30 /add>
+<add speed=50 /add>
 <way id=214691790 node=993673509 node=-2053181537 node=-2053181539 node=1160269644 /way>
+<add speed=54 /add>
+<add speed=56 /add>
 <way id=214691791 node=1659456334 node=-2053181559 node=-2053181552 node=-2053181551 node=-2053181557 node=-2053181555 /way>
+<add speed=35 /add>
+<add speed=34 /add>
 <way id=214691792 node=1160269594 node=-2053181550 node=1659456339 node=-2053181552 node=1659456332 node=1873019789 /way>
+<add speed=31 /add>
+<add speed=50 /add>
 <way id=216691241 node=-2034126738 node=48930563 node=50773834 /way>
+<add speed=73 /add>
+<add speed=49 /add>
 <way id=216966635 node=31004245 node=921304490 node=54744188 node=1643862537 node=31004246 node=31004247 node=53358626 node=31004248 node=31004249 node=31004250 node=54741756 node=31004251 node=31004252 node=1601134795 node=54741752 node=31004253 node=31004254 node=31004256 node=1152071934 node=31004231 /way>
+<add speed=30 /add>
+<add speed=47 /add>
 <way id=216966636 node=7270002 node=-2032137652 node=-2032137654 node=-2032137653 node=301673133 /way>
+<add speed=38 /add>
+<add speed=47 /add>
 <way id=231552595 node=1644773886 node=274069728 node=-2478 node=354734677 node=21069416 node=288958080 node=1668111642 node=54060565 node=288958073 node=21069417 node=354734672 node=1377220131 node=54060543 /way>
+<add speed=41 /add>
+<add speed=71 /add>
 <way id=231552600 node=1659456339 node=1659456404 /way>
+<add speed=69 /add>
+<add speed=41 /add>
 <way id=231552603 node=262687715 node=1659456326 node=1659456327 node=1659456394 node=1659456263 node=1659456334 node=1659456332 /way>
+<add speed=45 /add>
+<add speed=50 /add>
 <way id=232274693 node=274082805 node=-1888581177 /way>
+<add speed=31 /add>
+<add speed=65 /add>
 <way id=232278030 node=-1888556203 node=-1888556246 /way>
+<add speed=60 /add>
+<add speed=65 /add>
 <way id=232278031 node=-1888556233 node=-1888556214 node=-1888556174 node=-1888556139 node=-1888556138 node=-1888556134 node=-1888581133 /way>
+<add speed=30 /add>
+<add speed=74 /add>
 <way id=232278032 node=-1888556117 node=-1888556155 node=-1888556233 /way>
+<add speed=45 /add>
+<add speed=79 /add>
 <way id=232278033 node=-1888556157 node=-1888556222 /way>
+<add speed=35 /add>
+<add speed=71 /add>
 <way id=232278034 node=-1888556144 node=-1888556158 node=-1888556237 node=-1888556146 node=-1888556228 node=-1888556199 node=-1888556207 /way>
+<add speed=70 /add>
+<add speed=71 /add>
 <way id=232278037 node=-1888556237 node=-1888556184 node=-1888556226 node=-1888556223 node=-1886288649 /way>
+<add speed=38 /add>
+<add speed=66 /add>
 <way id=232278039 node=-1888556242 node=-1888556191 node=-1888556201 node=-1888556203 node=-1888556206 node=-1888556128 /way>
+<add speed=72 /add>
+<add speed=33 /add>
 <way id=232278041 node=-1888556174 node=-1888556156 node=-1888556218 node=-1888556250 node=-1888556153 node=-1888556143 node=-1888556124 node=-1888556132 node=-1888556205 node=-1888556195 /way>
+<add speed=77 /add>
+<add speed=54 /add>
 <way id=232278042 node=-1888556165 node=-1888556183 node=-1888556211 node=-1888556151 node=-1888556251 node=-1888556196 /way>
+<add speed=73 /add>
+<add speed=37 /add>
 <way id=232278044 node=-1888556231 node=-1888556190 node=-1888556159 node=-1888556131 /way>
+<add speed=78 /add>
+<add speed=45 /add>
 <way id=232278045 node=-1888556204 node=-1888556136 node=-1888556242 node=-1888556129 node=-1888556163 node=-1888556204 /way>
+<add speed=37 /add>
+<add speed=31 /add>
 <way id=232278048 node=-1888556245 node=-1888556157 node=-1888556182 node=-1888556164 node=-1888556240 /way>
+<add speed=35 /add>
+<add speed=51 /add>
 <way id=232278049 node=-1888556193 node=-1888556118 node=-1888556165 node=-1888581177 node=-1888556210 node=-1888556247 node=-1888556241 node=-1888556200 node=-1888556248 node=-1888556148 node=-1888556122 node=-1888556207 node=-1888556119 node=-1888556169 node=-1888556208 node=-1888556179 node=-1888556142 /way>
+<add speed=52 /add>
+<add speed=71 /add>
 <way id=232278051 node=274082814 node=-1888556244 node=-1886288647 /way>
+<add speed=30 /add>
+<add speed=64 /add>
 <way id=232278053 node=-1888556193 node=-1888556235 node=-1888556227 node=-1888556221 node=-1888556225 /way>
+<add speed=76 /add>
+<add speed=61 /add>
 <way id=232278054 node=-1888556153 node=-1888556149 node=-1888556236 node=-1888556180 node=-1888556121 node=-1888556172 node=-1888556113 node=-1888556137 node=-1888556156 /way>
+<add speed=39 /add>
+<add speed=45 /add>
 <way id=232352755 node=-1887884732 /way>
+<add speed=40 /add>
+<add speed=79 /add>
 <way id=232352756 node=-1887884787 node=-1887884727 node=-1887884934 /way>
+<add speed=78 /add>
+<add speed=62 /add>
 <way id=232352758 node=-1887884679 node=-1887884946 /way>
+<add speed=34 /add>
+<add speed=46 /add>
 <way id=232352759 node=-1887884818 node=-1887884692 /way>
+<add speed=33 /add>
+<add speed=59 /add>
 <way id=232352761 node=-1888556204 node=-1888556131 /way>
+<add speed=30 /add>
+<add speed=34 /add>
 <way id=232352762 node=-1887884675 node=-1887884700 node=-1887884858 node=-1887884762 node=-1887884795 node=-1887884681 node=-1887884824 node=-1887884883 node=-1887884758 node=-1887884887 node=-1887884833 node=-1887884694 node=-1887884698 node=-1887884901 node=-1887884816 node=-1887884787 node=-1887884752 node=-1887884657 node=-1887884735 node=-1887884872 node=-1887884839 /way>
+<add speed=58 /add>
+<add speed=74 /add>
 <way id=232352763 node=-1887884901 node=-1887884671 node=-1887884743 /way>
+<add speed=40 /add>
+<add speed=66 /add>
 <way id=232352764 node=-1887884839 node=-1887884842 node=-1887884937 node=-1887884895 node=-1887884791 /way>
+<add speed=31 /add>
+<add speed=54 /add>
 <way id=232352765 node=-1887884802 node=-1887884708 node=-1887884667 node=-1887884746 node=-1887884821 node=-1887884714 node=-1887884738 node=-1887884754 /way>
+<add speed=52 /add>
+<add speed=44 /add>
 <way id=232352766 node=-1887884833 node=-1887884917 /way>
+<add speed=41 /add>
+<add speed=35 /add>
 <way id=232352767 node=-1887884836 node=-1887884748 node=-1887884941 node=-1887884864 node=-1887884675 node=288953380 /way>
+<add speed=41 /add>
+<add speed=72 /add>
 <way id=232352768 node=-1887884913 node=-1887884898 /way>
+<add speed=65 /add>
+<add speed=35 /add>
 <way id=232352769 node=-1887884805 node=-1887884696 /way>
+<add speed=32 /add>
+<add speed=47 /add>
 <way id=232352770 node=-1887884842 /way>
+<add speed=59 /add>
+<add speed=44 /add>
 <way id=232352772 node=-1887884769 node=-1887884798 node=-1887884773 node=-1887884781 node=-1887884923 node=-1887884756 node=-1887884722 node=-1887884793 node=-1887884777 node=-1887884853 /way>
+<add speed=66 /add>
+<add speed=72 /add>
 <way id=232352774 node=-1887884750 /way>
+<add speed=62 /add>
+<add speed=34 /add>
 <way id=232352776 node=-1887884809 node=-1887884683 /way>
+<add speed=61 /add>
+<add speed=41 /add>
 <way id=232352777 node=-1887884730 node=-1887884767 node=-1887884880 /way>
+<add speed=34 /add>
+<add speed=73 /add>
 <way id=232352780 node=-1887884796 node=-1887884814 /way>
+<add speed=67 /add>
+<add speed=77 /add>
 <way id=232352781 node=-1887884941 node=-1887884715 node=-1887884710 /way>
+<add speed=51 /add>
+<add speed=32 /add>
 <way id=232352782 node=-1887884910 node=-1887884850 node=-1887884920 node=-1887884677 node=21069417 /way>
+<add speed=42 /add>
+<add speed=62 /add>
 <way id=232352784 node=-1887884710 /way>
+<add speed=62 /add>
+<add speed=32 /add>
 <way id=232352785 node=-1887884783 node=-1887884913 node=-1887884856 node=-1887884814 node=-1887884766 node=-1887884809 node=-1887884724 node=-1887884764 node=-1887884847 node=-1887884801 node=-1887884779 node=-1887884687 node=-1887622505 node=-1887884946 node=-1887884692 node=-1887884719 node=-1887884785 node=-1887884769 node=-1887884807 node=-1887884931 node=-1887884880 /way>
+<add speed=50 /add>
+<add speed=58 /add>
 <way id=232352788 node=-1887884715 node=288953459 /way>
+<add speed=37 /add>
+<add speed=69 /add>
 <way id=232355351 node=-1887865268 node=-1887865281 /way>
+<add speed=62 /add>
+<add speed=49 /add>
 <way id=232355354 node=-1887865270 node=-1887865284 /way>
+<add speed=60 /add>
+<add speed=59 /add>
 <way id=232355355 node=274082809 node=-1887865267 node=-1887865274 /way>
+<add speed=42 /add>
+<add speed=42 /add>
 <way id=232355356 node=151854784 node=-1887865265 node=-1887865283 /way>
+<add speed=34 /add>
+<add speed=40 /add>
 <way id=232364077 node=-1887794901 node=54060579 node=54060584 node=54060588 node=54060591 node=54060595 /way>
+<add speed=60 /add>
+<add speed=43 /add>
 <way id=232364078 node=-1887794901 /way>
+<add speed=38 /add>
+<add speed=74 /add>
 <way id=232367464 node=-1887763537 node=-1887763549 node=-1887763511 node=-1887763472 /way>
+<add speed=43 /add>
+<add speed=56 /add>
 <way id=232367465 node=-1887763501 node=-1887763502 node=-1887763468 node=-1887763550 node=-1887763548 node=-1887763507 node=-1887763470 node=-1887763499 node=-1887763528 node=-1887763537 node=-1887763539 node=-1887763515 node=2053377762 /way>
+<add speed=70 /add>
+<add speed=44 /add>
 <way id=232367466 node=-1887763485 node=-1887763507 /way>
+<add speed=38 /add>
+<add speed=58 /add>
 <way id=232367467 node=151854866 node=-1887763505 /way>
+<add speed=47 /add>
+<add speed=72 /add>
 <way id=232367468 node=288777817 node=-1887763492 node=-1887763476 node=-1887763504 node=-1887763544 node=-1887763488 node=-1887763541 /way>
+<add speed=75 /add>
+<add speed=75 /add>
 <way id=232367469 node=-1887763510 node=288777841 /way>
+<add speed=38 /add>
+<add speed=64 /add>
 <way id=232367471 node=-1887763506 node=-1887763542 node=-1887763498 node=-1887763551 node=288777867 node=-1887763517 node=-1887763496 /way>
+<add speed=78 /add>
+<add speed=68 /add>
 <way id=232367472 node=288777825 node=-1887763480 node=-1887763525 /way>
+<add speed=36 /add>
+<add speed=63 /add>
 <way id=232367473 node=-1887763507 node=-1887763524 node=-1887763535 node=-1887763473 /way>
+<add speed=41 /add>
+<add speed=40 /add>
 <way id=232367474 node=-1887763547 node=-1887763504 /way>
+<add speed=50 /add>
+<add speed=34 /add>
 <way id=232367475 node=2027774335 node=-1887763531 node=-1887763500 node=-1887763518 node=-1887763474 node=-1887763512 node=-1887763477 node=-1887763479 node=-1887763545 node=-1887763526 node=-1887763538 node=-1887763514 node=-1887763513 node=-1887763523 node=2053377766 /way>
+<add speed=47 /add>
+<add speed=69 /add>
 <way id=232367476 node=2053377766 node=-1887763547 node=-1887763506 node=2027774280 /way>
+<add speed=55 /add>
+<add speed=34 /add>
 <way id=232367478 node=-1887763481 node=-1887763478 /way>
+<add speed=37 /add>
+<add speed=39 /add>
 <way id=232367479 node=-1887763497 node=-1887763482 node=-1887763534 node=-1887763516 node=-1887763508 node=-1887763483 node=-1887763496 node=-1887763509 node=-1887763503 /way>
+<add speed=49 /add>
+<add speed=38 /add>
 <way id=232367480 node=-1887763543 node=-1887763514 /way>
+<add speed=34 /add>
+<add speed=49 /add>
 <way id=232367481 node=-1887763539 node=-1887763489 node=-1887763530 node=-1887763520 node=-1887763529 node=-1887763471 node=-1887763475 node=-1887763487 node=-1887763486 node=-1887763546 node=-1887763520 /way>
+<add speed=73 /add>
+<add speed=33 /add>
 <way id=232367482 node=-1887763478 node=-1887763543 /way>
+<add speed=33 /add>
+<add speed=44 /add>
 <way id=232384528 node=-1887622539 node=-1887622560 /way>
+<add speed=67 /add>
+<add speed=62 /add>
 <way id=232384533 node=-1887622539 node=-1887622026 node=-1887622498 node=-1887622022 node=-1887622545 node=-1887622548 node=-1887622024 node=-1887622505 /way>
+<add speed=77 /add>
+<add speed=77 /add>
 <way id=232384623 node=-2053181548 node=-1887621626 node=-1887621614 node=-1887621610 node=-1887621606 node=-1887621612 node=-1887621616 node=-1887621608 node=-1887621622 /way>
+<add speed=72 /add>
+<add speed=41 /add>
 <way id=232384624 node=1644833945 node=-1887621618 node=-1887621622 node=-1887621620 /way>
+<add speed=38 /add>
+<add speed=64 /add>
 <way id=232384625 node=-1887621610 node=-1887621628 /way>
+<add speed=41 /add>
+<add speed=59 /add>
 <way id=232519823 node=-1888556226 node=-1886288651 /way>
+<add speed=54 /add>
+<add speed=43 /add>
 <way id=232519824 node=-1886288648 node=-1886288643 node=-1886288653 node=-1888556207 /way>
+<add speed=58 /add>
+<add speed=42 /add>
 <way id=232519825 node=-1888556247 node=-1886288645 node=-1886288646 /way>
+<add speed=50 /add>
+<add speed=50 /add>
 <way id=232519826 node=-1888556200 node=-1886288642 node=-1886288652 node=-1886288654 node=-1886288650 node=-1886288648 node=-1886288644 /way>
+<add speed=37 /add>
+<add speed=63 /add>
 <way id=232520749 node=-1886275265 node=-1886275251 /way>
+<add speed=38 /add>
+<add speed=71 /add>
 <way id=233117312 node=354734662 node=31004268 node=31004269 node=21069412 /way>
+<add speed=62 /add>
+<add speed=62 /add>
 <way id=236285559 node=250131779 node=52635282 node=52635281 node=52732247 node=52728506 /way>
+<add speed=43 /add>
+<add speed=73 /add>
 <way id=236290343 node=342647088 node=26083243 node=52728502 node=52728506 /way>
+<add speed=71 /add>
+<add speed=36 /add>
 <way id=236290344 node=151917543 node=21545964 node=52732230 node=342647088 /way>
+<add speed=72 /add>
+<add speed=58 /add>
 <way id=236290345 node=-1851654833 node=-1851654832 node=-1851654830 node=-1851654831 /way>
+<add speed=57 /add>
+<add speed=51 /add>
 <way id=236290807 node=1152071963 node=31004231 /way>
+<add speed=63 /add>
+<add speed=52 /add>
 <way id=236290808 node=26653416 node=26653417 node=26653407 node=26653409 node=26653410 node=26653411 node=26653412 node=26653413 node=26653414 /way>
+<add speed=30 /add>
+<add speed=36 /add>
 <way id=236290809 node=1698087079 node=1152071963 /way>
+<add speed=76 /add>
+<add speed=45 /add>
 <way id=236290810 node=27081318 node=27081319 node=27081320 node=1150101894 node=27081322 node=1698087083 node=27081323 node=27081324 node=26653416 /way>
+<add speed=59 /add>
+<add speed=47 /add>
 <way id=236290811 node=-1851654831 node=21545961 /way>
+<add speed=40 /add>
+<add speed=72 /add>
 <way id=236290812 node=27081326 node=27081328 node=26653386 /way>
+<add speed=74 /add>
+<add speed=34 /add>
 <way id=236290813 node=247293217 node=-2450 /way>
+<add speed=65 /add>
+<add speed=31 /add>
 <way id=236290815 node=57620252 node=985096754 /way>
+<add speed=0 /add>
+<add speed=0 /add>
 <geom id=-7706 node=-2516 node=-2524 node=-2518 node=-2520 node=-2522 node=-2516 /geom>
 <geom id=-7620 node=-2354 node=984231657 node=984231654 node=-2356 node=-2354 /geom>
 <geom id=-7618 node=-2350 node=984231652 node=984231653 node=-2352 node=-2350 /geom>

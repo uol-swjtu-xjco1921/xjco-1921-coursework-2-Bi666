@@ -4,7 +4,7 @@
 #ifndef MAP_H
 #define MAP_H
 
-#define MAX_NODES 10000
+#define MAX_NODES 20000
 #define MAX_LINE_LENGTH 10000
 #define DIS_MAX 2147483647.0
 #define MAX_WAY 100 // 假设每条路最多有 100 个节点
@@ -16,7 +16,8 @@
 #define EXIT_BAD_DATA 4
 #define EXIT_EXCEED_RANGE 5
 #define EXIT_NO_PATH_FOUND 6
-#define EXIT_OUTPUT_FAILED 7
+#define EXIT_SDL_FAILED 7
+#define EXIT_OUTPUT_FAILED 8
 
 /* Define data structures */
 typedef struct path_t {
@@ -61,12 +62,21 @@ typedef struct way_t {
     struct way_t* next;
 } way_t;
 
+typedef struct geom_t {
+    int id;
+    int node[MAX_WAY];
+    int node_count;
+    struct geom_t* next;
+} geom_t;
+
 typedef struct map_t {
     node_t* nodes;
     int num_nodes;
     int num_edges;
     way_t* ways;
     int num_ways;
+    geom_t* geoms;
+    int num_geoms;
 } map_t;
 
 typedef struct sizeMap_t {

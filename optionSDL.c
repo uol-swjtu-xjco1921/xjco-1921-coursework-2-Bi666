@@ -110,6 +110,46 @@ void link(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_R
     }
 }
 
+void geom(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Renderer *renderer)
+{
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_RenderClear(renderer);
+    int color = 0;
+    geom_t *geom = map->geoms;
+    while (geom != NULL)
+    {
+        for (int i = 0; i < geom->node_count - 1; i++)
+        {
+            node_t *node1 = map->nodes;
+            while (node1 != NULL)
+            {
+                if (node1->id == geom->node[i])
+                    break;
+                node1 = node1->next;
+            }
+
+            node_t *node2 = map->nodes;
+            while (node2 != NULL)
+            {
+                if (node2->id == geom->node[i + 1])
+                    break;
+                node2 = node2->next;
+            }
+            if (node1 != NULL && node2 != NULL)
+            {
+                int x1 = (int)((node1->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset);
+                int y1 = (int)((bound->maxLat - node1->lat - 0.001) * size->yRatio + size->yOffset - 50);
+                int x2 = (int)((node2->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset);
+                int y2 = (int)((bound->maxLat - node2->lat - 0.001) * size->yRatio + size->yOffset - 50);
+                SDL_SetRenderDrawColor(renderer, 255, 69, 0, 255);
+                SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+            }
+        }
+
+        geom = geom->next;
+    }
+}
+
 void extra(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Renderer *renderer, int option)
 {
     // 清空窗口
@@ -124,6 +164,7 @@ void extra(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_
             node = node->next;
             continue;
         }
+
         edge_t *edge = node->edges;
         while (edge != NULL)
         {
@@ -225,7 +266,7 @@ void plotpath(map_t *map, path_t *path, path_t *path1, sizeMap_t *size, range_t 
                 break;
             }
         }
-        
+
         int judge1 = -1;
         for (int i = 0; i < path1->count; i++)
         {
@@ -286,27 +327,29 @@ void plotpath(map_t *map, path_t *path, path_t *path1, sizeMap_t *size, range_t 
                 {
                     SDL_SetRenderDrawColor(renderer, 220, 20, 60, 255);
                     SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
-            		if (option == 1) answer += edge->length;
-            		else answer += edge->length / edge->speed;
-                    
+                    if (option == 1)
+                        answer += edge->length;
+                    else
+                        answer += edge->length / edge->speed;
                 }
             }
             edge = edge->next;
         }
         node = node->next;
     }
-    if (option == 1) printf("Total length of the shortest route is %.2f\n", answer);
-            else printf("Total time of the quickest route is %.2f\n", answer);
-            
+    if (option == 1)
+        printf("Total length of the shortest route is %.2f\n", answer);
+    else
+        printf("Total time of the quickest route is %.2f\n", answer);
 }
 
-void axis(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Renderer *renderer, int option)
+int axis(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Renderer *renderer, int option)
 {
     // 初始化TTF库
     if (TTF_Init() < 0)
     {
         printf("Error initializing TTF library: %s\n", TTF_GetError());
-        return;
+        return EXIT_SDL_FAILED;
     }
 
     // 加载字体
@@ -315,7 +358,7 @@ void axis(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_R
     {
         printf("Error loading font: %s\n", TTF_GetError());
         TTF_Quit();
-        return;
+        return EXIT_SDL_FAILED;
     }
 
     // 绘制X和Y轴
@@ -369,7 +412,7 @@ void axis(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_R
 
     if (option == 1)
     {
-        SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, "Menu\nQ: exit mode\n\nShow the map:\n1: original map\n2: node\n3: link\n4: veg\n5: arch\n6: land\n7: way\n8: geom\n\nFind the way:\nS: shortest route\nT: quickest route\nP: pass given location\n", (SDL_Color){0, 0, 0}, 1000);
+        SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, "Menu\nQ: exit mode\n\nShow the map:\n1: original map\n2: node\n3: link\n4: veg\n5: arch\n6: land\n7: geom\n\nFind the way:\nS: shortest route\nT: quickest route\nP: pass given location\n", (SDL_Color){0, 0, 0}, 1000);
         SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
 
         SDL_Rect textRect = {1050, 95, textSurface->w, textSurface->h};
@@ -387,5 +430,5 @@ void axis(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_R
 
     // 显示地图
     SDL_RenderPresent(renderer);
+    return EXIT_NO_ERRORS;
 }
-

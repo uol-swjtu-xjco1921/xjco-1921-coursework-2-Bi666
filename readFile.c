@@ -42,13 +42,11 @@ int readMap(char *filename, map_t *map, range_t *bound)
             else
             {
                 printf("Error: Invalid data for node %d\n", id);
-                free_map(map);
                 return EXIT_BAD_DATA;
             }
             // if (lat < bound->minLat || lat > bound->maxLat || lon < bound->minLon || lon > bound->maxLon)
             // {
             //     printf("Error: Invalid data for node %d\n", id);
-            //     free_map(map);
             //     return EXIT_BAD_DATA;
             // }
             // Create new node and add to map
@@ -71,13 +69,12 @@ int readMap(char *filename, map_t *map, range_t *bound)
             if (minlat_str == NULL || minlon_str == NULL || maxlat_str == NULL || maxlon_str == NULL)
             {
                 printf("Error: Invalid data for bounding");
-                free_map(map);
                 return EXIT_BAD_DATA;
             }
             bound->minLat = atof(minlat_str) - 0.001;
-            bound->minLon = atof(minlon_str) - 0.001;
+            bound->minLon = atof(minlon_str);
             bound->maxLat = atof(maxlat_str) + 0.002;
-            bound->maxLon = atof(maxlon_str) + 0.003;
+            bound->maxLon = atof(maxlon_str) + 0.004;
         }
     }
 
@@ -115,7 +112,6 @@ int readMap(char *filename, map_t *map, range_t *bound)
             if (node1_str == NULL || node2_str == NULL || length_str == NULL || way_str == NULL || veg_str == NULL || arch_str == NULL || land_str == NULL)
             {
                 printf("Error: Invalid data for link %d\n", id);
-                free_map(map);
                 return EXIT_BAD_DATA;
             }
             int node1 = atoi(node1_str);
@@ -149,7 +145,6 @@ int readMap(char *filename, map_t *map, range_t *bound)
                 if (node_str == NULL)
                 {
                     printf("Error: Invalid data for way %d\n", id);
-                    free_map(map);
                     return EXIT_BAD_DATA;
                 }
                 nodeid[count] = atoi(node_str);
@@ -157,7 +152,83 @@ int readMap(char *filename, map_t *map, range_t *bound)
             }
             add_way(map, id, count, nodeid);
         }
+        if (tag != NULL && tag[1] == 'g')
+        {
+            int count = 0;
+            int nodeid[MAX_WAY];
+            strtok(NULL, "=");
+            char *id_str = strtok(NULL, " ");
+            if (id_str == NULL)
+            {
+                continue; // ignore lines without an ID
+            }
+            int id = atoi(id_str);
+            while (strcmp(strtok(NULL, "="), "node") == 0)
+            {
+                char *node_str = strtok(NULL, " ");
+                if (node_str == NULL)
+                {
+                    printf("Error: Invalid data for geom %d\n", id);
+                    return EXIT_BAD_DATA;
+                }
+                nodeid[count] = atoi(node_str);
+                count++;
+            }
+            add_geom(map, id, count, nodeid);
+        }
     }
+
+    // 随机添加速度属性
+    add_speed(map);
+
+    FILE *outputFile;
+    char tempFilename[] = "newmap.map";
+    outputFile = fopen(tempFilename, "w");
+    if (outputFile == NULL) {
+        printf("Failed to edit the map\n");
+        fclose(fp);
+        return EXIT_OUTPUT_FAILED;
+    }
+    
+    // Go back to the head of file
+    fseek(fp, 0, SEEK_SET);
+    // Read link
+    while (fgets(buffer, sizeof(buffer), fp) != NULL)
+    {
+        fputs(buffer, outputFile);
+        char *tag = strtok(buffer, " ");
+        if (tag != NULL && tag[1] == 'w')
+        {
+
+            strtok(NULL, "=");
+            char *id_str = strtok(NULL, " ");
+            int id = atoi(id_str);
+            way_t *add_way = map->ways;
+            while (add_way != NULL)
+            {
+                if (add_way->id == id)
+                {
+                    char n[100];
+                    sprintf(n, "<add speed=%d /add>\n", add_way->speed_limit);
+                    fputs(n, outputFile);
+                    break;
+                }
+                add_way = add_way->next;
+            }
+        }
+    }
+
     fclose(fp);
+    fclose(outputFile);
+
+    //删除原始文件
+    remove(filename);
+
+    // 重命名临时文件为原始文件名
+    if (rename(tempFilename, filename) != 0) {
+        printf("Unable to rename the file\n");
+        return EXIT_OUTPUT_FAILED;
+    }
     return EXIT_NO_ERRORS;
 }
+

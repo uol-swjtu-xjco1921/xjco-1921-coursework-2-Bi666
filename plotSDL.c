@@ -4,10 +4,10 @@
 #include <SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include "map.h"
-#include "optionSDL.h"
 #include "shortSDL.h"
+#include "optionSDL.h"
 
-void sdl(map_t *map, path_t *path, range_t *bound)
+int sdl(map_t *map, path_t *path, range_t *bound)
 {
     sizeMap_t size;
     initsize(&size, bound);
@@ -17,7 +17,7 @@ void sdl(map_t *map, path_t *path, range_t *bound)
     if (TTF_Init() < 0)
     {
         printf("Error initializing TTF library: %s\n", TTF_GetError());
-        return;
+        return EXIT_SDL_FAILED;
     }
 
     // 加载字体
@@ -26,7 +26,7 @@ void sdl(map_t *map, path_t *path, range_t *bound)
     {
         printf("Error loading font: %s\n", TTF_GetError());
         TTF_Quit();
-        return;
+        return EXIT_SDL_FAILED;
     }
 
     // 创建窗口和渲染器
@@ -34,9 +34,9 @@ void sdl(map_t *map, path_t *path, range_t *bound)
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
     origin(map, &size, bound, window, renderer); // 绘制原始地图
-    axis(map, &size, bound, window, renderer, 1);
-    //随机添加速度属性
-    add_speed(map);
+    int result = axis(map, &size, bound, window, renderer, 1);
+    if (result != EXIT_NO_ERRORS)
+        return result;
 
     // 获取用户键盘输入事件
     bool quit = false;
@@ -164,9 +164,13 @@ void sdl(map_t *map, path_t *path, range_t *bound)
         {
             extra(map, &size, bound, window, renderer, 3);
         }
+        else if (option == 7)
+        {
+            geom(map, &size, bound, window, renderer);
+        }
         else if (option == 11)
         {
-            route(map, &size, bound, path, window, renderer, 1);
+            route(map, &size, bound, path, window, renderer, 1); //加return
         }
         else if (option == 12)
         {
@@ -177,13 +181,17 @@ void sdl(map_t *map, path_t *path, range_t *bound)
         {
             route(map, &size, bound, path, window, renderer, 3);
         }
-        axis(map, &size, bound, window, renderer, 1);
+
+        int result = axis(map, &size, bound, window, renderer, 1);
+        if (result != EXIT_NO_ERRORS)
+            return result;
     }
 
     // 释放资源
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
+    return EXIT_NO_ERRORS;
 }
 
 
