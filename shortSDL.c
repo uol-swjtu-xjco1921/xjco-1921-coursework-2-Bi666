@@ -11,8 +11,8 @@
 
 int route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window *window, SDL_Renderer *renderer, int type)
 {
-    // 加载字体
-    TTF_Font *font = TTF_OpenFont("/usr/share/fonts/truetype/tlwg/TlwgTypo-Bold.ttf", 24); // 24为字体大小
+    // Loading Fonts
+    TTF_Font *font = TTF_OpenFont("/usr/share/fonts/truetype/tlwg/TlwgTypo-Bold.ttf", 24);
     if (font == NULL)
     {
         printf("Error loading font: %s\n", TTF_GetError());
@@ -20,6 +20,7 @@ int route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window 
         return EXIT_SDL_FAILED;
     }
 
+    // Rewrite the menu bar
     SDL_Rect rect111 = {1050, 95, 450, 865};
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderFillRect(renderer, &rect111);
@@ -79,10 +80,11 @@ int route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window 
         node_t *end_node = NULL;
         if (option == -1)
             continue;
+
+        // Text box input start end node
         if (option == 1)
         {
             char inputText[256] = "";
-
             SDL_Surface *Surface = TTF_RenderText_Solid(font, "Enter start node: ", (SDL_Color){138, 43, 226});
             SDL_Texture *Texture = SDL_CreateTextureFromSurface(renderer, Surface);
             SDL_Rect textRect = {1050, 400, Surface->w, Surface->h};
@@ -152,7 +154,7 @@ int route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window 
                     }
                 }
             }
-
+            // Refresh the page to enter the end node
             SDL_Rect rect = {1020, 400, 450, 200};
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             SDL_RenderFillRect(renderer, &rect);
@@ -228,6 +230,7 @@ int route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window 
                 }
             }
 
+            // Check if the start end node is legal
             int start_node_id = atoi(inputText);
             int end_node_id = atoi(inputText1);
             if (start_node_id == 0 || end_node_id == 0)
@@ -357,17 +360,25 @@ int route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window 
 
         if (type == 1)
         {
-            dijkstra(map, start_node, end_node, path, 1);
-            plotpath(map, path, path, size, bound, window, renderer, 1);
+            int dijresult = dijkstra(map, start_node, end_node, path, 1);
+            if (dijresult != EXIT_NO_ERRORS && dijresult != EXIT_NO_PATH_FOUND)
+            {
+                return dijresult;
+            }
+            plotpath(map, path, path, size, bound, window, renderer, 1, dijresult);
         }
         else if (type == 2)
         {
-            dijkstra(map, start_node, end_node, path, 2);
-            plotpath(map, path, path, size, bound, window, renderer, 2);
+            int dijresult = dijkstra(map, start_node, end_node, path, 2);
+            if (dijresult != EXIT_NO_ERRORS && dijresult != EXIT_NO_PATH_FOUND)
+            {
+                return dijresult;
+            }
+            plotpath(map, path, path, size, bound, window, renderer, 2, dijresult);
         }
         else
         {
-
+            // Waiting for input a pass location
             SDL_Rect rectif = {1050, 400, 450, 150};
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             SDL_RenderFillRect(renderer, &rectif);
@@ -444,10 +455,11 @@ int route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window 
                     }
                     else if (e.type == SDL_MOUSEBUTTONDOWN)
                     {
-                        // 遍历点数组，查找是否有鼠标点击的点
+                        // Iterate through the array of points
                         node_t *node = map->nodes;
                         while (node != NULL)
                         {
+                            // Find if there is a mouse click on the point
                             if (e.button.x >= (int)((node->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset - 2.5) &&
                                 e.button.x <= (int)((node->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset + 2.5) &&
                                 e.button.y >= (int)((bound->maxLat - node->lat - 0.001) * size->yRatio + size->yOffset - 50 - 2.5) &&
@@ -486,7 +498,7 @@ int route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window 
                     }
                 }
             }
-
+            // Check if the pass node is legal
             if (pass_node == NULL)
             {
                 int pass_node_id = atoi(inputText3);
@@ -526,6 +538,7 @@ int route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window 
             SDL_RenderCopy(renderer, textTexture, NULL, &textRectif);
             SDL_RenderPresent(renderer);
 
+            // Choose to draw the shortest path or the quickest time
             SDL_Event eventM;
             path_t *path1 = (path_t *)malloc(sizeof(path_t));
             bool quitif = false;
@@ -544,22 +557,52 @@ int route(map_t *map, sizeMap_t *size, range_t *bound, path_t *path, SDL_Window 
                     }
                     else if (eventM.type == SDL_KEYDOWN)
                     {
+                        int dijresult, dij, dijresult1, dij1;
                         switch (eventM.key.keysym.sym)
                         {
                         case SDLK_ESCAPE:
                             quitif = true;
                             break;
                         case SDLK_s:
-                            dijkstra(map, start_node, pass_node, path, 1);
-                            // 没有路径提前退出！
-                            dijkstra(map, pass_node, end_node, path1, 1);
-                            plotpath(map, path, path1, size, bound, window, renderer, 1);
+                            dijresult = dijkstra(map, start_node, pass_node, path, 1);
+                            if (dijresult != EXIT_NO_ERRORS && dijresult != EXIT_NO_PATH_FOUND)
+                            {
+                                return dijresult;
+                            }
+                            dij = dijkstra(map, pass_node, end_node, path1, 1);
+                            if (dij != EXIT_NO_ERRORS && dij != EXIT_NO_PATH_FOUND)
+                            {
+                                return dij;
+                            }
+                            if (dijresult != EXIT_NO_PATH_FOUND && dij != EXIT_NO_PATH_FOUND)
+                            {
+                                plotpath(map, path, path1, size, bound, window, renderer, 1, EXIT_NO_PATH_FOUND);
+                            }
+                            else
+                            {
+                                plotpath(map, path, path1, size, bound, window, renderer, 1, EXIT_NO_ERRORS);
+                            }
                             quitif = true;
                             break;
                         case SDLK_t:
-                            dijkstra(map, start_node, pass_node, path, 2);
-                            dijkstra(map, pass_node, end_node, path1, 2);
-                            plotpath(map, path, path1, size, bound, window, renderer, 2);
+                            dijresult1 = dijkstra(map, start_node, pass_node, path, 2);
+                            if (dijresult1 != EXIT_NO_ERRORS && dijresult1 != EXIT_NO_PATH_FOUND)
+                            {
+                                return dijresult1;
+                            }
+                            dij1 = dijkstra(map, pass_node, end_node, path1, 2);
+                            if (dij1 != EXIT_NO_ERRORS && dij1 != EXIT_NO_PATH_FOUND)
+                            {
+                                return dij1;
+                            }
+                            if (dijresult1 != EXIT_NO_PATH_FOUND && dij1 != EXIT_NO_PATH_FOUND)
+                            {
+                                plotpath(map, path, path1, size, bound, window, renderer, 2, EXIT_NO_PATH_FOUND);
+                            }
+                            else
+                            {
+                                plotpath(map, path, path1, size, bound, window, renderer, 2, EXIT_NO_ERRORS);
+                            }
                             quitif = true;
                             break;
                         case SDLK_q:

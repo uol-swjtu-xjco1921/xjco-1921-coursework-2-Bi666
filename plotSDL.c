@@ -12,17 +12,18 @@ int sdl(map_t *map, path_t *path, range_t *bound)
 {
     sizeMap_t size;
     initsize(&size, bound);
-    // 初始化 SDL
+    // Initialize SDL
     SDL_Init(SDL_INIT_VIDEO);
-    // 初始化TTF库
+    // Initialize TTF library
     if (TTF_Init() < 0)
     {
         printf("Error initializing TTF library: %s\n", TTF_GetError());
         return EXIT_SDL_FAILED;
     }
 
-    // 加载字体
-    TTF_Font *font = TTF_OpenFont("/usr/share/fonts/truetype/tlwg/TlwgTypo-Bold.ttf", 24); // 24为字体大小
+    // Loading Fonts
+    TTF_Font *font = TTF_OpenFont("/usr/share/fonts/truetype/tlwg/TlwgTypo-Bold.ttf", 24);
+    // 24 is the font size
     if (font == NULL)
     {
         printf("Error loading font: %s\n", TTF_GetError());
@@ -30,16 +31,21 @@ int sdl(map_t *map, path_t *path, range_t *bound)
         return EXIT_SDL_FAILED;
     }
 
-    // 创建窗口和渲染器
+    // Creating windows and renderers
     SDL_Window *window = SDL_CreateWindow("Map", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1500, 960, SDL_WINDOW_SHOWN);
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-    origin(map, &size, bound, window, renderer); // 绘制原始地图
+    origin(map, &size, bound, window, renderer); // Drawing the original map
     int result = axis(map, &size, bound, window, renderer, 1);
     if (result != EXIT_NO_ERRORS)
+    {
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
         return result;
+    }
 
-    // 获取用户键盘输入事件
+    // Get user keyboard input events
     bool quit = false;
     while (!quit)
     {
@@ -100,13 +106,14 @@ int sdl(map_t *map, path_t *path, range_t *bound)
             }
             else if (eventM.type == SDL_MOUSEBUTTONDOWN)
             {
-                // 遍历点数组，查找是否有鼠标点击的点
+                // Iterate through the array of points
                 SDL_Rect rect = {1050, 720, 430, 240};
                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
                 SDL_RenderFillRect(renderer, &rect);
                 node_t *node = map->nodes;
                 while (node != NULL)
                 {
+                    // Find if there is a mouse click on the point
                     if (eventM.button.x >= (int)((node->lon - bound->minLon + 0.001) * size.xRatio + size.xOffset - 2.5) &&
                         eventM.button.x <= (int)((node->lon - bound->minLon + 0.001) * size.xRatio + size.xOffset + 2.5) &&
                         eventM.button.y >= (int)((bound->maxLat - node->lat - 0.001) * size.yRatio + size.yOffset - 50 - 2.5) &&
@@ -171,18 +178,40 @@ int sdl(map_t *map, path_t *path, range_t *bound)
         }
         else if (option == 11)
         {
-            route(map, &size, bound, path, window, renderer, 1); // 加return
+            int routeresult = route(map, &size, bound, path, window, renderer, 1);
+            if (routeresult != EXIT_NO_ERRORS)
+            {
+                SDL_DestroyRenderer(renderer);
+                SDL_DestroyWindow(window);
+                SDL_Quit();
+                return routeresult;
+            }
         }
         else if (option == 12)
         {
-            route(map, &size, bound, path, window, renderer, 2);
+            int routeresult = route(map, &size, bound, path, window, renderer, 2);
+            if (routeresult != EXIT_NO_ERRORS)
+            {
+                SDL_DestroyRenderer(renderer);
+                SDL_DestroyWindow(window);
+                SDL_Quit();
+                return routeresult;
+            }
         }
         else if (option == 13)
         {
-            route(map, &size, bound, path, window, renderer, 3);
+            int routeresult = route(map, &size, bound, path, window, renderer, 3);
+            if (routeresult != EXIT_NO_ERRORS)
+            {
+                SDL_DestroyRenderer(renderer);
+                SDL_DestroyWindow(window);
+                SDL_Quit();
+                return routeresult;
+            }
         }
         else if (option == 14)
         {
+            // Modify Map Properties
             SDL_Rect rect111 = {1050, 95, 450, 865};
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             SDL_RenderFillRect(renderer, &rect111);
@@ -238,6 +267,7 @@ int sdl(map_t *map, path_t *path, range_t *bound)
                     }
                 }
 
+                // Prompt for way id
                 if (option == 1)
                 {
                     char inputText[256] = "";
@@ -310,6 +340,7 @@ int sdl(map_t *map, path_t *path, range_t *bound)
                             }
                         }
                     }
+                    // Enter road speed attributes
                     SDL_Rect rect111 = {1050, 450, 450, 150};
                     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
                     SDL_RenderFillRect(renderer, &rect111);
@@ -571,7 +602,6 @@ int sdl(map_t *map, path_t *path, range_t *bound)
                             }
                         }
                     }
-                    printf("fuck!");
                     int link_id = atoi(inputText);
                     int att = atoi(inputText1);
                     if (link_id == 0)
@@ -581,6 +611,28 @@ int sdl(map_t *map, path_t *path, range_t *bound)
                     if (att == 0)
                     {
                         printf("Error: Invalid attribute value\n");
+                    }
+                    int linkif = 0;
+                    node_t *c_node = map->nodes;
+                    while (c_node != NULL)
+                    {
+                        edge_t *cur_edge = c_node->edges;
+                        while (cur_edge != NULL)
+                        {
+                            if (cur_edge->id == link_id)
+                            {
+                                linkif = 1;
+                                break;
+                            }
+                            cur_edge = cur_edge->next;
+                        }
+                        if (linkif == 1)
+                            break;
+                        c_node = c_node->next;
+                    }
+                    if (linkif == 0)
+                    {
+                        printf("Error: Invalid Way ID\n");
                     }
                     SDL_Rect rectclean = {1020, 95, 460, 865};
                     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
@@ -595,10 +647,15 @@ int sdl(map_t *map, path_t *path, range_t *bound)
         }
         int resultplot = axis(map, &size, bound, window, renderer, 1);
         if (resultplot != EXIT_NO_ERRORS)
+        {
+            SDL_DestroyRenderer(renderer);
+            SDL_DestroyWindow(window);
+            SDL_Quit();
             return resultplot;
+        }
     }
 
-    // 释放资源
+    // Release Resources
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();

@@ -13,6 +13,10 @@ int readMap(char *filename, map_t *map, range_t *bound)
         return EXIT_BAD_FILE_NAME;
     }
 
+    int num_node = 0;
+    int num_link = 0;
+    int num_way = 0;
+    int num_bound = 0;
     char buffer[1000];
     // Read node
     while (fgets(buffer, sizeof(buffer), fp) != NULL)
@@ -21,6 +25,7 @@ int readMap(char *filename, map_t *map, range_t *bound)
         char *tag = strtok(buffer, " ");
         if (tag != NULL && tag[1] == 'n')
         {
+            num_node++;
             strtok(NULL, "=");
             char *id_str = strtok(NULL, " ");
             if (id_str == NULL)
@@ -42,6 +47,7 @@ int readMap(char *filename, map_t *map, range_t *bound)
             else
             {
                 printf("Error: Invalid data for node %d\n", id);
+                fclose(fp);
                 return EXIT_BAD_DATA;
             }
             // if (lat < bound->minLat || lat > bound->maxLat || lon < bound->minLon || lon > bound->maxLon)
@@ -53,11 +59,13 @@ int readMap(char *filename, map_t *map, range_t *bound)
             int addresult = add_node(map, id, lat, lon);
             if (addresult != EXIT_NO_ERRORS)
             {
+                fclose(fp);
                 return addresult;
             }
         }
         else if (tag != NULL && tag[1] == 'b')
         {
+            num_bound++;
             strtok(NULL, "=");
             char *minlat_str = strtok(NULL, " ");
             strtok(NULL, "=");
@@ -69,6 +77,7 @@ int readMap(char *filename, map_t *map, range_t *bound)
             if (minlat_str == NULL || minlon_str == NULL || maxlat_str == NULL || maxlon_str == NULL)
             {
                 printf("Error: Invalid data for bounding");
+                fclose(fp);
                 return EXIT_BAD_DATA;
             }
             bound->minLat = atof(minlat_str) - 0.001;
@@ -86,6 +95,7 @@ int readMap(char *filename, map_t *map, range_t *bound)
         char *tag = strtok(buffer, " ");
         if (tag != NULL && tag[1] == 'l')
         {
+            num_link++;
             strtok(NULL, "=");
             char *id_str = strtok(NULL, " ");
             if (id_str == NULL)
@@ -112,6 +122,7 @@ int readMap(char *filename, map_t *map, range_t *bound)
             if (node1_str == NULL || node2_str == NULL || length_str == NULL || way_str == NULL || veg_str == NULL || arch_str == NULL || land_str == NULL)
             {
                 printf("Error: Invalid data for link %d\n", id);
+                fclose(fp);
                 return EXIT_BAD_DATA;
             }
             int node1 = atoi(node1_str);
@@ -125,11 +136,13 @@ int readMap(char *filename, map_t *map, range_t *bound)
             int addresult = add_edge(map, id, node1, node2, length, veg, arch, land);
             if (addresult != EXIT_NO_ERRORS)
             {
+                fclose(fp);
                 return addresult;
             }
         }
         if (tag != NULL && tag[1] == 'w')
         {
+            num_way++;
             int count = 0;
             int nodeid[MAX_WAY];
             strtok(NULL, "=");
@@ -145,6 +158,7 @@ int readMap(char *filename, map_t *map, range_t *bound)
                 if (node_str == NULL)
                 {
                     printf("Error: Invalid data for way %d\n", id);
+                    fclose(fp);
                     return EXIT_BAD_DATA;
                 }
                 nodeid[count] = atoi(node_str);
@@ -169,6 +183,7 @@ int readMap(char *filename, map_t *map, range_t *bound)
                 if (node_str == NULL)
                 {
                     printf("Error: Invalid data for geom %d\n", id);
+                    fclose(fp);
                     return EXIT_BAD_DATA;
                 }
                 nodeid[count] = atoi(node_str);
@@ -177,15 +192,22 @@ int readMap(char *filename, map_t *map, range_t *bound)
             add_geom(map, id, count, nodeid);
         }
     }
+    // Determine if the necessary labels for the map are complete
+    if (num_bound == 0 | num_link == 0 | num_node == 0 | num_way == 0)
+    {
+        printf("Error: The required labels for the map are incomplete\n");
+        fclose(fp);
+        return EXIT_OUTPUT_FAILED;
+    }
 
-    // 随机添加速度属性
+    // Add random speed attributes
     add_speed(map);
 
     FILE *outputFile;
     char tempFilename[] = "newmap.map";
     outputFile = fopen(tempFilename, "w");
     if (outputFile == NULL) {
-        printf("Failed to edit the map\n");
+        printf("Error: Failed to edit the map\n");
         fclose(fp);
         return EXIT_OUTPUT_FAILED;
     }
@@ -221,14 +243,13 @@ int readMap(char *filename, map_t *map, range_t *bound)
     fclose(fp);
     fclose(outputFile);
 
-    //删除原始文件
+    //Delete original file
     remove(filename);
 
-    // 重命名临时文件为原始文件名
+    // Rename the temporary file to the original file name
     if (rename(tempFilename, filename) != 0) {
-        printf("Unable to rename the file\n");
+        printf("Error: Unable to rename the file\n");
         return EXIT_OUTPUT_FAILED;
     }
     return EXIT_NO_ERRORS;
 }
-

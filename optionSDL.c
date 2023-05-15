@@ -16,13 +16,14 @@ node_t *get_node_by_id(map_t *map, int id)
         }
         node = node->next;
     }
-    return NULL; // 如果找不到节点，返回空指针
+    return NULL;
+    // If the node is not found, return the null pointer
 }
 
 void initsize(sizeMap_t *size, range_t *bound)
 {
 
-    // 计算绘图缩放比例和平移量
+    // Calculate drawing scaling and panning
     size->latRange = bound->maxLat - bound->minLat;
     size->lonRange = bound->maxLon - bound->minLon;
     size->xRatio = 850.0 / size->lonRange;
@@ -34,9 +35,11 @@ void initsize(sizeMap_t *size, range_t *bound)
 
 void origin(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Renderer *renderer)
 {
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // 设置渲染器颜色为白色
-    SDL_RenderClear(renderer);                            // 清空渲染器，填充白色
-    // 绘制地图
+    // Set the renderer color to white
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    // Empty the renderer and fill it with white
+    SDL_RenderClear(renderer);
+    // Drawing Maps
     node_t *node = map->nodes;
     while (node != NULL)
     {
@@ -60,7 +63,7 @@ void origin(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL
                 node_t *node1 = get_node_by_id(map, edge->node1);
                 node_t *node2 = get_node_by_id(map, edge->node2);
 
-                // 计算绘制的起始和终止坐标
+                // Calculate the start and end coordinates of the drawing
                 int x1 = (int)((node1->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset);
                 int y1 = (int)((bound->maxLat - node1->lat - 0.001) * size->yRatio + size->yOffset - 50);
                 int x2 = (int)((node2->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset);
@@ -77,8 +80,10 @@ void origin(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL
 
 void link(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Renderer *renderer)
 {
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // 设置渲染器颜色为白色
-    SDL_RenderClear(renderer);                            // 清空渲染器，填充白色
+    // Set the renderer color to white
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    // Empty the renderer and fill it with white
+    SDL_RenderClear(renderer);
     node_t *node = map->nodes;
     while (node != NULL)
     {
@@ -95,7 +100,7 @@ void link(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_R
                 node_t *node1 = get_node_by_id(map, edge->node1);
                 node_t *node2 = get_node_by_id(map, edge->node2);
 
-                // 计算绘制的起始和终止坐标
+                // Calculate the start and end coordinates of the drawing
                 int x1 = (int)((node1->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset);
                 int y1 = (int)((bound->maxLat - node1->lat - 0.001) * size->yRatio + size->yOffset - 50);
                 int x2 = (int)((node2->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset);
@@ -112,7 +117,9 @@ void link(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_R
 
 void geom(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Renderer *renderer)
 {
+    // Set the renderer color to white
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    // Empty the renderer and fill it with white
     SDL_RenderClear(renderer);
     int color = 0;
     geom_t *geom = map->geoms;
@@ -152,7 +159,7 @@ void geom(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_R
 
 void extra(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Renderer *renderer, int option)
 {
-    // 清空窗口
+    // Clear window
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
@@ -173,7 +180,7 @@ void extra(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_
                 node_t *node1 = get_node_by_id(map, edge->node1);
                 node_t *node2 = get_node_by_id(map, edge->node2);
 
-                // 计算绘制的起始和终止坐标
+                // Calculate the start and end coordinates of the drawing
                 int x1 = (int)((node1->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset);
                 int y1 = (int)((bound->maxLat - node1->lat - 0.001) * size->yRatio + size->yOffset - 50);
                 int x2 = (int)((node2->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset);
@@ -240,7 +247,7 @@ void extra(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_
     }
 }
 
-void plotpath(map_t *map, path_t *path, path_t *path1, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Renderer *renderer, int option)
+void plotpath(map_t *map, path_t *path, path_t *path1, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Renderer *renderer, int option, int pr)
 {
     double answer = 0.0;
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
@@ -296,7 +303,7 @@ void plotpath(map_t *map, path_t *path, path_t *path1, sizeMap_t *size, range_t 
                 node_t *node1 = get_node_by_id(map, edge->node1);
                 node_t *node2 = get_node_by_id(map, edge->node2);
 
-                // 计算绘制的起始和终止坐标
+                // Calculate the start and end coordinates of the drawing
                 int x1 = (int)((node1->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset);
                 int y1 = (int)((bound->maxLat - node1->lat - 0.001) * size->yRatio + size->yOffset - 50);
                 int x2 = (int)((node2->lon - bound->minLon + 0.001) * size->xRatio + size->xOffset);
@@ -337,6 +344,8 @@ void plotpath(map_t *map, path_t *path, path_t *path1, sizeMap_t *size, range_t 
         }
         node = node->next;
     }
+    if (pr == EXIT_NO_PATH_FOUND)
+        return;
     if (option == 1)
         printf("Total length of the shortest route is %.2f\n", answer);
     else
@@ -345,15 +354,15 @@ void plotpath(map_t *map, path_t *path, path_t *path1, sizeMap_t *size, range_t 
 
 int axis(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Renderer *renderer, int option)
 {
-    // 初始化TTF库
+    // Initialize TTF library
     if (TTF_Init() < 0)
     {
         printf("Error initializing TTF library: %s\n", TTF_GetError());
         return EXIT_SDL_FAILED;
     }
 
-    // 加载字体
-    TTF_Font *font = TTF_OpenFont("/usr/share/fonts/truetype/tlwg/TlwgTypo-Bold.ttf", 24); // 24为字体大小
+    // Loading Fonts
+    TTF_Font *font = TTF_OpenFont("/usr/share/fonts/truetype/tlwg/TlwgTypo-Bold.ttf", 24);
     if (font == NULL)
     {
         printf("Error loading font: %s\n", TTF_GetError());
@@ -361,14 +370,14 @@ int axis(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Re
         return EXIT_SDL_FAILED;
     }
 
-    // 绘制X和Y轴
+    // Plotting the X and Y axes
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderDrawLine(renderer, size->xOffset, 960 - size->yOffset, 1080 - size->xOffset + 60, 960 - size->yOffset);
     SDL_RenderDrawLine(renderer, 1080 - size->xOffset + 60, 960 - size->yOffset, 1080 - size->xOffset + 60, size->yOffset - 50);
     SDL_RenderDrawLine(renderer, size->xOffset, size->yOffset - 50, 1080 - size->xOffset + 60, size->yOffset - 50);
     SDL_RenderDrawLine(renderer, size->xOffset, 960 - size->yOffset, size->xOffset, size->yOffset - 50);
 
-    // 绘制X轴标尺和文本
+    // Draw X-axis scale and text
     for (int i = 0; i <= 5; i++)
     {
         int x = (int)(i * 168) + size->xOffset;
@@ -385,7 +394,7 @@ int axis(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Re
         SDL_DestroyTexture(texture);
     }
 
-    // 绘制Y轴标尺和文本
+    // Draw Y-axis scale and text
     for (int i = 1; i <= 12; i++)
     {
         int x = size->xOffset;
@@ -428,7 +437,7 @@ int axis(map_t *map, sizeMap_t *size, range_t *bound, SDL_Window *window, SDL_Re
         SDL_RenderCopy(renderer, textTexture, NULL, &textRect);
     }
 
-    // 显示地图
+    // Display Map
     SDL_RenderPresent(renderer);
     return EXIT_NO_ERRORS;
 }

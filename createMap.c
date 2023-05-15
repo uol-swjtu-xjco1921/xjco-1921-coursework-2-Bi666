@@ -34,8 +34,9 @@ int add_node(map_t *map, int id, double lat, double lon)
     new_node->edges = NULL;
     new_node->num_edges = 0;
     new_node->next = NULL;
-     new_node->count = map->num_nodes;
-    // 将新节点添加到节点列表的末尾
+    new_node->count = map->num_nodes;
+
+    // Add the new node to the end of the node list
     if (map->nodes == NULL)
     {
         map->nodes = new_node;
@@ -49,7 +50,7 @@ int add_node(map_t *map, int id, double lat, double lon)
         }
         current_node->next = new_node;
     }
-    // 更新地图中节点的数量
+    // Update the number of nodes in the map
     map->num_nodes++;
     return EXIT_NO_ERRORS;
 }
@@ -71,7 +72,7 @@ int add_edge(map_t *map, int id, int node1, int node2, double length, double veg
     new_edge->land = land;
     new_edge->speed = 0;
     new_edge->next = NULL;
-    // 将新边添加到起始节点的边列表中
+    // Add the new edge to the list of edges of the starting node
     node_t *current_node = map->nodes;
     while (current_node != NULL && current_node->id != node1)
     {
@@ -79,7 +80,7 @@ int add_edge(map_t *map, int id, int node1, int node2, double length, double veg
     }
     if (current_node == NULL)
     {
-        // 起始节点不存在，无法添加边
+        // The starting node does not exist, and the edge cannot be added
         printf("Error: no such point\n");
         return EXIT_BAD_DATA;
     }
@@ -105,13 +106,13 @@ int add_edge(map_t *map, int id, int node1, int node2, double length, double veg
     }
     if (current_node == NULL)
     {
-        // 结束节点不存在，无法添加边
+        // End node does not exist, cannot add edge
         printf("Error: no such point\n");
         return EXIT_BAD_DATA;
     }
     current_node->num_edges++;
 
-    // 更新地图中边的数量
+    // Update the number of edges in the map
     map->num_edges++;
     return EXIT_NO_ERRORS;
 }
@@ -128,11 +129,12 @@ int add_way(map_t *map, int id, int count, int nodes[MAX_WAY])
     new_way->id = id;
     new_way->node_count = count;
     new_way->speed_limit = 0;
-    for(int i = 0; i < count; i++){
+    for (int i = 0; i < count; i++)
+    {
         new_way->node[i] = nodes[i];
     }
     new_way->next = NULL; // Initialize the 'next' pointer
-    // 将新节点添加到节点列表的末尾
+    // Add the new node to the end of the node list
     if (map->ways == NULL)
     {
         map->ways = new_way;
@@ -140,13 +142,13 @@ int add_way(map_t *map, int id, int count, int nodes[MAX_WAY])
     else
     {
         way_t *current_way = map->ways;
-        while (current_way ->next != NULL)
+        while (current_way->next != NULL)
         {
-            current_way  = current_way->next;
+            current_way = current_way->next;
         }
         current_way->next = new_way;
     }
-    // 更新地图中节点的数量
+    // Update the number of nodes in the map
     map->num_ways++;
     return EXIT_NO_ERRORS;
 }
@@ -162,11 +164,12 @@ int add_geom(map_t *map, int id, int count, int nodes[MAX_WAY])
     }
     new_geom->id = id;
     new_geom->node_count = count;
-    for(int i = 0; i < count; i++){
+    for (int i = 0; i < count; i++)
+    {
         new_geom->node[i] = nodes[i];
     }
     new_geom->next = NULL; // Initialize the 'next' pointer
-    // 将新节点添加到节点列表的末尾
+    // Add the new node to the end of the node list
     if (map->geoms == NULL)
     {
         map->geoms = new_geom;
@@ -174,13 +177,13 @@ int add_geom(map_t *map, int id, int count, int nodes[MAX_WAY])
     else
     {
         geom_t *current_geom = map->geoms;
-        while (current_geom ->next != NULL)
+        while (current_geom->next != NULL)
         {
-            current_geom  = current_geom->next;
+            current_geom = current_geom->next;
         }
         current_geom->next = new_geom;
     }
-    // 更新地图中节点的数量
+    // Update the number of nodes in the map
     map->num_geoms++;
     return EXIT_NO_ERRORS;
 }
@@ -188,11 +191,11 @@ int add_geom(map_t *map, int id, int count, int nodes[MAX_WAY])
 void add_speed(map_t *map)
 {
     way_t *current_way = map->ways;
-    // 设置随机数种子
+    // Set random number seed
     srand((unsigned)time(NULL));
     while (current_way->next != NULL)
     {
-        // 生成随机速度限制
+        // Generate random speed limits
         int speed_li = (rand() % 50) + 30;
         current_way->speed_limit = speed_li;
         for (int i = 0; i < current_way->node_count - 1; i++)
@@ -222,52 +225,60 @@ void add_speed(map_t *map)
     }
 }
 
-//释放内存
-void freeMap(map_t* map, range_t *bound, path_t *path) 
+// Free memory
+void freeMap(map_t *map, range_t *bound, path_t *path)
 {
-    if (map == NULL) {
+    if (map == NULL)
+    {
         return;
     }
-    // 释放节点
-    node_t* currentNode = map->nodes;
-    while (currentNode != NULL) {
-        edge_t* currentEdge = currentNode->edges;
-        while (currentEdge != NULL) {
-            edge_t* nextEdge = currentEdge->next;
+    // Freeing the memory of a node
+    node_t *currentNode = map->nodes;
+    while (currentNode != NULL)
+    {
+        edge_t *currentEdge = currentNode->edges;
+        while (currentEdge != NULL)
+        {
+            edge_t *nextEdge = currentEdge->next;
             free(currentEdge);
             currentEdge = nextEdge;
         }
-        node_t* nextNode = currentNode->next;
+        node_t *nextNode = currentNode->next;
         free(currentNode);
         currentNode = nextNode;
     }
-    
-    // 释放路径
-    way_t* currentWay = map->ways;
-    while (currentWay != NULL) {
-        way_t* nextWay = currentWay->next;
+
+    // Freeing the memory of a way
+    way_t *currentWay = map->ways;
+    while (currentWay != NULL)
+    {
+        way_t *nextWay = currentWay->next;
         free(currentWay);
         currentWay = nextWay;
     }
-    
-    // 释放几何图形
-    geom_t* currentGeom = map->geoms;
-    while (currentGeom != NULL) {
-        geom_t* nextGeom = currentGeom->next;
+
+    // Freeing the memory of a geom
+    geom_t *currentGeom = map->geoms;
+    while (currentGeom != NULL)
+    {
+        geom_t *nextGeom = currentGeom->next;
         free(currentGeom);
         currentGeom = nextGeom;
     }
-    
-    // 释放地图
+
+    // Freeing the memory of map
     free(map);
     map = NULL;
-    //free bound
-    if(bound != NULL){
+
+    // free bound
+    if (bound != NULL)
+    {
         free(bound);
         bound = NULL;
     }
-    //free path
-    if(path != NULL){
+    // free path
+    if (path != NULL)
+    {
         free(path);
         path = NULL;
     }

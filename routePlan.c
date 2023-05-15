@@ -44,5 +44,6 @@ int main(int argc, char **argv)
     }
 
     freeMap(map, bound, path);
+    printf("Complete the program!");
     return EXIT_NO_ERRORS;
 }

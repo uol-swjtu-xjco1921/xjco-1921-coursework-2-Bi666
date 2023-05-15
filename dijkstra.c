@@ -16,7 +16,7 @@ int get_node_count(map_t *map, int nodeID)
     return node->count;
 }
 
-// 获取未访问节点中距离最短的节点
+// Get the node with the shortest distance among the unvisited nodes
 int get_shortest_node(double *distances, bool *visited, int num_nodes)
 {
     int i, shortest_node = -1;
@@ -78,7 +78,7 @@ int dijkstra(map_t *map, node_t *start_node, node_t *end_node, path_t *path, int
                 break;
             node = node->next;
         }
-
+        // Update Shortest Node
         edge_t *edge = node->edges;
         while (edge != NULL)
         {
@@ -88,8 +88,8 @@ int dijkstra(map_t *map, node_t *start_node, node_t *end_node, path_t *path, int
                 double new_distance;
                 if (option == 1)
                     new_distance = distances[current] + edge->length;
-                else if (edge->speed!=0)
-                    new_distance = distances[current] + edge->length/edge->speed;
+                else if (edge->speed != 0)
+                    new_distance = distances[current] + edge->length / edge->speed;
                 if (new_distance < distances[neighbor])
                 {
                     distances[neighbor] = new_distance;
@@ -98,6 +98,7 @@ int dijkstra(map_t *map, node_t *start_node, node_t *end_node, path_t *path, int
             }
             edge = edge->next;
         }
+        // Search for undirected graph reverse paths
         node_t *findnode = map->nodes;
         while (findnode != NULL)
         {
@@ -122,7 +123,7 @@ int dijkstra(map_t *map, node_t *start_node, node_t *end_node, path_t *path, int
                 double new_distance;
                 if (option == 1)
                     new_distance = distances[current] + findedge->length;
-                else if (findedge->speed!=0)
+                else if (findedge->speed != 0)
                     new_distance = distances[current] + findedge->length / findedge->speed;
 
                 if (new_distance < distances[neighbor])

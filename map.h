@@ -7,7 +7,7 @@
 #define MAX_NODES 20000
 #define MAX_LINE_LENGTH 10000
 #define DIS_MAX 2147483647.0
-#define MAX_WAY 100 // 假设每条路最多有 100 个节点
+#define MAX_WAY 100 // Assuming a maximum of 100 nodes per path
 
 #define EXIT_NO_ERRORS 0
 #define EXIT_WRONG_ARG_COUNT 1
@@ -17,9 +17,10 @@
 #define EXIT_EXCEED_RANGE 5
 #define EXIT_NO_PATH_FOUND 6
 #define EXIT_SDL_FAILED 7
-#define EXIT_OUTPUT_FAILED 8
+#define EXIT_NORMATIVE_MAP 8
+#define EXIT_OUTPUT_FAILED 9
 
-/* Define data structures */
+// Define data structures
 typedef struct path_t {
     int count;
     int *pathCount;
