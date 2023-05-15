@@ -1,34 +1,18 @@
-CC     = gcc
-# setting some useful flags:
-# std=c99 is the standard which you should be using
-# -Wall means 'report all warnings' which is useful to help you write better code
-# -Werror means 'make all warnings into errors' which means your code doesn't compile with warnings
-# this is a good idea when code quality is important
-# -g enables the use of GDB
-CFLAGS = -std=c99 -Wall -Werror -g
-# libraries needed for linking
-LDLIBS = -lm `sdl2-config --cflags --libs`
-# this is your list of executables which you want to compile with all
-EXE    = map1
+CC = gcc
+CFLAGS = -lm `sdl2-config --cflags`
+LDFLAGS = `sdl2-config --libs` -lSDL2_ttf
 
-# we put 'all' as the first command as this will be run if you just enter 'make'
-all: ${EXE}
+SRC = createMap.c readFile.c routePlan.c plotSDL.c dijkstra.c optionSDL.c shortSDL.c
+OBJ = $(SRC:.c=.o)
+EXECUTABLE = map1
 
-# clean removes all object files - DO NOT UNDER ANY CIRCUMSTANCES ADD .c OR .h FILES
-# rm is NOT REVERSIBLE.
-clean: 
-	rm -rf *.o ${EXE}
+all: $(EXECUTABLE)
 
-# this is a rule to define how .o files will be compiled
-# it means we do not have to write a rule for each .o file
+$(EXECUTABLE): $(OBJ)
+	$(CC) $(OBJ) -o $@ $(LDFLAGS)
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) $(LIBS) $< -o $@
+	$(CC) -c $< -o $@ $(CFLAGS)
 
-# for each executable, you need to tell the makefile the 'recipe' for your file
-# at the moment, this is very simple as we are only using one .c file
-# but as you refactor and add more .c and .h files
-# these recipes will become more complex.
-
-map1: createMap.o readFile.o routePlan.o plotSDL.o
-	$(CC) $(CFLAGS) $^ $(LIBS) -o $@
+clean:
+	rm -f $(OBJ) $(EXECUTABLE)

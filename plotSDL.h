@@ -2,4 +2,4 @@
 #include <stdlib.h>
 #include "map.h"
 
-void sdl(map_t *map, path_t *path);
+int sdl(map_t *map, path_t *path, range_t *bound);

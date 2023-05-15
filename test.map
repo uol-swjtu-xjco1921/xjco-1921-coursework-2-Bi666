@@ -1,10 +1,10 @@
-<bounding minLat=53.801600 minLon=-1.564000 maxLat=53.811000 maxLon=-1.543100 /bounding>
+<bounding minLat=2 minLon=-1.8 maxLat=5 maxLon=-1.4 /bounding>
 <link id=1 node=1 node=2 way=1 length=11.006410 veg=0.000000 arch=0.000000 land=0.000000 POI=;/link>
 <link id=2 node=2 node=3 way=2 length=11.029994 veg=0.000000 arch=0.000000 land=0.000000 POI=;/link>
 <link id=3 node=3 node=4 way=3 length=11.006410 veg=0.000000 arch=0.000000 land=0.000000 POI=;/link>
 <link id=4 node=4 node=1 way=4 length=11.029994 veg=0.000000 arch=0.000000 land=0.000000 POI=;/link>
 <link id=5 node=2 node=4 way=5 length=11.029994 veg=0.000000 arch=0.000000 land=0.000000 POI=;/link>
-<node id=1 lat=53.806599 lon=-1.548670 /node>
-<node id=2 lat=53.806619 lon=-1.548682 /node>
-<node id=3 lat=53.806647 lon=-1.548774 /node>
-<node id=4 lat=53.806657 lon=-1.548807 /node>
+<node id=1 lat=5 lon=-1.7 /node>
+<node id=2 lat=2 lon=-1.5 /node>
+<node id=3 lat=4 lon=-1.9 /node>
+<node id=4 lat=53.806657 lon=-1.6 /node>
