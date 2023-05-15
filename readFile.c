@@ -9,7 +9,7 @@ int readMap(char *filename, map_t *map, range_t *bound)
     FILE *fp = fopen(filename, "r");
     if (fp == NULL)
     {
-        printf("Error: Could not open file '%s'\n", filename);
+        printf("ERROR: Bad File Name (%s)\n", filename);
         return EXIT_BAD_FILE_NAME;
     }
 
@@ -46,7 +46,7 @@ int readMap(char *filename, map_t *map, range_t *bound)
             }
             else
             {
-                printf("Error: Invalid data for node %d\n", id);
+                printf("ERROR: Bad Attributes (%s)", filename);
                 fclose(fp);
                 return EXIT_BAD_DATA;
             }
@@ -76,7 +76,7 @@ int readMap(char *filename, map_t *map, range_t *bound)
             char *maxlon_str = strtok(NULL, " ");
             if (minlat_str == NULL || minlon_str == NULL || maxlat_str == NULL || maxlon_str == NULL)
             {
-                printf("Error: Invalid data for bounding");
+                printf("ERROR: Bad Attributes (%s)", filename);
                 fclose(fp);
                 return EXIT_BAD_DATA;
             }
@@ -121,7 +121,7 @@ int readMap(char *filename, map_t *map, range_t *bound)
             char *poi_str = strtok(NULL, ";");
             if (node1_str == NULL || node2_str == NULL || length_str == NULL || way_str == NULL || veg_str == NULL || arch_str == NULL || land_str == NULL)
             {
-                printf("Error: Invalid data for link %d\n", id);
+                printf("ERROR: Bad Attributes (%s)", filename);
                 fclose(fp);
                 return EXIT_BAD_DATA;
             }
@@ -157,7 +157,7 @@ int readMap(char *filename, map_t *map, range_t *bound)
                 char *node_str = strtok(NULL, " ");
                 if (node_str == NULL)
                 {
-                    printf("Error: Invalid data for way %d\n", id);
+                    printf("ERROR: Bad Attributes (%s)", filename);
                     fclose(fp);
                     return EXIT_BAD_DATA;
                 }
@@ -182,7 +182,7 @@ int readMap(char *filename, map_t *map, range_t *bound)
                 char *node_str = strtok(NULL, " ");
                 if (node_str == NULL)
                 {
-                    printf("Error: Invalid data for geom %d\n", id);
+                    printf("ERROR: Bad Attributes (%s)", filename);
                     fclose(fp);
                     return EXIT_BAD_DATA;
                 }
@@ -195,7 +195,7 @@ int readMap(char *filename, map_t *map, range_t *bound)
     // Determine if the necessary labels for the map are complete
     if (num_bound == 0 | num_link == 0 | num_node == 0 | num_way == 0)
     {
-        printf("Error: The required labels for the map are incomplete\n");
+        printf("ERROR: Bad Labels (%s)\n", filename);
         fclose(fp);
         return EXIT_OUTPUT_FAILED;
     }
@@ -207,7 +207,7 @@ int readMap(char *filename, map_t *map, range_t *bound)
     char tempFilename[] = "newmap.map";
     outputFile = fopen(tempFilename, "w");
     if (outputFile == NULL) {
-        printf("Error: Failed to edit the map\n");
+        printf("ERROR: Failed to write output (%s)\n", filename);
         fclose(fp);
         return EXIT_OUTPUT_FAILED;
     }

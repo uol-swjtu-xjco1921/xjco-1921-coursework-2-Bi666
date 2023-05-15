@@ -1,5 +1,4 @@
-# XJCO 1921 Coursework 2
-# Map Navigation Code
+# XJCO 1921 Coursework 2 - Map Navigation Code
 
 This repository contains code for a map navigation application. The code is written in C and uses the SDL (Simple DirectMedia Layer) library for graphics and user interface components. The application allows users to create and visualize maps, read map data from files, plan routes, and display them on the screen.
 
@@ -29,6 +28,7 @@ The command also includes the necessary flags and libraries for SDL 2 and SDL 2 
 
 ## Usage
 After successfully compiling the code, you can run the `map1` executable to launch the map navigation application. The application provides a graphical user interface (GUI) where you can interact with the map and perform various actions, such as creating a map, loading map data, planning routes, and displaying them on the screen.
+
 Users can select the shortest path, shortest time, pass through the given point and change the map properties in the menu page. When selecting points there are two ways of input, keyboard input the node id or mouse click on the node in the map. When using this map program, the user only needs to follow the menu instructions on the map for mode selection.
 
 # Using The Files
@@ -74,9 +74,7 @@ If you encounter any issues or have suggestions for improvements, please feel fr
 
 We have provide some test data for you to start with. These PGM files are in the test_data/pgms directory, which has the following structure:
 ```
-test_data/pgms/ascii: containing some input PGM in the ASCII form. These include some corrupted PGM files to test error handling.
-test_data/pgms/binary: containing some binary input PGM
-test_data/pgms/output: containing the expected outputs for tasks I and III when applying your developed program to the given input images.
+/test_data/: Store all map files that need to be tested.
 
 ```
 However, you should test your program on other data including test cases for error handling. 
@@ -85,33 +83,20 @@ However, you should test your program on other data including test cases for err
 
 The messages and return codes which you should use are:
 
-
 | Value  | String | Condition |
 | ------------- | ------------- | ------------- |
-| 1  | ERROR: Bad Argument Count | Program given wrong # of arguments |
-| 2 | ERROR: Bad File Name (fname) | Program fails to open file |
-| 3 | ERROR: Bad Magic Number (fname) | File has an illegal magic number |
-| 4 | ERROR: Bad Comment Line (fname) | Program failed on comment line |
-| 5 | ERROR: Bad Dimensions (fname) | File has illegal dimensions |
-| 6 | ERROR: Bad Max Gray Value (fname) | Program failed on max gray value |
-| 7 | ERROR: Image Malloc Failed | Malloc failed to allocate memory |
-| 8 | ERROR: Bad Data (fname) | Reading in data failed |
-| 9 | ERROR: Output Failed (fname) | Writing out data failed |
-| 100 | ERROR: Miscellaneous (text description) | Any other error which is detected |
-
-In all cases, fname should be replaced by the name of the file which caused the error.
-In the case of Miscellaneous errors, in 100 chars or less please describe what the error was.
+| 1 | ERROR: EXIT_WRONG_ARG_COUNT | Program given wrong # of arguments |
+| 2 | ERROR: EXIT_BAD_FILE_NAME | Program fails to open file |
+| 3 | ERROR: EXIT_MALLOC_FAILED | Malloc failed to allocate memory |
+| 4 | ERROR: EXIT_BAD_DATA | Program read in illegitimate data |
+| 5 | ERROR: EXIT_EXCEED_RANGE | Beyond the map area |
+| 6 | ERROR: EXIT_NO_PATH_FOUND | Can't find the right path |
+| 7 | ERROR: EXIT_SDL_FAILED | Failed to load sdl library|
+| 8 | ERROR: EXIT_NORMATIVE_MAP | Do not meet map specifications |
+| 9 | ERROR: EXIT_OUTPUT_FAILED | Writing out data failed |
 
 All other print statements will be ignored by the final test script.
 
 You should also use these standard success messages, for which the value is always 0.
-
-| Value | String | Program | Meaning |
-| ------------- | ------------- | ------------- | ------------- |
-| 0 | ECHOED | pgmEcho | Program echoed the input |
-| 0 | IDENTICAL | pgmComp | The two files were logically identical |
-| 0 | DIFFERENT | pgmComp | The two files were not logically identical |
-| 0 | CONVERTED | pgma2b/pgmb2a | The file was converted |
-| 0 | REDUCED | pgmReduce| The file was successfully reduced in size |
 
 Usage messages are also a Unix convention - when an executable is run with no arguments, it is assumed that the user does not know the correct syntax and wishes to see a prompt. As this is not an error state, the return value is 0.

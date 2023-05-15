@@ -25,7 +25,7 @@ run_unit_test ()
         out=$?
         total=$(( $total+2 ))
 
-        if [ $out == $4 ]
+        if [ $out == $3 ]
         then
             echo "PASSED [return value]: expected output value \"$3\" got $out"
             (( score++ ))
@@ -33,7 +33,7 @@ run_unit_test ()
             echo "FAILED [return value]: expected output value \"$3\" got $out"
         fi
 
-        if [ "$message" == "$5" ] 
+        if [ "$message" == "$4" ] 
         then
             echo "PASSED [output message]: expected printout message \"$4\" got \"$message\""
             (( score++ ))
@@ -46,10 +46,6 @@ run_unit_test ()
 # E.g. EXES = (pgmEcho pgmComp)
 EXES=(map1)
 
-# run all of the tests below for all executables given in 'EXES'
-# inside this loop, the executable being run can be referred to by 'testExecutable'
-EXES=(main)
-
 for testExecutable in ${EXES[@]}
 do 
     path="test_data/"
@@ -57,27 +53,33 @@ do
 
     echo ""
     echo "Usage"
-    run_unit_test ./$testExecutable "" "" 0 "Usage: ./$testExecutable inputFile.map"
+    run_unit_test ./$testExecutable "" 0 "Usage: ./$testExecutable input.map"
 
     echo ""
     echo "Bad Arguments"
-    run_unit_test ./$testExecutable "1" "2" 1 "ERROR: Bad Argument Count"
+    run_unit_test ./$testExecutable "1 2" 1 "ERROR: Bad Argument Count"
 
     echo ""
     echo "Bad Filename"
-    run_unit_test ./$testExecutable "1" "" 2 "ERROR: Bad File Name (1)"
+    run_unit_test ./$testExecutable "1" 2  "ERROR: Bad File Name (1)"
 
     echo ""
-    echo "Bad Attributes"
+    echo "Bad Label1"
+    filename="bad_label1.map"
+    full_path=$path$filename
+    run_unit_test ./$testExecutable $full_path 9 "ERROR: Bad Labels ($full_path)"
+    
+    echo ""
+    echo "Bad Label2"
+    filename="bad_label2.map"
+    full_path=$path$filename
+    run_unit_test ./$testExecutable $full_path 9 "ERROR: Bad Labels ($full_path)"
+
+    echo ""
+    echo "Bad Attributes1"
     filename="bad_attributes.map"
     full_path=$path$filename
-    run_unit_test ./$testExecutable $full_path "" 5 "ERROR: Bad Attributes ($full_path)"
-
-    echo ""
-    echo "Bad Labels"
-    filename="bad_labels.map"
-    full_path=$path$filename
-    run_unit_test ./$testExecutable $full_path "" 6 "ERROR: Bad Labels ($full_path)"
+    run_unit_test ./$testExecutable $full_path 4 "ERROR: Bad Attributes ($full_path)"
 
 done
     ### Functionality Tests ###
